@@ -1,5 +1,9 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
+from .category import seed_categories, undo_categories
+from .product import seed_products, undo_products
+from .image import seed_images, undo_images
+from .product_category import seed_products_categories, undo_products_categories
 
 from app.models.db import db, environment, SCHEMA
 
@@ -17,8 +21,17 @@ def seed():
         # the schema name (see comment in users.py undo_users function).
         # Make sure to add all your other model's undo functions below
         undo_users()
+        undo_categories()
+        undo_products_categories()
+        undo_products()
+        undo_images()
     seed_users()
     # Add other seed functions here
+    seed_categories()
+    seed_products_categories()
+    seed_products()
+    seed_images()
+    
 
 
 # Creates the `flask seed undo` command
@@ -26,3 +39,7 @@ def seed():
 def undo():
     undo_users()
     # Add other undo functions here
+    undo_categories()
+    undo_products_categories()
+    undo_products()
+    undo_images()
