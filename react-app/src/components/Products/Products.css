@@ -1,0 +1,14 @@
+.productItem {
+    list-style: none;
+    position: relative;
+}
+.productPriceSize {
+    padding: 4px;
+    margin-bottom: 10px;
+}
+.productsList {
+    display: grid;
+    gap: 16px;
+    margin: 0px;
+    grid-template-columns: repeat(4, minmax(0px, 1fr));
+}

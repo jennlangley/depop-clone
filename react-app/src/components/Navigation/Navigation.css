@@ -5,3 +5,43 @@
 .hidden {
   display: none;
 }
+
+.navList {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  margin-left: -2px;
+}
+
+.searchBarForm {
+  width: 300px;
+}
+
+.searchBarInput {
+  border-radius: 4px;
+  height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  border: 2px solid black;
+  width: 100%;
+  text-overflow: ellipsis;
+  outline: none;
+}
+
+.navItem {
+  list-style: none;
+  cursor: pointer;  
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0px auto 30px;
+  border-bottom: 1px solid orchid;
+  padding: 12px 32px;
+  min-height: 65px;
+}

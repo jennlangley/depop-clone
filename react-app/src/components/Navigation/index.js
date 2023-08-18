@@ -2,22 +2,34 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import SearchBar from './SearchBar';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
-		<ul>
-			<li>
-				<NavLink exact to="/">Home</NavLink>
-			</li>
-			{isLoaded && (
-				<li>
-					<ProfileButton user={sessionUser} />
-				</li>
-			)}
-		</ul>
+		<header>
+			<div className='headerContainer'>
+			<a href="/products">Item Swap</a>
+			<div className='searchBar'>
+				<SearchBar />
+			</div>
+			<nav>
+				<ul className='navList'>
+					<li className='navItem'>
+						<NavLink exact to="/products/new">Sell</NavLink>
+					</li>
+					{isLoaded && (
+						<li className='navItem'>
+							<ProfileButton user={sessionUser} />
+						</li>
+					)}
+				</ul>
+			</nav>
+			</div>
+		</header>
+		
 	);
 }
 

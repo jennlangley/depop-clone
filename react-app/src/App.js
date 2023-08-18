@@ -6,7 +6,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import ProductsIndex from './components/Products/index';
 import Navigation from "./components/Navigation";
-
+import ProductForm from "./components/Products/NewProduct/ProductForm";
+import ProductDetail from "./components/Products/ProductDetail/ProductDetail";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -25,8 +26,14 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/products">
+          <Route exact path="/products">
             <ProductsIndex />
+          </Route>
+          <Route path="/products/new">
+            <ProductForm />
+          </Route>
+          <Route path="/products/:productId">
+            <ProductDetail />
           </Route>
         </Switch>
       )}
