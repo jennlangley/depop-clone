@@ -11,7 +11,9 @@ function Navigation({ isLoaded }){
 	return (
 		<header>
 			<div className='headerContainer'>
-			<a href="/products">Swap<i className="fa-solid fa-repeat"></i>Shop</a>
+			{/* <a href="/products">Swap<i className="fa-solid fa-repeat"></i>Shop</a> */}
+			<a href="/products">/products</a>
+
 			<div className='searchBar'>
 				<SearchBar />
 			</div>
@@ -20,9 +22,9 @@ function Navigation({ isLoaded }){
 					<li className='navItem'>
 						<NavLink exact to="/products/new">Sell</NavLink>
 					</li>
-					{isLoaded && (
+					{(
 						<li className='navItem'>
-							<ProfileButton user={sessionUser} />
+							<ProfileButton isLoaded={isLoaded} user={sessionUser} />
 						</li>
 					)}
 				</ul>

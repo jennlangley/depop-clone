@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
+import { getProducts } from "./store/product";
 import ProductsIndex from './components/Products/index';
 import Navigation from "./components/Navigation";
 import ProductForm from "./components/Products/NewProduct/ProductForm";

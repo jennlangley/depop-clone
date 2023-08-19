@@ -10,5 +10,6 @@
     display: grid;
     gap: 16px;
     margin: 0px;
+    padding: 0px;
     grid-template-columns: repeat(4, minmax(0px, 1fr));
 }

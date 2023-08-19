@@ -6,11 +6,13 @@ from app.api.auth_routes import validation_errors_to_error_messages
 
 product_routes = Blueprint('products', __name__)
 
+
 # Returns all products
 @product_routes.route('')
 def get_products():
     products = Product.query.all()
     return {'products': [product.to_dict() for product in products]}
+
 
 # Get product by id
 @product_routes.route('/<int:productId>')
@@ -20,7 +22,6 @@ def get_product(productId):
         return product.to_dict()
     return {'errors': 'Product not found'}
     
-
 
 # Creates a new product
 @product_routes.route('/new', methods=['POST'])
