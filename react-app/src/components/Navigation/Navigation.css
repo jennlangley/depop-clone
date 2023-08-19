@@ -1,5 +1,15 @@
+* {
+  font-family: sans-serif;
+}
 .profile-dropdown {
   position: absolute;
+}
+a {
+  text-decoration: none;
+}
+.searchBarContainer {
+  display: flex;
+  flex-direction: column;
 }
 
 .hidden {
@@ -15,7 +25,12 @@
 }
 
 .searchBarForm {
-  width: 300px;
+  position: relative;
+  margin: auto;
+  display: flex;
+  width: calc(42vw);
+  max-width: 704px;
+  background-color: white;
 }
 
 .searchBarInput {

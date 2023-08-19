@@ -1,7 +1,8 @@
 const SearchBar = () => {
     return (
-        <div>
+        <div className="searchBarContainer">
             <form className="searchBarForm">
+                <i className="fa-solid fa-magnifying-glass"></i>
                 <input
                     type="text"
                     className="searchBarInput"

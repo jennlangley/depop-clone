@@ -11,7 +11,7 @@ function Navigation({ isLoaded }){
 	return (
 		<header>
 			<div className='headerContainer'>
-			<a href="/products">Item Swap</a>
+			<a href="/products">Swap<i className="fa-solid fa-repeat"></i>Shop</a>
 			<div className='searchBar'>
 				<SearchBar />
 			</div>
