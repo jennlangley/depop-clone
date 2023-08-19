@@ -26,7 +26,8 @@ export const getProducts = () => async (dispatch) => {
 
     if (response.ok) {
         const data = await response.json();
-        dispatch(getProductsAction(data))
+        dispatch(getProductsAction(data));
+        return data;
     } else {
         return response.errors;
     }
@@ -62,9 +63,9 @@ export const createProduct = (product) => async (dispatch) => {
     }
 }
 
-const initialState = {}
+const initialState = {};
 export default function reducer(state = initialState, action) {
-    const newState = { ...state }
+    const newState = { ...state };
     switch (action.type) {
         case GET_PRODUCTS:
             action.payload.products.forEach(product => {

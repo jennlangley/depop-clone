@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as productsActions from '../../../store/product';
+import { createImage } from "../../../store/image";
 
 const ProductForm = () => {
     const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -46,6 +47,7 @@ const ProductForm = () => {
                 formData.append("price", price);
                 formData.append("image", image);
                 const product = await dispatch(productsActions.createProduct(formData))
+                const new_image = await dispatch(createImage(product.id, image))
                 if (product) reset();
                 setHasSubmitted(false)
                 setErrors({});

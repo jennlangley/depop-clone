@@ -16,11 +16,12 @@ function Navigation({ isLoaded }){
 			<div className='searchBar'>
 				<SearchBar />
 			</div>
-			<nav>
+			<nav className='nav'>
 				<ul className='navList'>
-					<li className='navItem'>
-						<NavLink exact to="/products/new">Sell</NavLink>
-					</li>
+					{sessionUser && (
+						<li className='navItem'>
+						<NavLink exact to="/products/new">New Listing</NavLink>
+					</li>)}
 					{(
 						<li className='navItem'>
 							<ProfileButton isLoaded={isLoaded} user={sessionUser} />

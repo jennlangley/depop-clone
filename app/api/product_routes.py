@@ -13,7 +13,8 @@ def get_products():
     products = Product.query.all()
     for product in products:
         preview_image = Image.query.filter_by(product_id = product.id).first()
-        product.image_url = preview_image.image_url
+        if preview_image:
+            product.image_url = preview_image.image_url
     return {'products': [product.to_dict() for product in products]}
 
 
@@ -38,7 +39,8 @@ def new_product():
             desc=form.data['desc'], 
             condition=form.data['condition'], 
             size=form.data['size'],
-            price=form.data["price"]
+            price=form.data['price'],
+            image_url=form.data['image']
         )
         db.session.add(product)
         db.session.commit()

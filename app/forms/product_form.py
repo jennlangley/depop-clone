@@ -9,3 +9,4 @@ class ProductForm(FlaskForm):
     condition = SelectField("condition", validators=[DataRequired()], choices=["Brand new", "Like new", "Used - Excellent", "Used - Good", "Used - Fair"])
     size = SelectField("size", validators=[DataRequired()], choices=["XS", "S", "M", "L", "XL"])
     price = DecimalField("price", places=2, validators=[DataRequired()])
+    image = StringField("image", validators=[DataRequired()])
