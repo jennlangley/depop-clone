@@ -35,6 +35,7 @@ def upgrade():
     sa.Column('size', sa.String(length=40), nullable=False),
     sa.Column('price', sa.Numeric(precision=2), nullable=False),
     sa.Column('sold', sa.Boolean(), nullable=False),
+    sa.Column('image_url', sa.String(), default=None),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')

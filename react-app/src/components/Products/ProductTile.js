@@ -5,9 +5,9 @@ const ProductTile = ({ product }) => {
     return (
         <li className="productItem">
             <div className='productContainer'>
-                <div>
+                <div className='imageTileContainer'>
                     <a href={`/products/${product.id}`}>
-                        <img alt={product.id}></img>
+                        <img className='productTileImage' alt={product.id} src={product.imageUrl}></img>
                     </a>
                 </div>
                 <div className='productPriceSize'>

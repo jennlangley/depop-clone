@@ -11,8 +11,7 @@ function Navigation({ isLoaded }){
 	return (
 		<header>
 			<div className='headerContainer'>
-			{/* <a href="/products">Swap<i className="fa-solid fa-repeat"></i>Shop</a> */}
-			<a href="/products">/products</a>
+			<a href="/products">StyleSwap</a>
 
 			<div className='searchBar'>
 				<SearchBar />

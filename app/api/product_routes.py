@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request, session
 from flask_login import login_required, current_user
-from app.models import db, Product
+from app.models import db, Product, Image
 from app.forms import ProductForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
@@ -11,6 +11,9 @@ product_routes = Blueprint('products', __name__)
 @product_routes.route('')
 def get_products():
     products = Product.query.all()
+    for product in products:
+        preview_image = Image.query.filter_by(product_id = product.id).first()
+        product.image_url = preview_image.image_url
     return {'products': [product.to_dict() for product in products]}
 
 
@@ -25,6 +28,7 @@ def get_product(productId):
 
 # Creates a new product
 @product_routes.route('/new', methods=['POST'])
+@login_required
 def new_product():
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
@@ -40,3 +44,14 @@ def new_product():
         db.session.commit()
         return product.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+# Edit an existing product
+@product_routes.route('/<int:productId>/edit')
+@login_required
+def edit_product(productId):
+    product = Product.query.get(productId)
+
+    form = ProductForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    

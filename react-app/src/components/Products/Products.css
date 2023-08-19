@@ -10,6 +10,13 @@
     display: grid;
     gap: 16px;
     margin: 0px;
-    padding: 0px;
     grid-template-columns: repeat(4, minmax(0px, 1fr));
+}
+.productTileImage {
+    height: 245px;
+    width: 245px;
+}
+.imageTileContainer {
+    height: 245px;
+    width: 245px;
 }
