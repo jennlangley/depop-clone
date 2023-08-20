@@ -9,6 +9,7 @@ import ProductsIndex from './components/Products/index';
 import Navigation from "./components/Navigation";
 import ProductForm from "./components/Products/NewProduct/ProductForm";
 import ProductDetail from "./components/Products/ProductDetail/ProductDetail";
+import ManageProducts from "./components/Products/ManageProducts";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -30,10 +31,13 @@ function App() {
           <Route exact path="/products">
             <ProductsIndex />
           </Route>
-          <Route path="/products/new">
+          <Route exact path="/products/new">
             <ProductForm />
           </Route>
-          <Route path="/products/:productId">
+          <Route exact path="/products/manage">
+            <ManageProducts />
+          </Route>
+          <Route exact path="/products/:productId">
             <ProductDetail />
           </Route>
         </Switch>

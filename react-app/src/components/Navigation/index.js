@@ -9,6 +9,7 @@ function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
+		isLoaded &&
 		<header>
 			<div className='headerContainer'>
 			<a href="/products">StyleSwap</a>

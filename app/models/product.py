@@ -8,6 +8,7 @@ class Product(db.Model):
         __table_args__ = {'schema': SCHEMA}
     
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     name = db.Column(db.String(40), nullable=False)
     desc = db.Column(db.String(255), nullable=False)
     condition = db.Column(db.String(40), nullable=False)
@@ -17,6 +18,8 @@ class Product(db.Model):
     image_url = db.Column(db.String, default=None)
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, default=datetime.now())
+
+    user = db.relationship("User", back_populates="products")
 
     def to_dict(self):
         return {

@@ -24,7 +24,7 @@ const ProductDetail = () => {
             <div className="productDetailContainer">
                 <div className="productImagesContainer">
                     <ul className="productImagesList">
-                    {Object.values(images).map((image, idx) => <li className="productItem"><img className="productImageItem" key={idx} src={image.imageUrl}></img></li>)}
+                    {Object.values(images).map((image, idx) => <li key={idx} className="productItem"><img className="productImageItem" src={image.imageUrl}></img></li>)}
                     </ul>
                     
                 </div>
