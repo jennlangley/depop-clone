@@ -15,15 +15,10 @@ const Products = () => {
     const products = useSelector(state => state.products)
 
     return (
-        <div>
-            <div>
-                <ul className="productsList">
-                {isLoaded &&
-                    Object.values(products).map((product, idx) => <ProductTile key={idx} product={product} />)}
-                </ul>
-            </div>
+        <div className="productsList">
+        {isLoaded &&
+            Object.values(products).map((product, idx) => <ProductTile key={idx} product={product} />)}
         </div>
-        
     )
 }
 

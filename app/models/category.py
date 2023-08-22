@@ -11,6 +11,8 @@ class Category(db.Model):
     subcategory_id = db.Column(db.Integer)
     name = db.Column(db.String(40), nullable=False)
 
+    category = db.relationship("ProductCategory", back_populates="categories")
+
     def to_dict(self):
         return {
             'id': self.id,

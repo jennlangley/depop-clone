@@ -31,6 +31,9 @@ function App() {
           <Route exact path="/products">
             <ProductsIndex />
           </Route>
+          <Route exact path="/">
+            <ProductsIndex />
+          </Route>
           <Route exact path="/products/new">
             <ProductForm />
           </Route>

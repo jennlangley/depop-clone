@@ -2,10 +2,15 @@
     list-style: none;
     position: relative;
     display: flex;
+    border: 1px solid whitesmoke;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 2px 20px 0px;
+}
+.productItem:hover{
+    background-color: whitesmoke;
 }
 .productPriceSize {
-    padding: 4px;
-    padding-inline-start: 0px;
+    padding: 10px;
 }
 .productsList {
     display: flex;
@@ -14,6 +19,7 @@
     margin: auto;
     padding: 0;
     max-width: 1028px;
+    width: fit-content;
     grid-template-columns: repeat(4, minmax(0px, 1fr));
 }
 .productImagesList {
@@ -44,6 +50,16 @@
     width: 200px;
     text-align: left;
     margin-left: 30px;
+}
+.manageProductsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.editDeleteDiv {
+    display: flex;
+    width: inherit;
+    justify-content: space-evenly;
 }
 /* 
 @screen < 1044 {

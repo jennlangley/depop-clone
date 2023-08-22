@@ -1,18 +1,16 @@
 """empty message
 
-Revision ID: c289adfd272b
+Revision ID: f630bf6ed422
 Revises: 
-Create Date: 2023-08-17 17:56:32.704195
+Create Date: 2023-08-21 10:45:07.764848
 
 """
 from alembic import op
 import sqlalchemy as sa
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get('SCHEMA')
+
 
 # revision identifiers, used by Alembic.
-revision = 'c289adfd272b'
+revision = 'f630bf6ed422'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,17 +25,11 @@ def upgrade():
     sa.Column('name', sa.String(length=40), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_table('products',
+    op.create_table('follows',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=40), nullable=False),
-    sa.Column('desc', sa.String(length=255), nullable=False),
-    sa.Column('condition', sa.String(length=40), nullable=False),
-    sa.Column('size', sa.String(length=40), nullable=False),
-    sa.Column('price', sa.Numeric(precision=2), nullable=False),
-    sa.Column('sold', sa.Boolean(), nullable=False),
-    sa.Column('image_url', sa.String(), default=None),
+    sa.Column('follower_id', sa.Integer(), nullable=True),
+    sa.Column('followed_id', sa.Integer(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
-    sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('users',
@@ -54,14 +46,26 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-    op.create_table('follows',
+    op.create_table('products',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('follower_id', sa.Integer(), nullable=False),
-    sa.Column('followed_id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=40), nullable=False),
+    sa.Column('desc', sa.String(length=255), nullable=False),
+    sa.Column('condition', sa.String(length=40), nullable=False),
+    sa.Column('size', sa.String(length=40), nullable=False),
+    sa.Column('price', sa.Numeric(precision=2), nullable=False),
+    sa.Column('sold', sa.Boolean(), nullable=False),
+    sa.Column('image_url', sa.String(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
-    sa.ForeignKeyConstraint(['followed_id'], ['users.id'], ),
-    sa.ForeignKeyConstraint(['follower_id'], ['users.id'], ),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('user_follows',
+    sa.Column('followerId', sa.Integer(), nullable=True),
+    sa.Column('followedId', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['followedId'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['followerId'], ['users.id'], )
     )
     op.create_table('images',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -91,14 +95,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE products SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE follows SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE categories SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE products_categories SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE images SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
 
 
 def downgrade():
@@ -106,8 +102,9 @@ def downgrade():
     op.drop_table('reviews')
     op.drop_table('products_categories')
     op.drop_table('images')
-    op.drop_table('follows')
-    op.drop_table('users')
+    op.drop_table('user_follows')
     op.drop_table('products')
+    op.drop_table('users')
+    op.drop_table('follows')
     op.drop_table('categories')
     # ### end Alembic commands ###

@@ -10,6 +10,9 @@ class ProductCategory(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("products.id")), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("categories.id")), nullable=False)
 
+    categories = db.relationship("Category", back_populates="category")
+    products = db.relationship("Product", back_populates="category")
+
     def to_dict(self):
         return {
             'id': self.id,

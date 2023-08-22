@@ -20,10 +20,14 @@ class Product(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.now())
 
     user = db.relationship("User", back_populates="products")
+    review = db.relationship("Review", uselist=False, back_populates="product")
+    category = db.relationship("ProductCategory", back_populates="products")
+    images = db.relationship("Image", back_populates="product", cascade="all, delete")
 
     def to_dict(self):
         return {
             'id': self.id,
+            'userId': self.user_id,
             'name': self.name,
             'desc': self.desc,
             'condition': self.condition,

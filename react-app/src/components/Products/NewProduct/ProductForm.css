@@ -1,3 +1,43 @@
 /* .imageInput {
     opacity: 0;
 } */
+.newProductContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.productForm {
+    display: inline-flex;
+    flex-direction: column;
+    width: 500px;
+}
+.formItemContainer {
+    padding: 10px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+}
+.inputBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: inherit;
+    border: 1px solid #4dbecf;
+    height: 30px;
+    padding-left: 10px;
+}
+/* .inputBox:focus {
+    ;
+} */
+select {
+    padding-top: 5px;
+}
+.formButton {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    margin: auto;
+    padding: auto;
+}

@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as productsActions from '../../../store/product';
 import { createImage } from "../../../store/image";
+import './ProductForm.css'
 
 const ProductForm = () => {
     const [hasSubmitted, setHasSubmitted] = useState(false);
@@ -10,10 +11,11 @@ const ProductForm = () => {
     const [desc, setDesc] = useState('');
     const [condition, setCondition] = useState('');
     const [size, setSize] = useState('');
-    const [price, setPrice] = useState(0.00);
+    const [price, setPrice] = useState('');
     const [errors, setErrors] = useState({});
     const [image, setImage] = useState('');
     const [validationErrors, setValidationErrors] = useState([]);
+    const [category, setCategory] =  useState('')
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -22,16 +24,17 @@ const ProductForm = () => {
         if (hasSubmitted) {
             const errors = {};
 
-            if (!name.length) errors.name = "This field is required";
-            if (!desc.length) errors.desc = "This field is required";
-            if (!condition) errors.condition = "This field is required";
-            if (!size) errors.size = "This field is required";
-            if (!price) errors.price = "This field is required";
-            if (!image.length) errors.images = "Please upload at least one image"
+            if (!name.length) errors.name = "Name is required";
+            if (!desc.length) errors.desc = "Description is required";
+            if (!condition) errors.condition = "Condition is required";
+            if (!size) errors.size = "Size is required";
+            if (!price) errors.price = "Price is required";
+            if (!image.length) errors.images = "Image is required"
+            if (!category.length) errors.category = "Category is required"
 
             setErrors(errors);
         }
-    }, [hasSubmitted, name, desc, condition, size, price, image])
+    }, [hasSubmitted, name, desc, condition, size, price, image, category])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -46,6 +49,7 @@ const ProductForm = () => {
                 formData.append("size", size);
                 formData.append("price", price);
                 formData.append("image", image);
+                formData.append("category", category)
                 const product = await dispatch(productsActions.createProduct(formData))
                 const new_image = await dispatch(createImage(product.id, image))
                 if (product) reset();
@@ -80,51 +84,55 @@ const ProductForm = () => {
     // }
 
     return (
-        <>
-            <header>List an item</header>
-            <div className="errors">
+        <div className="newProductContainer">
+            <div>
+               <h1>List an item</h1> 
+            </div>
+
+            {/* <div className="errors">
                 {(validationErrors.length>1) && <ul>
                     {validationErrors?.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>}
-            </div>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Photos</label>
-                    <div>
-                        <input className="imageInput" onChange={e => setImage(e.target.value)}/>
-                        {/* <input className="imageInput" onChange={e => handleFileEvent(e)} type="file" accept="image/png"/>
-                        <input className="imageInput" onChange={e => handleFileEvent(e)} type="file" accept="image/png"/> */}
-                    </div>
-                    
-                    <div className="errors">
-                        {errors.images && <p>{errors.images}</p>}
-                    </div>
+            </div> */}
+
+            <form className="productForm" onSubmit={handleSubmit}>
+                <h2>Photos</h2>
+                <div>Add up to 5 photos</div>
+                <div className="formItemContainer">
+                    <label className="formLabel">Images</label>
+                    <input 
+                    className="inputBox" 
+                    placeholder="Image URL"
+                    onChange={e => setImage(e.target.value)}
+                    />
+                    {/* <input className="imageInput" onChange={e => handleFileEvent(e)} type="file" accept="image/png"/>
+                    <input className="imageInput" onChange={e => handleFileEvent(e)} type="file" accept="image/png"/> */}
+                    {errors.images && (<span className='errors'>{errors.images}</span>)}
                 </div>
-                <div>
-                    <label>Give your item a name</label>
+                
+                <div className="formItemContainer">
+                    <label className="formLabel">Name</label>
                     <input
                         value={name}
                         onChange={e => setName(e.target.value)}
-                    ></input>
-                    <div className="errors">
-                        {errors.name && <p>{errors.name}</p>}
-                    </div>
+                        className="inputBox" 
+                    />
+                    {errors.name && (<span className='errors'>{errors.name}</span>)}
                 </div>
-                
-                <div>
+                <div className="formItemContainer">
                     <label>Description</label>
                     <textarea
                         value={desc}
                         placeholder="eg. small grey t-shirt, worn once"
                         onChange={e => setDesc(e.target.value)}
+                        className="inputBox" 
                     />
-                    <div className="errors">
-                        {errors.desc && <p>{errors.desc}</p>}
-                    </div>
+                    {errors.desc && (<span className='errors'>{errors.desc}</span>)}
                 </div>
-                <div>
+                
+                <div className="formItemContainer">
                     <label>Condition</label>
-                    <select onChange={e => setCondition(e.target.value)}>
+                    <select className="inputBox" onChange={e => setCondition(e.target.value)}>
                         <option ></option>
                         <option >Brand new</option>
                         <option >Like new</option>
@@ -132,13 +140,11 @@ const ProductForm = () => {
                         <option >Used - Good</option>
                         <option >Used - Fair</option>
                     </select>
-                    <div className="errors">
-                        {errors.condition && <p>{errors.condition}</p>}
-                    </div>
+                    {errors.condition && (<span className='errors'>{errors.condition}</span>)}
                 </div>
-                <div>
+                <div className="formItemContainer">
                     <label>Size</label>
-                    <select onChange={e => setSize(e.target.value)}>
+                    <select className="inputBox" onChange={e => setSize(e.target.value)}>
                         <option></option>
                         <option>XS</option>
                         <option>S</option>
@@ -146,17 +152,45 @@ const ProductForm = () => {
                         <option>L</option>
                         <option>XL</option>
                     </select>
-                    <div className="errors">
-                        {errors.size && <p>{errors.size}</p>}
-                    </div>
+                    {errors.size && (<span className='errors'>{errors.size}</span>)}
                 </div>
-                <div>
+                <div className="formItemContainer">
+                    <label>Category</label>
+                    <select className="inputBox" onChange={e => setCategory(e.target.value)}>
+                        <option value={1}>Men's</option>
+                        <option value={2}>Women's</option>
+                        <option value={3}>Accessories</option>
+                    </select>
+                    {errors.category && (<span className='errors'>{errors.category}</span>)}
+                </div>
+                <div className="formItemContainer">
+                    <label>Subcategory</label>
+                    <select className="inputBox" onChange={e => setCategory(e.target.value)}>
+                        <option value={1}>Tops</option>
+                        <option value={2}>Bottoms</option>
+                        <option value={3}>Dresses</option>
+                        <option value={4}>Shoes</option>
+                        <option value={3}>Dresses</option>
+                    </select>
+                    {errors.category && (<span className='errors'>{errors.category}</span>)}
+                </div>
+                <div className="formItemContainer">
                     <label>Price</label>
-                    <input type="number" value={price} onChange={e => setPrice(e.target.value)}></input>
+                    <input 
+                        type="number" 
+                        value={price} 
+                        placeholder="0.00"
+                        onChange={e => setPrice(e.target.value)}
+                        className="inputBox" 
+                        />
+                    {errors.price && (<span className='errors'>{errors.price}</span>)}
                 </div>
-                <button type="submit">Submit</button>
+                <div className="confirmButtonDesign formButton">
+                    <button type="submit">Submit</button>
+                </div>
+                
             </form>
-        </>
+        </div>
     )
 }
 

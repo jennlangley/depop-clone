@@ -10,6 +10,8 @@ class Image(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("products.id")), nullable=False)
     image_url = db.Column(db.String(500), nullable=False)
 
+    product = db.relationship("Product", back_populates="images")
+
     def to_dict(self):
         return {
             'id': self.id,
