@@ -15,7 +15,8 @@ const ProductForm = () => {
     const [errors, setErrors] = useState({});
     const [image, setImage] = useState('');
     const [validationErrors, setValidationErrors] = useState([]);
-    const [category, setCategory] =  useState('')
+    const [category, setCategory] =  useState('');
+    const [subcategory, setSubcategory] = useState(0);
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -29,8 +30,9 @@ const ProductForm = () => {
             if (!condition) errors.condition = "Condition is required";
             if (!size) errors.size = "Size is required";
             if (!price) errors.price = "Price is required";
-            if (!image.length) errors.images = "Image is required"
-            if (!category.length) errors.category = "Category is required"
+            if (!image.length) errors.images = "Image is required";
+            if (!category.length) errors.category = "Category is required";
+            if (!subcategory.length) errors.subcategory = "Subcategory is required";
 
             setErrors(errors);
         }
@@ -50,6 +52,7 @@ const ProductForm = () => {
                 formData.append("price", price);
                 formData.append("image", image);
                 formData.append("category", category)
+                formData.append("subcategory", subcategory)
                 const product = await dispatch(productsActions.createProduct(formData))
                 const new_image = await dispatch(createImage(product.id, image))
                 if (product) reset();
@@ -125,7 +128,7 @@ const ProductForm = () => {
                         value={desc}
                         placeholder="eg. small grey t-shirt, worn once"
                         onChange={e => setDesc(e.target.value)}
-                        className="inputBox" 
+                        className="inputBox textarea" 
                     />
                     {errors.desc && (<span className='errors'>{errors.desc}</span>)}
                 </div>
@@ -157,6 +160,7 @@ const ProductForm = () => {
                 <div className="formItemContainer">
                     <label>Category</label>
                     <select className="inputBox" onChange={e => setCategory(e.target.value)}>
+                        <option></option>
                         <option value={1}>Men's</option>
                         <option value={2}>Women's</option>
                         <option value={3}>Accessories</option>
@@ -165,23 +169,27 @@ const ProductForm = () => {
                 </div>
                 <div className="formItemContainer">
                     <label>Subcategory</label>
-                    <select className="inputBox" onChange={e => setCategory(e.target.value)}>
+                    <select className="inputBox" onChange={e => setSubcategory(e.target.value)}>
+                        <option></option>
                         <option value={1}>Tops</option>
                         <option value={2}>Bottoms</option>
                         <option value={3}>Dresses</option>
                         <option value={4}>Shoes</option>
-                        <option value={3}>Dresses</option>
+                        <option value={1}>Hats</option>
+                        <option value={2}>Jewellery</option>
+                        <option value={3}>Watches</option>
                     </select>
-                    {errors.category && (<span className='errors'>{errors.category}</span>)}
+                    {errors.subcategory && (<span className='errors'>{errors.subcategory}</span>)}
                 </div>
                 <div className="formItemContainer">
                     <label>Price</label>
+                    <span className="dollarSign">$</span>
                     <input 
                         type="number" 
                         value={price} 
                         placeholder="0.00"
                         onChange={e => setPrice(e.target.value)}
-                        className="inputBox" 
+                        className="inputBox priceInput" 
                         />
                     {errors.price && (<span className='errors'>{errors.price}</span>)}
                 </div>

@@ -1,6 +1,7 @@
 const GET_PRODUCTS = 'products/GET_PRODUCTS';
 const CREATE_PRODUCT = 'products/CREATE_PRODUCT';
-const GET_PRODUCT_DETAILS = '/products/GET_PRODUCT_DETAILS'
+const GET_PRODUCT_DETAILS = '/products/GET_PRODUCT_DETAILS';
+const DELETE_PRODUCT = 'products/DELETE_PRODUCT';
 
 const getProductsAction = (products) => ({
     type: GET_PRODUCTS,
@@ -15,6 +16,11 @@ const createProductAction = (product) => ({
 const getProductDetailsAction = (product) => ({
     type: GET_PRODUCT_DETAILS,
     payload: product
+})
+
+const deleteProductAction = (productId) => ({
+    type: DELETE_PRODUCT,
+    payload: productId
 })
 
 export const getProducts = () => async (dispatch) => {
@@ -49,7 +55,6 @@ export const getProductDetails = (productId) => async (dispatch) => {
 }
 
 export const createProduct = (product) => async (dispatch) => {
-
     const response = await fetch('/api/products/new', {
         method: "POST",
         body: product
@@ -60,6 +65,18 @@ export const createProduct = (product) => async (dispatch) => {
         return resPost
     } else {
         throw resPost.errors;
+    }
+}
+
+export const deleteProduct = (productId) => async (dispatch) => {
+    const response = await fetch(`/api/products/${productId}/delete`, {
+        method: 'DELETE'
+    })
+    if (response.ok) {
+        dispatch(deleteProductAction(productId))
+        return {'message': 'Successfully removed product'}
+    } else {
+        throw (response.json()).errors
     }
 }
 
@@ -77,6 +94,9 @@ export default function reducer(state = initialState, action) {
             return newState;
         case GET_PRODUCT_DETAILS:
             newState[action.payload.id] = action.payload;
+            return newState;
+        case DELETE_PRODUCT:
+            delete newState[action.payload];
             return newState;
         default:
             return newState;

@@ -19,6 +19,15 @@
 }
 
 #modal-content {
+  display: flex;
+  align-items: center;
   position: absolute;
   background-color:white;
+  height: 300px;
+  width: 500px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 6px 4px black;
+}
+#modal-title {
+  text-align: center;
 }

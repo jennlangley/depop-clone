@@ -33,9 +33,11 @@ const ProductDetail = () => {
                        {product.name}  
                     </div>
                     <div>
-                    ${product.price}
+                        ${product.price}
                     </div>
-                   
+                    <div>
+                        {product.desc}
+                    </div>
                 </div>
 
                 

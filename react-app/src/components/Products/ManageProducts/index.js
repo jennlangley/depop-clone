@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../store/product";
 import ProductTile from "../ProductTile";
+import OpenModalButton from "../../OpenModalButton";
+import DeleteProduct from "./DeleteProductModal";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 const ManageProducts = () => {
     const dispatch = useDispatch();
@@ -13,19 +16,19 @@ const ManageProducts = () => {
 
     const user = useSelector(state => state.session.user)
     const products = useSelector(state => Object.values(state.products).filter(product => product.userId === user.id))
-
+    if (!user) return <Redirect to='/products'/>
     return (
-        isLoaded &&
+        (isLoaded && user) &&
         <div className="">
             <h3>Manage your {Object.values(products).length} 
             {Object.values(products).length === 1 ? " product" : " products"}</h3>
             <div className="productsList">
                 {Object.values(products).map((product, idx) => 
-                    <div>
-                        <ProductTile key={idx} product={product} />
+                    <div key={idx}>
+                        <ProductTile product={product} />
                         <div className="editDeleteDiv">
                             <button className="confirmButtonDesign">Edit</button>
-                            <button className="confirmButtonDesign">Delete</button>
+                            <div><OpenModalButton modalComponent=<DeleteProduct productId={product.id} /> buttonText={"Delete"} /></div>
                         </div>
                         
                     </div>

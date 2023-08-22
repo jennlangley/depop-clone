@@ -1,6 +1,5 @@
 .productItem {
     list-style: none;
-    position: relative;
     display: flex;
     border: 1px solid whitesmoke;
     border-radius: 4px;
@@ -16,11 +15,10 @@
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
+    max-width: 1036px;
     margin: auto;
-    padding: 0;
-    max-width: 1028px;
-    width: fit-content;
-    grid-template-columns: repeat(4, minmax(0px, 1fr));
+    padding: auto;
+    flex-shrink: 2;
 }
 .productImagesList {
     list-style: none;

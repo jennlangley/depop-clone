@@ -27,6 +27,15 @@
     border: 1px solid #4dbecf;
     height: 30px;
     padding-left: 10px;
+    font-size: 16px;
+}
+.dollarSign {
+    position: absolute;
+    padding: 0px 10px;
+    padding-top: 19px;
+}
+.inputBox.priceInput {
+    padding-left: 20px;
 }
 /* .inputBox:focus {
     ;
@@ -40,4 +49,9 @@ select {
     width: fit-content;
     margin: auto;
     padding: auto;
+}
+.textarea {
+    resize: none;
+    height: 100px;
+    padding-top: 5px;
 }
