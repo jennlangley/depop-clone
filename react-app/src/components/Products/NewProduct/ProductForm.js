@@ -2,21 +2,22 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import * as productsActions from '../../../store/product';
-import { createImage } from "../../../store/image";
+import * as imagesActions from "../../../store/image";
 import './ProductForm.css'
 
-const ProductForm = () => {
+const ProductForm = ({ product }) => {
     const [hasSubmitted, setHasSubmitted] = useState(false);
-    const [name, setName] = useState('');
-    const [desc, setDesc] = useState('');
-    const [condition, setCondition] = useState('');
-    const [size, setSize] = useState('');
-    const [price, setPrice] = useState('');
-    const [errors, setErrors] = useState({});
-    const [image, setImage] = useState('');
-    const [validationErrors, setValidationErrors] = useState([]);
+    const [name, setName] = useState(product?.name || '');
+    const [desc, setDesc] = useState(product?.desc || '');
+    const [condition, setCondition] = useState(product?.condition || '');
+    const [size, setSize] = useState(product?.size || '');
+    const [price, setPrice] = useState(product?.price || '');
+    const [image, setImage] = useState(product?.imageUrl || '');
     const [category, setCategory] =  useState('');
     const [subcategory, setSubcategory] = useState(0);
+
+    const [errors, setErrors] = useState({});
+    const [validationErrors, setValidationErrors] = useState([]);
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -40,29 +41,44 @@ const ProductForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setHasSubmitted(true)
+        setHasSubmitted(true);
         
         if (!Object.values(errors).length) {
-            try {
-                const formData = new FormData();
-                formData.append("name", name);
-                formData.append("desc", desc);
-                formData.append("condition", condition);
-                formData.append("size", size);
-                formData.append("price", price);
-                formData.append("image", image);
-                formData.append("category", category)
-                formData.append("subcategory", subcategory)
-                const product = await dispatch(productsActions.createProduct(formData))
-                const new_image = await dispatch(createImage(product.id, image))
-                if (product) reset();
-                setHasSubmitted(false)
-                setErrors({});
-                history.push(`/products/${product.id}`)
-            } catch(error) {
-                setValidationErrors(error)
-                return;
+            
+            const formData = new FormData();
+            formData.append("name", name);
+            formData.append("desc", desc);
+            formData.append("condition", condition);
+            formData.append("size", size);
+            formData.append("price", price);
+            formData.append("image", image);
+            formData.append("category", category);
+            formData.append("subcategory", subcategory);
+            
+            // Creates a new product if the edit product prop passed in is null
+            if (!product) {
+                try {    
+                    const product = await dispatch(productsActions.createProduct(formData));
+                    const newImage = await dispatch(imagesActions.createImage(product.id, image));
+                    if (product) reset();
+                    setHasSubmitted(false);
+                    setErrors({});
+                    history.push(`/products/${product.id}`);
+                } catch(error) {
+                    setValidationErrors(error);
+                    return;
+                }
+            } else {
+                try {
+                    const editedProduct = await dispatch(productsActions.editProduct(formData));
+                    const editedImage = await dispatch(imagesActions.editImage)
+                } catch(error) {
+                    setValidationErrors(error);
+                    return;
+                }
             }
+            
+            
         }
     } 
 
@@ -88,9 +104,11 @@ const ProductForm = () => {
 
     return (
         <div className="newProductContainer">
+            {!product &&
             <div>
                <h1>List an item</h1> 
             </div>
+            }
 
             {/* <div className="errors">
                 {(validationErrors.length>1) && <ul>
@@ -104,6 +122,7 @@ const ProductForm = () => {
                 <div className="formItemContainer">
                     <label className="formLabel">Images</label>
                     <input 
+                    value={image}
                     className="inputBox" 
                     placeholder="Image URL"
                     onChange={e => setImage(e.target.value)}
@@ -135,7 +154,7 @@ const ProductForm = () => {
                 
                 <div className="formItemContainer">
                     <label>Condition</label>
-                    <select className="inputBox" onChange={e => setCondition(e.target.value)}>
+                    <select value={condition} className="inputBox" onChange={e => setCondition(e.target.value)}>
                         <option ></option>
                         <option >Brand new</option>
                         <option >Like new</option>
@@ -147,7 +166,7 @@ const ProductForm = () => {
                 </div>
                 <div className="formItemContainer">
                     <label>Size</label>
-                    <select className="inputBox" onChange={e => setSize(e.target.value)}>
+                    <select value={size} className="inputBox" onChange={e => setSize(e.target.value)}>
                         <option></option>
                         <option>XS</option>
                         <option>S</option>
@@ -159,7 +178,7 @@ const ProductForm = () => {
                 </div>
                 <div className="formItemContainer">
                     <label>Category</label>
-                    <select className="inputBox" onChange={e => setCategory(e.target.value)}>
+                    <select value={category} className="inputBox" onChange={e => setCategory(e.target.value)}>
                         <option></option>
                         <option value={1}>Men's</option>
                         <option value={2}>Women's</option>
@@ -169,7 +188,7 @@ const ProductForm = () => {
                 </div>
                 <div className="formItemContainer">
                     <label>Subcategory</label>
-                    <select className="inputBox" onChange={e => setSubcategory(e.target.value)}>
+                    <select value={subcategory} className="inputBox" onChange={e => setSubcategory(e.target.value)}>
                         <option></option>
                         <option value={1}>Tops</option>
                         <option value={2}>Bottoms</option>
@@ -196,7 +215,6 @@ const ProductForm = () => {
                 <div className="confirmButtonDesign formButton">
                     <button type="submit">Submit</button>
                 </div>
-                
             </form>
         </div>
     )

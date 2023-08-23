@@ -16,11 +16,19 @@ def get_images(productId):
 
 # Creates a new image by product id
 @image_routes.route('/<int:productId>', methods=["POST"])
+@login_required
 def new_image(productId): 
-    print(request.data)
     product = Product.query.get(productId)
     image = Image(product_id=productId, image_url=product.image_url)
     db.session.add(image)
     db.session.commit()
 
     return {'image': image.to_dict()}
+
+# Edit an image by image id
+@image_routes.route('/<int:productId>', methods=["PUT"])
+@login_required
+def edit_image(productId):
+    # image = 
+    pass
+

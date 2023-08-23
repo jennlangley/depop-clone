@@ -4,7 +4,8 @@ import { getProducts } from "../../../store/product";
 import ProductTile from "../ProductTile";
 import OpenModalButton from "../../OpenModalButton";
 import DeleteProduct from "./DeleteProductModal";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { NavLink, Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import EditProduct from "./EditProduct";
 
 const ManageProducts = () => {
     const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const ManageProducts = () => {
                     <div key={idx}>
                         <ProductTile product={product} />
                         <div className="editDeleteDiv">
-                            <button className="confirmButtonDesign">Edit</button>
+                            <div><NavLink to={`/products/${product.id}/edit`}><button className="confirmButtonDesign">Edit</button></NavLink></div>
                             <div><OpenModalButton modalComponent=<DeleteProduct productId={product.id} /> buttonText={"Delete"} /></div>
                         </div>
                         

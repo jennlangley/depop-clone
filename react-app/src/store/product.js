@@ -1,5 +1,6 @@
 const GET_PRODUCTS = 'products/GET_PRODUCTS';
 const CREATE_PRODUCT = 'products/CREATE_PRODUCT';
+const EDIT_PRODUCT = 'products/EDIT_PRODUCT';
 const GET_PRODUCT_DETAILS = '/products/GET_PRODUCT_DETAILS';
 const DELETE_PRODUCT = 'products/DELETE_PRODUCT';
 
@@ -10,6 +11,11 @@ const getProductsAction = (products) => ({
 
 const createProductAction = (product) => ({
     type: CREATE_PRODUCT,
+    payload: product
+})
+
+const editProductAction = (product) => ({
+    type: EDIT_PRODUCT,
     payload: product
 })
 
@@ -68,6 +74,20 @@ export const createProduct = (product) => async (dispatch) => {
     }
 }
 
+export const editProduct = (product) => async (dispatch) => {
+    const response = await fetch(`/api/${product.id}/edit`, {
+        method: "PUT",
+        body: product
+    })
+    const resPost = await response.json();
+    if (!resPost.errors) {
+        dispatch(editProductAction(product));
+        return resPost;
+    } else {
+        throw resPost.errors;
+    }
+}
+
 export const deleteProduct = (productId) => async (dispatch) => {
     const response = await fetch(`/api/products/${productId}/delete`, {
         method: 'DELETE'
@@ -90,6 +110,9 @@ export default function reducer(state = initialState, action) {
             });
             return newState;
         case CREATE_PRODUCT:
+            newState[action.payload.id] = action.payload;
+            return newState;
+        case EDIT_PRODUCT:
             newState[action.payload.id] = action.payload;
             return newState;
         case GET_PRODUCT_DETAILS:

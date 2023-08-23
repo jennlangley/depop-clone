@@ -34,7 +34,10 @@ class Product(db.Model):
             'size': self.size,
             'price': round(self.price, 2),
             'sold': self.sold,
+            # 'category': self.category,
+            # 'subcategory': self.category.categories.to_dict()['name'],
             'imageUrl': self.image_url,
+            'images': [image.to_dict() for image in self.images],
             'createdAt': self.created_at,
             'updatedAt': self.updated_at,
         }

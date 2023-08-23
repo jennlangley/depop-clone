@@ -1,5 +1,6 @@
 const GET_IMAGES = 'images/GET_IMAGES';
 const CREATE_IMAGE = 'images/CREATE_IMAGE';
+const EDIT_IMAGE = 'images/EDIT_IMAGE';
 
 const getImagesAction = (images) => ({
     type: GET_IMAGES,
@@ -8,6 +9,11 @@ const getImagesAction = (images) => ({
 
 const createImageAction = (image) => ({
     type: CREATE_IMAGE,
+    payload: image
+})
+
+const editImageAction = (image) => ({
+    type: EDIT_IMAGE,
     payload: image
 })
 
@@ -27,14 +33,26 @@ export const getImages = (productId) => async (dispatch) => {
 }
 
 export const createImage = (productId, imageUrl) => async (dispatch) => {
-    console.log(imageUrl)
     const response = await fetch(`/api/images/${productId}`, {
         method: "POST",
         body: JSON.stringify(imageUrl)
     })
     if (response.ok) {
-        const data = await response.json()
-        dispatch(createImageAction(data))
+        const data = await response.json();
+        dispatch(createImageAction(data));
+    } else {
+        return response.errors;
+    }
+}
+
+export const editImage = (productId, imageUrl) => async (dispatch) => {
+    const response = await fetch(`/api/images/${productId}`, {
+        method: "PUT",
+        body: JSON.stringify(imageUrl)
+    })
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(editImageAction(data));
     } else {
         return response.errors;
     }
@@ -49,6 +67,9 @@ export default function reducer(state = initialState, action) {
             action.payload.images.forEach(image => newState[image.id] = image)
             return newState;
         case CREATE_IMAGE:
+            newState[action.payload.image.id] = action.payload.image;
+            return newState;
+        case EDIT_IMAGE:
             newState[action.payload.image.id] = action.payload.image;
             return newState;
         default:
