@@ -27,6 +27,7 @@ class Product(db.Model):
         return {
             'id': self.id,
             'userId': self.user_id,
+            'user': self.user.to_dict(),
             'name': self.name,
             'desc': self.desc,
             'condition': self.condition,

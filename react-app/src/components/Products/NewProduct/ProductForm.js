@@ -214,6 +214,8 @@ const ProductForm = ({ product }) => {
                         <option value={1}>Hats</option>
                         <option value={2}>Jewellery</option>
                         <option value={3}>Watches</option>
+                        {console.log(subcategory, "subcategory")}
+                        {console.log()}
                     </select>
                     {errors.subcategory && (<span className='errors'>{errors.subcategory}</span>)}
                 </div>

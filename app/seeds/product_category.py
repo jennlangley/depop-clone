@@ -19,12 +19,24 @@ def seed_products_categories():
     product_5 = ProductCategory(
         product_id=5, category_id=11
     )
+    product_6 = ProductCategory(
+        product_id=6, category_id=13
+    )
+    product_7 = ProductCategory(
+        product_id=7, category_id=9
+    )
+    product_8 = ProductCategory(
+        product_id=8, category_id=12
+    )
 
     db.session.add(product_1)
     db.session.add(product_2)
     db.session.add(product_3)
     db.session.add(product_4)
     db.session.add(product_5)
+    db.session.add(product_6)
+    db.session.add(product_7)
+    db.session.add(product_8)
 
     db.session.commit()
 

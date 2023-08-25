@@ -6,24 +6,24 @@ from sqlalchemy.sql import text
 def seed_categories():
     
     # Categories
-    mens = Category(category_id=1, name="Men's")
-    womens = Category(category_id=2, name="Women's")
-    accessories = Category(category_id=3, name="Accessories")
+    mens = Category(category_id=1, name="Men's") #1
+    womens = Category(category_id=2, name="Women's") #2
+    accessories = Category(category_id=3, name="Accessories") #3
     
     # Subcategories
-    mens_tops = Category(category_id=1, subcategory_id=1, name="Tops")
-    womens_tops = Category(category_id=2, subcategory_id=1, name="Tops")
-    mens_bottoms = Category(category_id=1, subcategory_id=2, name="Bottoms")
-    womens_bottoms = Category(category_id=2, subcategory_id=2, name="Bottoms")
+    mens_tops = Category(category_id=1, subcategory_id=1, name="Tops") #4
+    womens_tops = Category(category_id=2, subcategory_id=1, name="Tops") #5
+    mens_bottoms = Category(category_id=1, subcategory_id=2, name="Bottoms") #6
+    womens_bottoms = Category(category_id=2, subcategory_id=2, name="Bottoms") #7
     
-    dresses = Category(category_id=2, subcategory_id=3, name="Dresses")
+    dresses = Category(category_id=2, subcategory_id=3, name="Dresses") #8
     
-    mens_shoes = Category(category_id=1, subcategory_id=4, name="Shoes")
-    womens_shoes = Category(category_id=2, subcategory_id=4, name="Shoes")
+    mens_shoes = Category(category_id=1, subcategory_id=4, name="Shoes") #9
+    womens_shoes = Category(category_id=2, subcategory_id=4, name="Shoes") #10
     
-    hats = Category(category_id=3, subcategory_id=1, name="Hats")
-    jewellery = Category(category_id=3, subcategory_id=2, name="Jewellery")
-    watches = Category(category_id=3, subcategory_id=3, name="Watches")
+    hats = Category(category_id=3, subcategory_id=1, name="Hats") #11
+    jewellery = Category(category_id=3, subcategory_id=2, name="Jewellery") #12
+    watches = Category(category_id=3, subcategory_id=3, name="Watches") #13
     
     db.session.add(mens)
     db.session.add(womens)

@@ -72,7 +72,7 @@ export default function reducer(state = initialState, action) {
     const newState = { ...state };
     switch (action.type) {
         case GET_IMAGES:
-            action.payload.images.forEach(image => newState[image.id] = image)
+            action.payload.images.forEach(image => newState[image.id] = image);
             return newState;
         case CREATE_IMAGE:
             newState[action.payload.image.id] = action.payload.image;

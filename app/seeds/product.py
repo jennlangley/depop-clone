@@ -30,28 +30,28 @@ def seed_products():
         desc="Black SnapBack Hat", condition="Used - Fair", 
         size="L", price=8.00, sold=False,
     )
-    # product_6 = Product(
-    #     name=, 
-    #     desc=, condition="Used - Good", 
-    #     size="", price=, sold=False,
-    # )
-    # product_7 = Product(
-    #     name=, 
-    #     desc=, condition="Used - Excellent", 
-    #     size="", price=, sold=False,
-    # )
-    # product_8 = Product(
-    #     name=, 
-    #     desc=, condition="Brand new", 
-    #     size="", price=, sold=False,
-    # )
+    product_6 = Product(
+        name="Vintage Watch", user_id=1,
+        desc="Special edition vintage watch, one of a kind", condition="Used - Good", 
+        size="M", price=60.00, sold=True,
+    )
+    product_7 = Product(
+        name="White sneakers", user_id=1,
+        desc="crisp and clean white sneakers, worn once, great price buy now!", condition="Used - Excellent", 
+        size="L", price=14.99, sold=True,
+    )
+    product_8 = Product(
+        name="Classic Earrings", user_id=2,
+        desc="your standard ear rings, found in packaging at estate sale, one of a kind piece", condition="Brand new", 
+        size="S", price=30.00, sold=True,
+    )
     # product_9 = Product(
-    #     name=, 
+    #     name=, user_id=,
     #     desc=, condition="Used - Fair", 
     #     size="", price=, sold=False,
     # )
     # product_10 = Product(
-    #     name=, 
+    #     name=, user_id=,
     #     desc=, condition="Like new", 
     #     size="", price=, sold=False,
     # )
@@ -61,9 +61,9 @@ def seed_products():
     db.session.add(product_3)
     db.session.add(product_4)
     db.session.add(product_5)
-    # db.session.add(product_6)
-    # db.session.add(product_7)
-    # db.session.add(product_8)
+    db.session.add(product_6)
+    db.session.add(product_7)
+    db.session.add(product_8)
     # db.session.add(product_9)
     # db.session.add(product_10)
 

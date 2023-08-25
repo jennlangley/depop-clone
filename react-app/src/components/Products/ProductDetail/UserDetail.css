@@ -1,0 +1,23 @@
+.userDetails {
+    display: flex;
+
+}
+
+.profilePicture {
+    position: relative;
+    display: inline-block;
+    height: 100px;
+    width: 100px;
+}
+.userInitials {
+    display: flex;
+    width: 50%;
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: grey;
+    color: white;
+    border-radius: 50%;
+}
