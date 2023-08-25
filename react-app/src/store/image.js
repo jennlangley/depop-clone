@@ -32,10 +32,13 @@ export const getImages = (productId) => async (dispatch) => {
     }
 }
 
-export const createImage = (productId, imageUrl) => async (dispatch) => {
+export const createImage = (productId, image) => async (dispatch) => {
     const response = await fetch(`/api/images/${productId}`, {
         method: "POST",
-        body: JSON.stringify(imageUrl)
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(image)
     })
     if (response.ok) {
         const data = await response.json();
@@ -45,14 +48,19 @@ export const createImage = (productId, imageUrl) => async (dispatch) => {
     }
 }
 
-export const editImage = (productId, imageUrl) => async (dispatch) => {
-    const response = await fetch(`/api/images/${productId}`, {
+export const editImage = (imageId, image) => async (dispatch) => {
+    const response = await fetch(`/api/images/${imageId}`, {
         method: "PUT",
-        body: JSON.stringify(imageUrl)
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(image)
     })
     if (response.ok) {
         const data = await response.json();
-        dispatch(editImageAction(data));
+        if (!data.message) {
+           dispatch(editImageAction(data)); 
+        }
     } else {
         return response.errors;
     }

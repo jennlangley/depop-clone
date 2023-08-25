@@ -15,7 +15,6 @@ class Product(db.Model):
     size = db.Column(db.String(40), nullable=False)
     price = db.Column(db.Numeric(precision=2), nullable=False)
     sold = db.Column(db.Boolean, default=False, nullable=False)
-    image_url = db.Column(db.String, default=None)
     created_at = db.Column(db.DateTime, default=datetime.now())
     updated_at = db.Column(db.DateTime, default=datetime.now())
 
@@ -34,9 +33,8 @@ class Product(db.Model):
             'size': self.size,
             'price': round(self.price, 2),
             'sold': self.sold,
-            # 'category': self.category,
-            # 'subcategory': self.category.categories.to_dict()['name'],
-            'imageUrl': self.image_url,
+            'categoryId': self.category.categories.to_dict()['categoryId'],
+            'subcategoryId': self.category.categories.to_dict()['id'],
             'images': [image.to_dict() for image in self.images],
             'createdAt': self.created_at,
             'updatedAt': self.updated_at,

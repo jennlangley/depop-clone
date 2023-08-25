@@ -3,9 +3,10 @@ import thunk from 'redux-thunk';
 import session from './session';
 import products from './product';
 import images from './image';
+import categories from './category';
 
 const rootReducer = combineReducers({
-  session, products, images
+  session, products, images, categories
 });
 
 

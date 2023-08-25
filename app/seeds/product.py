@@ -5,14 +5,14 @@ from sqlalchemy.sql import text
 def seed_products():
     product_1 = Product(
         name="Women's Blue Jeans", user_id=1,
-        desc="ripped high waisted blue jeans", condition="Used - Good", 
-        size="S", price=10.00, sold=False,
+        desc="High quality blue jeans, perfect for all seasons!", condition="Used - Good", 
+        size="S", price=15.00, sold=False,
     )
     product_2 = Product(
-        name="Navy and Red Cardigan", user_id=2,
-        desc="Vintage bench cardigan, great condition very comfortable and warm material", 
+        name="Yellow Sweater", user_id=2,
+        desc="Vintage sweater, great condition very comfortable and warm material", 
         condition="Used - Excellent", 
-        size="L", price=30.00, sold=False,
+        size="L", price=32.00, sold=False,
     )
     product_3 = Product(
         name="Men's Blue Jeans", user_id=2,
@@ -21,13 +21,13 @@ def seed_products():
     )
     product_4 = Product(
         name="Women's Khaki Dress", user_id=1,
-        desc="formal silky ruched mini/midi dress olive color bodycon pencil heart line", 
+        desc="Formal silky womens dress, worn once, great for special occasions", 
         condition="Like new", 
-        size="S", price=15.00, sold=False,
+        size="S", price=30.00, sold=False,
     )
     product_5 = Product(
         name="Men's hat", user_id=3,
-        desc="Black California Republic SnapBack", condition="Used - Fair", 
+        desc="Black SnapBack Hat", condition="Used - Fair", 
         size="L", price=8.00, sold=False,
     )
     # product_6 = Product(

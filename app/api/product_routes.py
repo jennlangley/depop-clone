@@ -11,18 +11,18 @@ product_routes = Blueprint('products', __name__)
 @product_routes.route('')
 def get_products():
     products = Product.query.all()
-    for product in products:
-        preview_image = Image.query.filter_by(product_id = product.id).first()
-        if preview_image:
-            product.image_url = preview_image.image_url
+    # for product in products:
+    #     preview_image = Image.query.filter_by(product_id = product.id).first()
+    #     if preview_image:
+    #         product.image_url = preview_image.image_url
 
-        category = Category.query.filter_by(id = product.category.categories.category_id).first()
-        print("CATEGORY", (category.to_dict())['name'])
-        print("SUBCATEGORY", (product.category.categories.to_dict())['name'])
+    #     category = Category.query.filter_by(id = product.category.categories.category_id).first()
+    #     print("CATEGORY", (category.to_dict())['name'])
+    #     print("SUBCATEGORY", (product.category.categories.to_dict())['name'])
 
 
-        product.to_dict()['category'] = (category.to_dict())['name']
-        product.to_dict()['subcategory'] = (product.category.categories.to_dict())['name']
+    #     product.to_dict()['category'] = (category.to_dict())['name']
+    #     product.to_dict()['subcategory'] = (product.category.categories.to_dict())['name']
         
     return {'products': [product.to_dict() for product in products]}
 
@@ -50,7 +50,6 @@ def new_product():
             condition=form.data['condition'], 
             size=form.data['size'],
             price=form.data['price'],
-            image_url=form.data['image']
         )
         db.session.add(product)
         db.session.commit()
@@ -81,10 +80,8 @@ def edit_product(productId):
         product.condition = form.data['condition']
         product.size = form.data['size']
         product.price = form.data['price']
-        product.image_url = form.data['image']
 
-        category = Category.query.filter_by(category_id=form.data['category'], 
-                                            subcategory_id=form.data['subcategory']).first()
+        category = Category.query.filter_by(category_id=form.data['category'], subcategory_id=form.data['subcategory']).first()
 
         product_category = ProductCategory.query.filter_by(product_id=product.id)
         product_category.category_id = category.id

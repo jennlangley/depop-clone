@@ -63,7 +63,10 @@ export const getProductDetails = (productId) => async (dispatch) => {
 export const createProduct = (product) => async (dispatch) => {
     const response = await fetch('/api/products/new', {
         method: "POST",
-        body: product
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(product)
     })
     const resPost = await response.json();
     if (!resPost.errors) {
@@ -74,14 +77,17 @@ export const createProduct = (product) => async (dispatch) => {
     }
 }
 
-export const editProduct = (product) => async (dispatch) => {
-    const response = await fetch(`/api/${product.id}/edit`, {
+export const editProduct = (productId, product) => async (dispatch) => {
+    const response = await fetch(`/api/products/${productId}/edit`, {
         method: "PUT",
-        body: product
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(product)
     })
     const resPost = await response.json();
     if (!resPost.errors) {
-        dispatch(editProductAction(product));
+        dispatch(editProductAction(resPost));
         return resPost;
     } else {
         throw resPost.errors;

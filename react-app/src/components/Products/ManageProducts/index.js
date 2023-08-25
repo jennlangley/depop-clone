@@ -5,7 +5,6 @@ import ProductTile from "../ProductTile";
 import OpenModalButton from "../../OpenModalButton";
 import DeleteProduct from "./DeleteProductModal";
 import { NavLink, Redirect } from "react-router-dom/cjs/react-router-dom.min";
-import EditProduct from "./EditProduct";
 
 const ManageProducts = () => {
     const dispatch = useDispatch();

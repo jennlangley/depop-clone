@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getProducts } from "../../store/product";
+import { getCategories } from "../../store/category";
 import ProductTile from "./ProductTile";
 
 const Products = () => {
@@ -9,7 +10,8 @@ const Products = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getProducts()).then(() => setIsLoaded(true))
+        dispatch(getCategories());
+        dispatch(getProducts()).then(() => setIsLoaded(true));
     }, [dispatch])
 
     const products = useSelector(state => state.products)

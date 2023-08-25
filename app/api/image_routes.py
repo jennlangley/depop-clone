@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request, session
 from flask_login import login_required, current_user
 from app.models import db, Product, Image
-from app.forms import ProductForm
+from app.forms import ImageForm
 from app.api.auth_routes import validation_errors_to_error_messages
 
 image_routes = Blueprint('images', __name__)
@@ -18,17 +18,27 @@ def get_images(productId):
 @image_routes.route('/<int:productId>', methods=["POST"])
 @login_required
 def new_image(productId): 
-    product = Product.query.get(productId)
-    image = Image(product_id=productId, image_url=product.image_url)
+    form = ImageForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    image = Image(product_id=productId, image_url=form.data['image'])
     db.session.add(image)
     db.session.commit()
-
     return {'image': image.to_dict()}
 
 # Edit an image by image id
-@image_routes.route('/<int:productId>', methods=["PUT"])
+@image_routes.route('/<int:imageId>', methods=["PUT"])
 @login_required
-def edit_image(productId):
-    # image = 
-    pass
+def edit_image(imageId):
+    form = ImageForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    image = Image.query.get(imageId)
+    print(form.data['image'])
+    if form.data['image']:
+        image.image_url = form.data['image']
+    else:
+        db.session.delete(image)
+        db.session.commit()
+        return {'message': 'Successfully deleted image'}
+    db.session.commit()
+    return {'image': image.to_dict()}
 

@@ -2,8 +2,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getProductDetails, getProducts } from "../../../store/product";
-import { getImages } from "../../../store/image";
+import { getProducts } from "../../../store/product";
 
 const ProductDetail = () => {
     const { productId } = useParams();
@@ -11,22 +10,19 @@ const ProductDetail = () => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        
-        dispatch(getImages(+productId))
         dispatch(getProducts()).then(() => setIsLoaded(true))
     }, [dispatch])
 
     const product = useSelector(state => state.products[+productId]);
-    const images = useSelector(state => state.images)
+    
 
     return(
         isLoaded && 
-            <div className="productDetailContainer">
+            (<div className="productDetailContainer">
                 <div className="productImagesContainer">
                     <ul className="productImagesList">
-                    {Object.values(images).map((image, idx) => <li key={idx} className="productItem"><img className="productImageItem" src={image.imageUrl}></img></li>)}
+                    {product.images.map((image, idx) => <li key={idx} className="productItem"><img alt={product.name} className="productImageItem" src={image.imageUrl}></img></li>)}
                     </ul>
-                    
                 </div>
                 <div className="productDetailsText">
                     <div>
@@ -39,9 +35,7 @@ const ProductDetail = () => {
                         {product.desc}
                     </div>
                 </div>
-
-                
-            </div>
+            </div>)
     )
 }
 

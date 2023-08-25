@@ -6,27 +6,27 @@ from sqlalchemy.sql import text
 def seed_images():
     image_1 = Image(
         product_id=2, 
-        image_url="https://media-photos.depop.com/b1/16289814/1589291445_33d985c618d24f6ea59e11ccfe249a07/P0.jpg"
+        image_url="https://media.istockphoto.com/id/1278802435/photo/sweater-yellow-color-isolated-on-white-trendy-womens-clothing-knitted-apparel.jpg?s=612x612&w=0&k=20&c=FQkuYEwpizIULWpcN0kjOwoe0mZZKFVZzxpmpP0rKlI="
     )
     image_2 = Image(
         product_id=2, 
-        image_url="https://media-photos.depop.com/b1/16289814/1589291463_90843da7517f46c19a5bbf2de95e7272/P0.jpg"
+        image_url="https://previews.123rf.com/images/annapustynnikova/annapustynnikova1905/annapustynnikova190500602/124135071-yellow-knitted-wool-texture-pattern-with-high-resolution.jpg"
     )
     image_3 = Image(
         product_id=1, 
-        image_url="https://media-photos.depop.com/b1/43042701/1590180097_45276b289f37419694d78e727c70a753/P0.jpg"
+        image_url="https://img.freepik.com/free-photo/jeans_1203-8093.jpg"
     )
     image_4 = Image(
         product_id=1, 
-        image_url="https://media-photos.depop.com/b1/43042701/1590180380_e331b46f25de482cb43c4a609aacaffe/P0.jpg"
+        image_url="https://img.freepik.com/free-photo/jeans_1203-8095.jpg"
     )
     image_5 = Image(
         product_id=5, 
-        image_url="https://media-photos.depop.com/b1/42872137/1589988662_2dc32aff2f8249d8b20859f5649e1654/P0.jpg"
+        image_url="https://n.nordstrommedia.com/id/sr3/943c7f7d-ddb2-4ae5-a7c8-0701a35873cc.jpeg"
     )
     image_6 = Image(
         product_id=5, 
-        image_url="https://media-photos.depop.com/b1/42872137/1589988684_7bd044a62dc547399a2c70174d73379f/P0.jpg"
+        image_url="https://transalpino.co.uk/cdn/shop/products/DSC02954_clipped_rev_1_1.jpg"
     )
     image_7 = Image(
         product_id=4, 

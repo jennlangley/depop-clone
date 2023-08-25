@@ -7,8 +7,7 @@ const DeleteProduct = ({ productId }) => {
     const {closeModal} = useModal()
     const dispatch = useDispatch();
     const DeleteProduct = async () => {
-        const response = await dispatch(deleteProduct(productId));
-
+        await dispatch(deleteProduct(productId));
         closeModal();
         return;
     }
