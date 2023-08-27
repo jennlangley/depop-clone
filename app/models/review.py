@@ -24,10 +24,8 @@ class Review(db.Model):
             'id': self.id,
             'user': self.user.to_dict(),
             'productId': self.product_id,
-            'name': self.name,
-            'desc': self.desc,
-            'condition': self.condition,
-            'price': self.price,
+            'stars': self.stars,
+            'review': self.review,
             'createdAt': self.created_at,
             'updatedAt': self.updated_at,
         }

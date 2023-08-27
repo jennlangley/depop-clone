@@ -8,6 +8,10 @@ review_routes = Blueprint('reviews', __name__)
 
 @review_routes.route('/<int:userId>')
 def get_reviews(userId):
-    reviews = Review.query.filter_by(user_id=userId).all()
+    reviews = Review.query.all()
+    filter_reviews = []
+    for review in reviews:
+        if review.product.user_id == userId:
+            filter_reviews.append(review)
 
-    return {'reviews': [review.to_dict() for review in reviews]}
+    return {'reviews': [review.to_dict() for review in filter_reviews]}

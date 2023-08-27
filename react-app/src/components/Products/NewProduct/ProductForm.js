@@ -6,6 +6,11 @@ import * as imagesActions from "../../../store/image";
 import './ProductForm.css'
 
 const ProductForm = ({ product }) => {
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const user = useSelector(state => state.session.user)
+
+    if (!user || (product && (user.id !== product.userId))) history.push('/products')
 
     const productCategory = useSelector(state => state.categories[product?.categoryId])
     const productSubcategory = useSelector(state => state.categories[product?.subcategoryId])
@@ -27,9 +32,6 @@ const ProductForm = ({ product }) => {
 
     const [errors, setErrors] = useState({});
     const [validationErrors, setValidationErrors] = useState([]);
-
-    const dispatch = useDispatch();
-    const history = useHistory();
 
     useEffect(() => {
         if (hasSubmitted) {
@@ -196,7 +198,7 @@ const ProductForm = ({ product }) => {
                 <div className="formItemContainer">
                     <label>Category</label>
                     <select value={category} className="inputBox" onChange={e => setCategory(e.target.value)}>
-                        <option></option>
+                        <option value="" disabled defaultValue>Choose a category</option>
                         <option value={1}>Men's</option>
                         <option value={2}>Women's</option>
                         <option value={3}>Accessories</option>
@@ -206,16 +208,20 @@ const ProductForm = ({ product }) => {
                 <div className="formItemContainer">
                     <label>Subcategory</label>
                     <select value={subcategory} className="inputBox" onChange={e => setSubcategory(e.target.value)}>
-                        <option></option>
-                        <option value={1}>Tops</option>
-                        <option value={2}>Bottoms</option>
-                        <option value={3}>Dresses</option>
-                        <option value={4}>Shoes</option>
-                        <option value={1}>Hats</option>
-                        <option value={2}>Jewellery</option>
-                        <option value={3}>Watches</option>
-                        {console.log(subcategory, "subcategory")}
-                        {console.log()}
+                        <option value="" disabled defaultValue>Choose a subcategory</option>
+                        {(category == 1 || category == 2) && 
+                        <>
+                            <option value={1}>Tops</option>
+                            <option value={2}>Bottoms</option>
+                            <option value={3}>Dresses</option>
+                            <option value={4}>Shoes</option>
+                        </>}
+                        {(category == 3) &&
+                        <>
+                            <option value={1}>Hats</option>
+                            <option value={2}>Jewellery</option>
+                            <option value={3}>Watches</option>
+                        </>}
                     </select>
                     {errors.subcategory && (<span className='errors'>{errors.subcategory}</span>)}
                 </div>
