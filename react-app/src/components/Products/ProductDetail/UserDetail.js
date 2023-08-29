@@ -1,24 +1,56 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './UserDetail.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getReviews } from '../../../store/review';
+import ReviewStars from '../../Profile/ReviewStars';
+import OpenModalButton from '../../OpenModalButton';
+import Reviews from './Reviews';
 
 const UserDetail = ({ user }) => {
-    
     const dispatch = useDispatch();
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        dispatch(getReviews(user.id))
+        dispatch(getReviews(user.id)).then(() => setIsLoaded(true));
     }, [dispatch])
 
+    const soldProducts = useSelector(state => Object.values(state.products).filter(product => (product.userId === user.id) && (product.sold === true)))
+    const reviews = useSelector(state => state.reviews)
+    
+    let stars = [];
+    let avgRating = 0;
+    if (Object.values(reviews).length) {
+        Object.values(reviews).forEach(review => stars.push(review.stars));
+        avgRating = stars.reduce((accumulator, currentValue) => accumulator + currentValue, 1.0) / stars.length;
+    } 
+
     return (
+        isLoaded &&
         <div className="userDetails">
             <div className="profilePicture">
                 <div className='userInitials'>
                 {user.firstName[0]}{user.lastName[0]} 
                 </div>
             </div>
-            <div>{user.username}</div>
+            <div className='userReviews'>
+                <div className='username details'>
+                    {user.username}
+                </div>
+                <div className='details'>
+
+                    <OpenModalButton 
+                    modalComponent={<Reviews user={user} reviews={reviews} />} 
+                    buttonText={<ReviewStars avgRating={avgRating} />}
+                    />
+
+                </div>
+                <div className='productsSold details'>
+
+                    {soldProducts.length !== 1 ? soldProducts.length + " products sold"
+                    : soldProducts.length + " product sold"
+                    } 
+                </div>
+            </div>
         </div>
     )
 }

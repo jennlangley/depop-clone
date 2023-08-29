@@ -15,12 +15,12 @@ const ManageProducts = () => {
     }, [dispatch])
 
     const user = useSelector(state => state.session.user)
-    const products = useSelector(state => Object.values(state.products).filter(product => product.userId === user.id))
+    const products = useSelector(state => Object.values(state.products).filter(product => product.userId === user?.id))
     if (!user) return <Redirect to='/products'/>
     return (
         (isLoaded && user) &&
         <div className="">
-            <h3>Manage your {Object.values(products).length} 
+            <h3 id="modal-title">Manage your {Object.values(products).length} 
             {Object.values(products).length === 1 ? " product" : " products"}</h3>
             <div className="productsList">
                 {Object.values(products).map((product, idx) => 

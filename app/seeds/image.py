@@ -34,7 +34,7 @@ def seed_images():
     )
     image_8 = Image(
         product_id=4, 
-        image_url="https://media-photos.depop.com/b1/27834485/1590163213_e36f58ec6d3f4e92aacae933b79ddd1c/P0.jpg"
+        image_url="https://i5.walmartimages.com/asr/e6617ff2-8c20-4874-93a5-bdfb1955315a.e2e603a15b73b73fd225e75a48e0c2ef.jpeg"
     )
     image_9 = Image(
         product_id=3, 

@@ -16,7 +16,7 @@ function OpenModalButton({
   };
 
   return (
-    <button className='confirmButtonDesign' onClick={onClick}>{buttonText}</button>
+    <button onClick={onClick}>{buttonText}</button>
   );
 }
 

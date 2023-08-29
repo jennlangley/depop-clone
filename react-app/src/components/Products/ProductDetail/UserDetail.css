@@ -2,12 +2,28 @@
     display: flex;
 
 }
-
 .profilePicture {
-    position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
     height: 100px;
     width: 100px;
+    margin: auto;
+    padding: auto;
+    justify-content: center;
+}
+.details {
+    padding: 2px;
+}
+.username {
+    font-weight: bold;
+}
+.productsSold {
+    font-size: 14px;
+}
+.userReviews {
+    display: flex;  
+    justify-content: center;
+    flex-direction: column;
 }
 .userInitials {
     display: flex;
@@ -20,4 +36,11 @@
     background-color: grey;
     color: white;
     border-radius: 50%;
+}
+
+.active {
+    color: gold
+}
+.inactive {
+    color: grey;
 }

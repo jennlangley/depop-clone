@@ -21,36 +21,54 @@ function LoginFormModal() {
     }
   };
 
+  const demoLogin = async (e) => {
+    e.preventDefault()
+    await dispatch(login('demo@aa.io','password'))
+    closeModal()
+  };
+
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
+    <div className="loginContainer">
+      <h1 id="modal-title">Log In</h1>
+      <div >
+        <form onSubmit={handleSubmit}>
+        <ul className="errors">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
-    </>
+          <div>
+          <label>
+            Email
+            <input
+              className="inputBox loginInput"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </label>
+          </div>
+          <div>
+          <label>
+            Password
+            <input
+              className="inputBox loginInput"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          </div>
+
+          <button className="confirmButtonDesign formButton" type="submit">Log In</button>
+          
+
+        </form>
+        <button className="confirmButtonDesign formButton" onClick={demoLogin}>Demo Log In</button>
+      </div>
+    </div>
   );
 }
 

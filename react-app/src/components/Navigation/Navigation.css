@@ -129,4 +129,14 @@ a {
 .errors {
   color: red;
   justify-content: center;
+  padding-inline-start: 0;
+  list-style: none;
+  margin: 10px 0px;
+}
+.dropdownLink {
+  color: grey;
+  
+}
+.active{
+  color: none;
 }
