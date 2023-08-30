@@ -10,6 +10,8 @@ import ProductForm from "./components/Products/NewProduct/ProductForm";
 import ProductDetail from "./components/Products/ProductDetail/ProductDetail";
 import ManageProducts from "./components/Products/ManageProducts";
 import EditProduct from "./components/Products/ManageProducts/EditProduct";
+import Orders from "./components/Products/Orders";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -45,6 +47,9 @@ function App() {
           </Route>
           <Route exact path="/products/:productId">
             <ProductDetail />
+          </Route>
+          <Route path="/orders">
+            <Orders />
           </Route>
         </Switch>
       )}

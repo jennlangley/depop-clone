@@ -23,6 +23,7 @@ class User(db.Model, UserMixin):
 
     products = db.relationship("Product", back_populates="user", cascade="all, delete")
     reviews = db.relationship("Review", back_populates="user", cascade="all, delete")
+    orders = db.relationship("Order", back_populates="user", cascade="all, delete")
     
     followers = db.relationship(
         "User",

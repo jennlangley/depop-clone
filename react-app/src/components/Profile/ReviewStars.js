@@ -1,5 +1,6 @@
+
 const ReviewStars = ({ avgRating }) => {
-    const stars = Math.ceil(avgRating);
+    const stars = Math.floor(avgRating);
     
     return (
         <div className="reviewStars">
@@ -8,14 +9,15 @@ const ReviewStars = ({ avgRating }) => {
                 return (    
                 <span
                     key={idx}
-                    className={idx < (stars) ? "active" : "inactive"}
+                    className={idx <= (stars) ? "activeStar" : "inactiveStar"}
                 >
-                <span className="star">
-                    <i className="rating__star fas fa-star"></i>
-                </span>  
+                    <span className="star">
+                        <i className="rating__star fas fa-star"></i>
+                    </span>  
                 </span>      
                 );
             })}
+            <span className="avgRating">({avgRating || 0})</span>
         </div>
     )
 }

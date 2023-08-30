@@ -18,10 +18,10 @@ const UserDetail = ({ user }) => {
     const reviews = useSelector(state => state.reviews)
     
     let stars = [];
-    let avgRating = 0;
+    let avgRating;
     if (Object.values(reviews).length) {
         Object.values(reviews).forEach(review => stars.push(review.stars));
-        avgRating = stars.reduce((accumulator, currentValue) => accumulator + currentValue, 1.0) / stars.length;
+        avgRating = (stars.reduce((accumulator, currentValue) => accumulator + currentValue, 0.0)) / stars.length;
     } 
 
     return (

@@ -16,7 +16,7 @@ const ManageProducts = () => {
 
     const user = useSelector(state => state.session.user)
     const products = useSelector(state => Object.values(state.products).filter(product => product.userId === user?.id))
-    if (!user) return <Redirect to='/products'/>
+    if (!user) return <Redirect to='/products' />
     return (
         (isLoaded && user) &&
         <div className="">

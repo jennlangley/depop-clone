@@ -11,19 +11,6 @@ product_routes = Blueprint('products', __name__)
 @product_routes.route('')
 def get_products():
     products = Product.query.all()
-    # for product in products:
-    #     preview_image = Image.query.filter_by(product_id = product.id).first()
-    #     if preview_image:
-    #         product.image_url = preview_image.image_url
-
-    #     category = Category.query.filter_by(id = product.category.categories.category_id).first()
-    #     print("CATEGORY", (category.to_dict())['name'])
-    #     print("SUBCATEGORY", (product.category.categories.to_dict())['name'])
-
-
-    #     product.to_dict()['category'] = (category.to_dict())['name']
-    #     product.to_dict()['subcategory'] = (product.category.categories.to_dict())['name']
-        
     return {'products': [product.to_dict() for product in products]}
 
 

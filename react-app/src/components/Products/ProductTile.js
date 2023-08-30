@@ -11,13 +11,13 @@ const ProductTile = ({ product }) => {
             <div className='productContainer'>
             
                 <div className='imageTileContainer'>
-                        <img 
-                        className='productTileImage' 
-                        alt={product.id} 
-                        src={product.images[imageIdx]?.imageUrl} 
-                        onMouseLeave={e => setImageIdx(0)}
-                        onMouseOver={e => (numImages > 1) ? setImageIdx(1) : null}    
-                        />
+                    <img 
+                    className='productTileImage' 
+                    alt={product.id} 
+                    src={product.images[imageIdx]?.imageUrl} 
+                    onMouseLeave={e => setImageIdx(0)}
+                    onMouseOver={e => (numImages > 1) ? setImageIdx(1) : null}    
+                    />
                 </div>
                 <div className='productPriceSize'>
                     <div>${product.price}</div>

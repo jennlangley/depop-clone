@@ -53,6 +53,10 @@ def seed_images():
         image_url="https://media.istockphoto.com/id/1324847242/photo/pair-of-white-leather-trainers-on-white-background.jpg?s=612x612&w=0&k=20&c=2ebHfBhvCJ9_y4YzRsUqi0SeVWX-oqraGTBCZ9lmFOQ="
     )
     image_13 = Image(
+        product_id=7,
+        image_url="https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1642020460-Capri-triple-white-1-min_1200x.progressive.png.jpg"
+    )
+    image_14 = Image(
         product_id=8, 
         image_url="https://www.catbirdnyc.com/media/catalog/product/cache/6f471d43bc9b3d5c897cc914f9085aa8/c/a/catbird-hoopdreams-yg-p5.jpg"
     )
@@ -79,6 +83,7 @@ def seed_images():
     db.session.add(image_11)
     db.session.add(image_12)
     db.session.add(image_13)
+    db.session.add(image_14)
     db.session.commit()
 
 

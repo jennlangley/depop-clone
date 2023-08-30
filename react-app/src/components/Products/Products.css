@@ -26,8 +26,9 @@
     margin: 0px;
 }
 .productTileImage {
-    height: 245px;
+    object-fit: cover;
     width: 245px;
+    height: 245px;
 }
 .productImagesContainer {
     display: flex;

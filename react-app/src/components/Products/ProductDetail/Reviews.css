@@ -1,0 +1,11 @@
+#reviews-container {
+    height: 400px;
+    width: 500px;
+}
+.reviewStars {
+    display: flex;
+}
+.avgRating {
+    color: goldenrod;
+    font-size: 14px;
+}

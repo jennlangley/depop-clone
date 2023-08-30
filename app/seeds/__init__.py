@@ -4,6 +4,7 @@ from .category import seed_categories, undo_categories
 from .product import seed_products, undo_products
 from .image import seed_images, undo_images
 from .review import seed_reviews, undo_reviews
+from .order import seed_orders, undo_orders
 from .product_category import seed_products_categories, undo_products_categories
 
 from app.models.db import db, environment, SCHEMA
@@ -27,6 +28,7 @@ def seed():
         undo_categories()
         undo_products_categories()
         undo_reviews()
+        undo_orders()
         
         
         
@@ -37,6 +39,7 @@ def seed():
     seed_categories()
     seed_products_categories()
     seed_reviews()
+    seed_orders()
     
     
 
@@ -51,3 +54,4 @@ def undo():
     undo_products()
     undo_images()
     undo_reviews()
+    undo_orders()

@@ -2,30 +2,29 @@
   font-family: sans-serif;
 }
 .profile-dropdown {
-  position: absolute;
   background-color: white;
-  z-index: 3;
+  border-radius: 6px;
   box-shadow: 0px 0px 4px grey;
+  list-style: none;
+  padding: 10px;
+  position: absolute;
+  right: 15px;
   top: 48px;
   width: 120px;
-  right: 15px;
-  padding: 10px;
-  list-style: none;
-  border-radius: 6px;
-  
+  z-index: 3;
 }
 .fa-user-circle {
-  font-size: 24px;
   color: gray;
+  font-size: 24px;
 }
 button {
   background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  outline: inherit;
+  padding: 0;
 }
 a {
   text-decoration: none;
@@ -41,101 +40,96 @@ a {
 }
 
 .navList {
-  display: flex;
   align-items: center;
-  justify-content: space-between;
+  display: flex;
   gap: 15px;
+  justify-content: space-between;
   margin-left: -2px;
   padding: 0;
 }
 
 .searchBarForm {
-  position: relative;
-  margin: auto;
-  display: flex;
-  width: calc(42vw);
-  max-width: 704px;
   background-color: white;
+  display: flex;
+  margin: auto;
+  max-width: 704px;
+  position: relative;
+  width: calc(42vw);
 }
 
 .searchBarInput {
+  border: 2px solid black;
   border-radius: 4px;
   height: 30px;
-  white-space: nowrap;
-  overflow: hidden;
-  border: 2px solid black;
-  width: 100%;
-  text-overflow: ellipsis;
   outline: none;
+  overflow: hidden;
   padding-left: 30px;
-  
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
 }
 
 .navItem {
-  list-style: none;
-
-
-  display: flex;
   align-items: center;
+  display: flex;
+  list-style: none;
 }
 
 .headerContainer {
-  display: flex;
   align-items: center;
+  border-bottom: 1px solid grey;
+  display: flex;
   height: 30px;
   justify-content: space-between;
   margin: 0px auto 30px;
-  border-bottom: 1px solid grey;
   padding: 12px 32px;
   position: sticky;
 }
 .fa-magnifying-glass {
-  position: absolute;
   margin: 10px;
+  position: absolute;
 }
 .confirmButtonDesign {
   background-color: #4dbecf;
-  color: white;
-  padding: 8px 20px;
   border-radius: 4px;
-  font-weight: bold;
+  color: white;
   cursor: pointer;
-  text-align: center;
-  transition: 0.3s; 
   font-size: 16px;
+  font-weight: bold;
+  padding: 8px 20px;
+  text-align: center;
+  transition: 0.3s;
 }
 .confirmButtonDesign:hover {
-  color: #4dbecf;
   background-color: white;
   border: 2px solid #4dbecf;
-
+  color: #4dbecf;
 }
 .deleteButtonDesign {
   background-color: rgb(226, 65, 65);
-  color: white;
-  padding: 8px 20px;
   border-radius: 4px;
-  font-weight: bold;
+  color: white;
   cursor: pointer;
-  text-align: center;
-  transition: 0.3s; 
   font-size: 16px;
+  font-weight: bold;
+  padding: 8px 20px;
+  text-align: center;
+  transition: 0.3s;
 }
 .deleteButtonDesign:hover {
-  color: rgb(226, 65, 65);
   background-color: white;
   border: 2px solid rgb(226, 65, 65);
+  color: rgb(226, 65, 65);
 }
 .errors {
   color: red;
   justify-content: center;
-  padding-inline-start: 0;
   list-style: none;
   margin: 10px 0px;
+  padding-inline-start: 0;
 }
 .dropdownLink {
   color: grey;
-  
 }
 .active{
   color: none;

@@ -1,15 +1,15 @@
 .userDetails {
-    display: flex;
-
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 .profilePicture {
-    display: flex;
     align-items: center;
+    display: flex;
     height: 100px;
-    width: 100px;
+    justify-content: center;
     margin: auto;
     padding: auto;
-    justify-content: center;
+    width: 100px;
 }
 .details {
     padding: 2px;
@@ -21,26 +21,25 @@
     font-size: 14px;
 }
 .userReviews {
-    display: flex;  
-    justify-content: center;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 .userInitials {
-    display: flex;
-    width: 50%;
-    height: 50%;
     align-items: center;
+    background-color: grey;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    font-weight: bold;
+    height: 50%;
     justify-content: center;
     text-transform: uppercase;
-    font-weight: bold;
-    background-color: grey;
-    color: white;
-    border-radius: 50%;
+    width: 50%;
 }
-
-.active {
+.activeStar {
     color: gold
 }
-.inactive {
+.inactiveStar {
     color: grey;
 }

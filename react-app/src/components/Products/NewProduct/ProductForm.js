@@ -57,7 +57,6 @@ const ProductForm = ({ product }) => {
             if (!product) {
                 try {    
                     const product = await dispatch(productsActions.createProduct(newProduct));
-                    console.log(image2, "image2")
                     const newImage = await dispatch(imagesActions.createImage(product.id, {image}));
                     if (image2) await dispatch(imagesActions.createImage(product.id, {'image': image2}))
                     if (image3) await dispatch(imagesActions.createImage(product.id, {'image': image3}))

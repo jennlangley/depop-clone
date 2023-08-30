@@ -13,31 +13,31 @@
     width: 500px;
 }
 .formItemContainer {
-    padding: 10px 0px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    
+    padding: 10px 0px;
 }
 .inputBox {
-    display: flex;
     align-items: center;
-    flex-direction: column;
-    width: inherit;
     border: 1px solid #4dbecf;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
     height: 30px;
     padding-left: 10px;
-    font-size: 16px;
+    width: inherit;
 }
 .dollarSign {
-    position: absolute;
     padding: 0px 10px;
     padding-top: 19px;
+    position: absolute;
 }
 .inputBox.priceInput {
     padding-left: 20px;
 }
 /* .inputBox:focus {
+
     ;
 } */
 select {
@@ -46,12 +46,12 @@ select {
 .formButton {
     display: flex;
     justify-content: center;
-    width: fit-content;
     margin: auto;
     padding: auto;
+    width: fit-content;
 }
 .textarea {
-    resize: none;
     height: 100px;
     padding-top: 5px;
+    resize: none;
 }

@@ -6,4 +6,5 @@ from .category import Category
 from .product_category import ProductCategory
 from .follow import Follow
 from .image import Image
+from .order import Order
 from .db import environment, SCHEMA
