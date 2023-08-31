@@ -38,6 +38,6 @@ class Product(db.Model):
             'categoryId': self.category.categories.to_dict()['categoryId'],
             'subcategoryId': self.category.categories.to_dict()['id'],
             'images': [image.to_dict() for image in self.images],
-            'createdAt': self.created_at,
-            'updatedAt': self.updated_at,
+            'createdAt': self.created_at.strftime("%m/%d/%Y"),
+            'updatedAt': self.updated_at.strftime("%m/%d/%Y"),
         }

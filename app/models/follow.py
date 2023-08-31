@@ -18,6 +18,7 @@ class Follow(db.Model):
             'id': self.id,
             'followerId': self.follower_id,
             'followedId': self.followed_id,
+            'createdAt': self.created_at.strftime("%m/%d/%Y")
         }
 
 

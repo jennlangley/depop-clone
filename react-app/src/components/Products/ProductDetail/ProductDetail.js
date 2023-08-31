@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProducts } from "../../../store/product";
-import UserDetail from "./UserDetail";
+import UserDetail from "../../Profile/UserDetail/UserDetail";
 import './ProductDetail.css';
 import ProductTile from "../ProductTile";
 

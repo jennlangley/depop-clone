@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
@@ -10,7 +10,7 @@ import ProductForm from "./components/Products/NewProduct/ProductForm";
 import ProductDetail from "./components/Products/ProductDetail/ProductDetail";
 import ManageProducts from "./components/Products/ManageProducts";
 import EditProduct from "./components/Products/ManageProducts/EditProduct";
-import Orders from "./components/Products/Orders";
+import Orders from "./components/Orders";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
-
+  const user = useSelector(state=> state.session.user);
   return (
     <>
       <Navigation isLoaded={isLoaded} />
@@ -49,7 +49,7 @@ function App() {
             <ProductDetail />
           </Route>
           <Route path="/orders">
-            <Orders />
+            <Orders user={user} />
           </Route>
         </Switch>
       )}

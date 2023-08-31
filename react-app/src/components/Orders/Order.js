@@ -1,5 +1,7 @@
-import Review from "../ProductDetail/Review";
-import OpenModalButton from "../../OpenModalButton";
+import Review from "../Reviews/Review";
+import OpenModalButton from "../OpenModalButton";
+import CreateReview from "../Reviews/CreateReview/CreateReview";
+
 const Order = ({ order, reviews }) => {
     const product = order.product;
     const review = (Object.values(reviews).filter(review => review?.id === order.reviewId))[0]
@@ -7,33 +9,35 @@ const Order = ({ order, reviews }) => {
     return (
         <div className="orderItem">
             <div>
-                <img className="productTileImage" alt={product.name} src={product.images[0].imageUrl} />
+                <img id="orderImage" className="productTileImage" alt={product.name} src={product.images[0].imageUrl} />
             </div>
-            <div>
-                <div>{product.name}</div>
+            <div className="orderDetails">
+                <h3>{product.name}</h3>
                 <div>Ordered on: {order.createdAt}</div>
                 {review ?
-                <div>Your review:
+                <div className="orderReview">Your review:
                     <Review review={review} />
                     <div className="editDeleteDiv">
                         <div>
-
                             <OpenModalButton 
-
-                                buttonText={<div className="confirmButtonDesign">Edit</div>}
+                                // modalComponent={}
+                                buttonText={<div className="editButton">Edit</div>}
                             />
                         </div>
                         <div>
                             <OpenModalButton 
-
-                                buttonText={<div className="deleteButtonDesign">Delete</div>}
+                                buttonText={<div className="deleteButton">Delete</div>}
                             />
                         </div>
 
                     </div>
                 </div>
                 :
-                <p>Leave a review</p>
+                <OpenModalButton 
+                    modalComponent={<CreateReview />}
+                    buttonText={<div className="createButton">Leave a review</div>}
+                />
+
                 }
             </div>
         </div>

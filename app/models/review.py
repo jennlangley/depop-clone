@@ -27,6 +27,6 @@ class Review(db.Model):
             'productId': self.product_id,
             'stars': self.stars,
             'review': self.review,
-            'createdAt': self.created_at,
-            'updatedAt': self.updated_at,
+            'createdAt': self.created_at.strftime("%m/%d/%Y"),
+            'updatedAt': self.updated_at.strftime("%m/%d/%Y"),
         }

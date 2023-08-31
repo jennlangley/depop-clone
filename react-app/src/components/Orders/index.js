@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getOrders } from "../../../store/order";
-import { getUserReviews } from "../../../store/review";
+import { getOrders } from "../../store/order";
+import { getUserReviews } from "../../store/review";
 import { Redirect } from "react-router-dom";
 import Order from "./Order";
 import './Orders.css'
 
-const Orders = () => {
+const Orders = ({ user }) => {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false)
 
@@ -15,7 +15,6 @@ const Orders = () => {
         dispatch(getOrders(user?.id)).then(() => setIsLoaded(true))
     }, [dispatch])
 
-    const user = useSelector(state => state.session.user)
     const orders = useSelector(state => state.orders)
     const reviews = useSelector(state => state.reviews)
 
@@ -27,9 +26,7 @@ const Orders = () => {
             <h1>Your Orders</h1>
             
             {orders ? (Object.values(orders).map((order, idx) => 
-                <>
-                    <Order key={idx} order={order} reviews={reviews} />
-                </>
+                <Order key={idx} order={order} reviews={reviews} />
             )) : <div>You have no orders!</div>
             
             }

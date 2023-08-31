@@ -22,6 +22,6 @@ class Order(db.Model):
             'id': self.id,
             'product': self.product.to_dict(),
             'userId': self.user_id,
-            'createdAt': self.created_at,
+            'createdAt': self.created_at.strftime("%m/%d/%Y %H:%M:%S"),
             'reviewId': self.review_id,
         }

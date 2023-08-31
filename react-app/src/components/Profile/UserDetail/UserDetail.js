@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import './UserDetail.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { getReviews } from '../../../store/review';
-import ReviewStars from '../../Profile/ReviewStars';
+import ReviewStars from '../ReviewStars';
 import OpenModalButton from '../../OpenModalButton';
-import Reviews from './Reviews';
+import Reviews from '../../Reviews/Reviews';
 
 const UserDetail = ({ user }) => {
     const dispatch = useDispatch();
