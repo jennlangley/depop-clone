@@ -46,10 +46,10 @@ const ProductDetail = () => {
             </div>
             
             <div>
-            <div className="productDetailContainer" >Other items by this seller:</div>
+            <div className="productDetailContainer"><h3>Other items by this seller:</h3></div>
                 <div className="productDetailContainer">
                 {Object.values(userProducts).map((product, idx) => <ProductTile key={idx} product={product} />)}
-                    </div>
+                </div>
             </div>
                 
             </div>)

@@ -26,8 +26,9 @@ export default function reducer(state = initialState, action) {
     const newState = { ...state };
     switch (action.type) {
         case GET_ORDERS:
-            action.payload.orders.forEach(order => newState[order.id] = order);
-            return newState;
+            const orders = {};
+            action.payload.orders.forEach(order => orders[order.id] = order);
+            return orders;
         default:
             return newState;
     }

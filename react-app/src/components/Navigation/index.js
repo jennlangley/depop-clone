@@ -21,7 +21,7 @@ function Navigation({ isLoaded }){
 				<ul className='navList'>
 					{sessionUser && (
 						<li className='navItem'>
-						<NavLink exact to="/products/new">New Listing</NavLink>
+						<NavLink exact to="/products/new" className='buttonLink'>Sell your item!</NavLink>
 					</li>)}
 					{(
 						<li className='navItem'>

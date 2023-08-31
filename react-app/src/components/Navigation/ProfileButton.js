@@ -47,27 +47,31 @@ function ProfileButton({ user, isLoaded }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li className="dropdownLink"><NavLink exact to={`/${user.username}`}>Profile</NavLink></li>
+            <li className="dropdownLink"><NavLink exact to={`/${user.username}`} className="dropdownLink">Profile</NavLink></li>
             
-            <li className="dropdownLink"><NavLink exact to="/products/manage">Your Products</NavLink></li>
-            <li className="dropdownLink"><NavLink exact to="/orders">Orders</NavLink></li>
+            <li className="dropdownLink"><NavLink exact to="/products/manage" className="dropdownLink">Your Products</NavLink></li>
+            <li className="dropdownLink"><NavLink exact to="/orders" className="dropdownLink">Orders</NavLink></li>
             <li className="dropdownLink">
               <button onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (
           <>
-            <OpenModalButton
+            <li className="dropdownLink">
+              <OpenModalButton
               buttonText="Log In"
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
-            />
-
-            <OpenModalButton
+              />
+            </li>
+            <li className="dropdownLink">
+              <OpenModalButton
               buttonText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
-            />
+              />
+            </li>
+            
           </>
         )}
       </ul>

@@ -11,3 +11,6 @@
     margin-bottom: 10px;
     width: 100%;
 }
+.confirmButtonDesign.formButton {
+    margin-top: 5px;
+}

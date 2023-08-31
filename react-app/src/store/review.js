@@ -12,6 +12,21 @@ const createReviewAction = (review) => ({
 })
 
 export const getReviews = (userId) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/user/${userId}`, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(getReviewsAction(data));
+        return data;
+    } else {
+        return response.errors;
+    }
+}
+
+export const getUserReviews = (userId) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${userId}`, {
         headers: {
             "Content-Type": "application/json"
@@ -22,7 +37,7 @@ export const getReviews = (userId) => async (dispatch) => {
         dispatch(getReviewsAction(data));
         return data;
     } else {
-        return response.errors
+        return response.errors;
     }
 }
 
@@ -48,8 +63,9 @@ export default function reducer(state = initialState, action) {
     const newState = { ...state };
     switch (action.type) {
         case GET_REVIEWS:
-            action.payload.reviews.forEach(review => newState[review.id] = review);
-            return newState;
+            const reviews = {};
+            action.payload.reviews.forEach(review => reviews[review.id] = review);
+            return reviews;
         case CREATE_REVIEW:
             newState[action.payload.id] = action.payload;
             return newState;

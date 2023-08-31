@@ -15,7 +15,6 @@
 .formItemContainer {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
     padding: 10px 0px;
 }
 .inputBox {
@@ -29,8 +28,8 @@
     width: inherit;
 }
 .dollarSign {
-    padding: 0px 10px;
-    padding-top: 19px;
+    padding: 0px 8px;
+    padding-top: 27px;
     position: absolute;
 }
 .inputBox.priceInput {

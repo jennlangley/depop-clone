@@ -28,7 +28,7 @@ const ManageProducts = () => {
                         <ProductTile product={product} />
                         <div className="editDeleteDiv">
                             <div><NavLink to={`/products/${product.id}/edit`}><button className="confirmButtonDesign">Edit</button></NavLink></div>
-                            <div><OpenModalButton modalComponent=<DeleteProduct productId={product.id} /> buttonText={"Delete"} /></div>
+                            <div><OpenModalButton modalComponent=<DeleteProduct productId={product.id} /> buttonText={<div className="deleteButtonDesign">Delete</div>} /></div>
                         </div>
                         
                     </div>

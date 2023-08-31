@@ -1,0 +1,11 @@
+.ordersContainer {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: auto;
+    text-align: center;
+}
+.orderItem {
+    display: flex;
+
+}

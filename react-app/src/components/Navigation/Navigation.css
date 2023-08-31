@@ -15,7 +15,7 @@
 }
 .fa-user-circle {
   color: gray;
-  font-size: 24px;
+  font-size: 30px;
 }
 button {
   background: none;
@@ -92,34 +92,36 @@ a {
 .confirmButtonDesign {
   background-color: #4dbecf;
   border-radius: 4px;
+  box-shadow: 2px 4px 4px  #95b0b5;
   color: white;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
   padding: 8px 20px;
   text-align: center;
-  transition: 0.3s;
 }
 .confirmButtonDesign:hover {
   background-color: white;
   border: 2px solid #4dbecf;
   color: #4dbecf;
+  padding: 6px 18px;
 }
 .deleteButtonDesign {
   background-color: rgb(226, 65, 65);
   border-radius: 4px;
+  box-shadow: 2px 4px 4px  #95b0b5;
   color: white;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
   padding: 8px 20px;
   text-align: center;
-  transition: 0.3s;
 }
 .deleteButtonDesign:hover {
   background-color: white;
   border: 2px solid rgb(226, 65, 65);
   color: rgb(226, 65, 65);
+  padding: 6px 18px;
 }
 .errors {
   color: red;
@@ -129,8 +131,21 @@ a {
   padding-inline-start: 0;
 }
 .dropdownLink {
-  color: grey;
+  color: #997fd0;
+  cursor: pointer;
+}
+.dropdownLink:hover {
+  font-weight: bold;
 }
 .active{
   color: none;
+}
+.buttonLink {
+  color: #4dbecf;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 2px;
+}
+.buttonLink:hover {
+  text-decoration: underline;
 }

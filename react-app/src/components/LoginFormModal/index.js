@@ -61,10 +61,7 @@ function LoginFormModal() {
             />
           </label>
           </div>
-
           <button className="confirmButtonDesign formButton" type="submit">Log In</button>
-          
-
         </form>
         <button className="confirmButtonDesign formButton" onClick={demoLogin}>Demo Log In</button>
       </div>

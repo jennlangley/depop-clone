@@ -1,17 +1,13 @@
-import ReviewStars from '../../Profile/ReviewStars';
+import Review from './Review';
 import './Reviews.css';
+
 const Reviews = ({ reviews }) => {
 
     return (
-        reviews.length ?
+        Object.values(reviews).length ?
         <div id="reviews-container">
         {Object.values(reviews).map((review, idx) =>
-            <div key={idx} id="review"> 
-                <div>{review.user.username}</div>
-                <ReviewStars avgRating={review.stars} />
-                <div>{review.review}</div>
-                <div>{review.createdAt} ago</div>
-            </div>
+            <Review key={idx} review={review} />
         )}
         </div> 
         :

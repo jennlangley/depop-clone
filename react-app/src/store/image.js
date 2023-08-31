@@ -66,7 +66,6 @@ export const editImage = (imageId, image) => async (dispatch) => {
     }
 }
 
-
 const initialState = {};
 export default function reducer(state = initialState, action) {
     const newState = { ...state };

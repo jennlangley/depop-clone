@@ -5,13 +5,13 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_orders():
     order_1 = Order(
-        product_id=6,user_id=2
+        product_id=6, user_id=2, review_id=1
     )
     order_2 = Order(
-        product_id=7,user_id=2
+        product_id=7, user_id=2, review_id=2
     )
     order_3 = Order(
-        product_id=8,user_id=1
+        product_id=8, user_id=1, review_id=3
     )
     # order_4 = Order(
     #     product_id=,user_id=
