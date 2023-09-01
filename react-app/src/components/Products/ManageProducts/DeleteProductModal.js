@@ -4,7 +4,7 @@ import { deleteProduct } from "../../../store/product";
 import { useDispatch } from "react-redux";
 
 const DeleteProduct = ({ productId }) => {
-    const {closeModal} = useModal()
+    const { closeModal } = useModal()
     const dispatch = useDispatch();
     const DeleteProduct = async () => {
         await dispatch(deleteProduct(productId));

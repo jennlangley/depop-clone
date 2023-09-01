@@ -6,7 +6,6 @@ from app.api.auth_routes import validation_errors_to_error_messages
 
 product_routes = Blueprint('products', __name__)
 
-
 # Returns all products
 @product_routes.route('')
 def get_products():
@@ -42,11 +41,9 @@ def new_product():
         db.session.commit()
         category = Category.query.filter_by(category_id=form.data['category'], 
                                             subcategory_id=form.data['subcategory']).first()
-
         product_category = ProductCategory(
             product_id=product.id, category_id=category.id
         )
-
         db.session.add(product_category)
         db.session.commit()
         return product.to_dict()
@@ -60,19 +57,15 @@ def edit_product(productId):
     product = Product.query.get(productId)
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
     if form.validate_on_submit():
         product.name = form.data['name']
         product.desc = form.data['desc']
         product.condition = form.data['condition']
         product.size = form.data['size']
         product.price = form.data['price']
-
         category = Category.query.filter_by(category_id=form.data['category'], subcategory_id=form.data['subcategory']).first()
-
         product_category = ProductCategory.query.filter_by(product_id=product.id)
         product_category.category_id = category.id
-
         db.session.commit()
         return product.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401

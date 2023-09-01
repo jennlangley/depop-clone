@@ -236,7 +236,7 @@ const ProductForm = ({ product }) => {
                         />
                     {errors.price && (<span className='errors'>{errors.price}</span>)}
                 </div>
-                <button className="confirmButtonDesign formButton" type="submit">Submit</button>
+                <button className="confirmButtonDesign formButton" type="submit">{product ? "Edit item" : "List item"}</button>
             </form>
         </div>
     )

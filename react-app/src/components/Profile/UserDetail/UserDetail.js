@@ -9,10 +9,11 @@ import Reviews from '../../Reviews/Reviews';
 const UserDetail = ({ user }) => {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
+    const userId = user.id;
 
     useEffect(() => {
-        dispatch(getReviews(user.id)).then(() => setIsLoaded(true));
-    }, [dispatch])
+        dispatch(getReviews(userId)).then(() => setIsLoaded(true));
+    }, [dispatch, userId])
 
     const soldProducts = useSelector(state => Object.values(state.products).filter(product => (product.userId === user.id) && (product.sold === true)))
     const reviews = useSelector(state => state.reviews)

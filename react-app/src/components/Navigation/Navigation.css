@@ -129,6 +129,7 @@ a {
   list-style: none;
   margin: 10px 0px;
   padding-inline-start: 0;
+  font-size: 14px;
 }
 .dropdownLink {
   color: #997fd0;

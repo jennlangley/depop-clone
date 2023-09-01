@@ -52,6 +52,7 @@ export const createReview = (productId, review) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(createReviewAction(data));
+        return;
     } else {
         return response.errors;
     }

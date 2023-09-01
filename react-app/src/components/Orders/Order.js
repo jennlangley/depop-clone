@@ -4,8 +4,10 @@ import CreateReview from "../Reviews/CreateReview/CreateReview";
 
 const Order = ({ order, reviews }) => {
     const product = order.product;
-    const review = (Object.values(reviews).filter(review => review?.id === order.reviewId))[0]
 
+
+    const review = (Object.values(reviews).filter(review => review?.id === order.reviewId))[0]
+    
     return (
         <div className="orderItem">
             <div>
@@ -34,7 +36,7 @@ const Order = ({ order, reviews }) => {
                 </div>
                 :
                 <OpenModalButton 
-                    modalComponent={<CreateReview />}
+                    modalComponent={<CreateReview orderId={order.id} />}
                     buttonText={<div className="createButton">Leave a review</div>}
                 />
 
