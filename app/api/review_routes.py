@@ -44,6 +44,23 @@ def create_review(orderId):
         return review.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+
+# Edit a review by review id
+@review_routes.route('/<int:reviewId>', methods=['PUT'])
+@login_required
+def edit_review(reviewId):
+    review = Review.query.get(reviewId)
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        review.stars = form.data['stars']
+        review.review = form.data['review']
+        db.session.commit()
+        return review.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+
 # Delete review by review id
 @review_routes.route('/<int:reviewId>', methods=["DELETE"])
 @login_required

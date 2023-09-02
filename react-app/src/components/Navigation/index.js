@@ -24,9 +24,14 @@ function Navigation({ isLoaded }){
 						<NavLink exact to="/products/new" className='buttonLink'>Sell your item!</NavLink>
 					</li>)}
 					{(
+						<>
+						<li className='navItem'>
+							<i className="fa-solid fa-cart-shopping"></i>
+						</li>
 						<li className='navItem'>
 							<ProfileButton isLoaded={isLoaded} user={sessionUser} />
 						</li>
+						</>
 					)}
 				</ul>
 			</nav>

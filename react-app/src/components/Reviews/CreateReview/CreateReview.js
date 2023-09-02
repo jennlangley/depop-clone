@@ -4,26 +4,34 @@ import { useModal } from "../../../context/Modal";
 import * as reviewsActions from '../../../store/review';
 import './ReviewModal.css';
 
-const CreateReview = ({ orderId }) => {
+const CreateReview = ({ orderId, editReview }) => {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
 
-    const [stars, setStars] = useState(0);
+    const [stars, setStars] = useState(editReview?.stars || 0);
     const [hover, setHover] = useState(0);
-    const [review, setReview] = useState('');
+    const [review, setReview] = useState(editReview?.review || '');
     const [errors, setErrors] = useState({});
-    const [validationErrors, setValidationErrors] = useState([])
+    const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setHasSubmitted(true);
         if (!Object.values(errors).length) {
-            const newReview = await dispatch(reviewsActions.createReview(orderId, {stars, review}))
-            reset();
-            setHasSubmitted(false);
-            setErrors({});
-            closeModal();
+            if (!editReview) {
+                const newReview = await dispatch(reviewsActions.createReview(orderId, {stars, review}));
+                reset();
+                setHasSubmitted(false);
+                setErrors({});
+                closeModal();
+            } else {
+                const editedReview = await dispatch(reviewsActions.editReview(editReview.id, {stars, review}));
+                setHasSubmitted(false);
+                setErrors({});
+                closeModal();
+            }
+            
         }
     }
 
@@ -44,7 +52,7 @@ const CreateReview = ({ orderId }) => {
 
     return (
         <div className="loginContainer">
-            <h1 id="modal-title">Leave a review</h1>
+            <h1 id="modal-title">{editReview ? "Edit your review" : "Leave a review"}</h1>
             <div>
                 <form onSubmit={handleSubmit}>
                     <div className="reviewDiv">

@@ -1,6 +1,7 @@
 const GET_REVIEWS = 'reviews/GET_REVIEWS';
 const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
 const DELETE_REVIEW = 'reviews/DELETE_REVIEW'; 
+const EDIT_REVIEW = 'reviews/EDIT_REVIEW';
 
 const getReviewsAction = (reviews) => ({
     type: GET_REVIEWS,
@@ -15,6 +16,11 @@ const createReviewAction = (review) => ({
 const deleteReviewAction = (reviewId) => ({
     type: DELETE_REVIEW,
     payload: reviewId
+})
+
+const editReviewAction = (review) => ({
+    type: EDIT_REVIEW,
+    payload: review
 })
 
 export const getReviews = (userId) => async (dispatch) => {
@@ -64,6 +70,23 @@ export const createReview = (productId, review) => async (dispatch) => {
     }
 }
 
+export const editReview = (reviewId, review) => async (dispatch) => {
+    const response = await fetch(`/api/reviews/${reviewId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json", 
+        },
+        body: JSON.stringify(review)
+    })
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(editReviewAction(data));
+        return;
+    } else {
+        return response.errors;
+    }
+}
+
 export const deleteReview = (reviewId) => async (dispatch) => {
     const response = await fetch(`/api/reviews/${reviewId}`, {
         method: "DELETE"
@@ -90,6 +113,9 @@ export default function reducer(state = initialState, action) {
             return newState;
         case DELETE_REVIEW:
             delete newState[action.payload];
+            return newState;
+        case EDIT_REVIEW:
+            newState[action.payload.id] = action.payload;
             return newState;
         default:
             return newState;

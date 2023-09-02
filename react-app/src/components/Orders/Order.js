@@ -3,6 +3,7 @@ import Review from "../Reviews/Review";
 import OpenModalButton from "../OpenModalButton";
 import CreateReview from "../Reviews/CreateReview/CreateReview";
 import DeleteReview from "../Reviews/ManageReviews/DeleteReview";
+import EditReview from "../Reviews/ManageReviews/EditReview";
 
 const Order = ({ order, reviews }) => {
     const product = order.product;
@@ -27,7 +28,7 @@ const Order = ({ order, reviews }) => {
                     <div className="editDeleteDiv">
                         <div>
                             <OpenModalButton 
-                                // modalComponent={}
+                                modalComponent={<EditReview orderId={order.id} editReview={review} />}
                                 buttonText={<div className="editButton">Edit</div>}
                             />
                         </div>
