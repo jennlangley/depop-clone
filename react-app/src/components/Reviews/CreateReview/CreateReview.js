@@ -19,26 +19,23 @@ const CreateReview = ({ orderId }) => {
         e.preventDefault();
         setHasSubmitted(true);
         if (!Object.values(errors).length) {
-            try {
-                const newReview = await dispatch(reviewsActions.createReview(orderId, {stars, review}))
-            
-                setHasSubmitted(false)
-                setStars(0)
-                setReview('')
-                setErrors({})
-                closeModal()  
-            
-            } catch(error) {
-                setValidationErrors(error)
-                return 
-            }
+            const newReview = await dispatch(reviewsActions.createReview(orderId, {stars, review}))
+            reset();
+            setHasSubmitted(false);
+            setErrors({});
+            closeModal();
         }
+    }
+
+    const reset = () => {
+        setStars(0);
+        setReview('');
     }
 
     useEffect(() => {
         if (hasSubmitted) {
             const errors = {};
-            if (!stars) errors.stars = "Star rating cannot be empty";
+            if (stars < 1) errors.stars = "Star rating cannot be empty";
             if (review.length < 10) errors.review = "Review must be at least 10 characters";
             if (review.length > 300) errors.review = "Review must be less than 300 characters";
             setErrors(errors);

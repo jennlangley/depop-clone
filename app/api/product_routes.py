@@ -79,5 +79,5 @@ def delete_product(productId):
     if product:
         db.session.delete(product)
         db.session.commit()
-        return {'message': 'Product successfully removed.'}
-    return {'errors': 'Product not found!'}
+        return {'message': 'Product successfully deleted'}
+    return {'errors': 'Product not found'}

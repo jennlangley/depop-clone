@@ -31,24 +31,26 @@ def get_user_reviews(userId):
 def create_review(orderId):
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
     if form.validate_on_submit():
-
         # Query for the order by order id
         order = Order.query.get(orderId)
-        # 
-
         review = Review(user_id=current_user.id, product_id=order.product_id,
                         stars=form.data['stars'], review=form.data['review'])
-        
         db.session.add(review)
         db.session.commit()
-
         # insert the reviewId into the order
-
         order.review_id = review.id
-       
         db.session.commit()
         return review.to_dict()
-
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+# Delete review by review id
+@review_routes.route('/<int:reviewId>', methods=["DELETE"])
+@login_required
+def delete_review(reviewId):
+    review = Review.query.get(reviewId)
+    if review:
+        db.session.delete(review)
+        db.session.commit()
+        return {'message': 'Review successfully deleted'}
+    return {'errors': 'Product not found'}
