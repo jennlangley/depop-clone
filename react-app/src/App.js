@@ -12,13 +12,17 @@ import ManageProducts from "./components/Products/ManageProducts";
 import EditProduct from "./components/Products/ManageProducts/EditProduct";
 import Orders from "./components/Orders";
 import Cart from "./components/Cart";
+import NotFound from "./components/NotFound";
 import { CartProvider } from "./context/CartContext";
+import { getProducts } from "./store/product";
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    dispatch(authenticate()).then(() => setIsLoaded(true));
+    dispatch(authenticate())
+    .then(() => dispatch(getProducts()))
+    .then(() => setIsLoaded(true));
   }, [dispatch]);
   const user = useSelector(state=> state.session.user);
   return (
@@ -48,13 +52,16 @@ function App() {
             <EditProduct />
           </Route>
           <Route exact path="/products/:productId">
-            <ProductDetail />
+            <ProductDetail isLoaded={isLoaded} />
           </Route>
           <Route path="/orders">
             <Orders user={user} />
           </Route>
           <Route>
-            <Cart path="/cart" />
+            <Cart exact path="/cart" />
+          </Route>
+          <Route path="">
+            <NotFound />
           </Route>
         </Switch>
       )}

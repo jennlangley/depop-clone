@@ -31,6 +31,11 @@
 }
 .orderReview {
     margin: 10px;
-    background-color: rgb(236, 236, 236);
+    padding: 10px;
+    background-color: rgb(243, 243, 243);
     opacity: 80%;
+    border-radius: 4px;
+}
+#review {
+    margin-left: 10px;
 }

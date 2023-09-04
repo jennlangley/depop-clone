@@ -9,20 +9,21 @@ import ProductTile from "../ProductTile";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { useCart } from "../../../context/CartContext";
 
-const ProductDetail = () => {
+const ProductDetail = ({ isLoaded }) => {
     const { productId } = useParams();
     const dispatch = useDispatch();
-    const [isLoaded, setIsLoaded] = useState(false);
-    const { addToCart, removeFromCart } = useCart();
 
-
-    useEffect(() => {
-        dispatch(getProducts()).then(() => setIsLoaded(true))
-    }, [dispatch])
-
+    const { addToCart, removeFromCart, cartItems } = useCart();
+    
     const product = useSelector(state => state.products[+productId]);
     const userProducts = useSelector(state => Object.values(state.products).filter(prod => (prod.userId === product.userId && prod.id !== product.id)))
     const user = useSelector(state => state.session.user);
+    const [inCart, setInCart] = useState(false);
+    
+    useEffect(() => {
+        const alreadyInCart = cartItems.filter(item => item.id === product.id)
+        if (alreadyInCart.length) setInCart(true)
+    }, [cartItems])
 
     return(
         isLoaded && 
@@ -47,15 +48,28 @@ const ProductDetail = () => {
                         {product.desc}
                     </div>
                     <UserDetail user={product.user} />
-                    {product.userId !== user?.id ? 
-                        <button
-                            onClick={() => addToCart(product.id)}
-                        >
-                            Add to cart
-                        </button>
-                    :
-                        <NavLink to={`/products/${product.id}/edit`}>Edit your product</NavLink>
-                        
+                    {product.userId !== user?.id &&
+                        (!inCart ?
+                            <button
+                                className="confirmButtonDesign"
+                                onClick={() => {
+                                    addToCart(product.id)
+                                    setInCart(true)
+                                    }}
+                            >
+                                Add to cart
+                            </button> 
+                            :
+                            <button 
+                                className="deleteButtonDesign"
+                                onClick={() => {
+                                    removeFromCart(product.id)
+                                    setInCart(false)
+                                    }}
+                            >
+                                Remove from cart
+                            </button>
+                        )
                     }
                 </div>
             </div>

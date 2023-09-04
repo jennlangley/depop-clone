@@ -17,9 +17,9 @@ const Products = () => {
     const products = useSelector(state => state.products)
 
     return (
+        isLoaded &&
         <div className="productsList">
-        {isLoaded &&
-            Object.values(products).map((product, idx) => <ProductTile key={idx} product={product} />)}
+        {Object.values(products).map((product, idx) => <ProductTile key={idx} product={product} />)}
         </div>
     )
 }

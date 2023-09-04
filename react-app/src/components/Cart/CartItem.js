@@ -20,7 +20,7 @@ const CartItem = ({ productId }) => {
                 </div>
             </div>
             <div className="cartItemMenu">
-                <button className="cartItemButton"
+                <button className="deleteButtonDesign"
                     onClick={() => removeFromCart(productId)}
                 >
                     Remove

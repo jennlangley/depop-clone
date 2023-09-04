@@ -29,13 +29,13 @@ const Order = ({ order, reviews }) => {
                         <div>
                             <OpenModalButton 
                                 modalComponent={<EditReview orderId={order.id} editReview={review} />}
-                                buttonText={<div className="editButton">Edit</div>}
+                                buttonText={<div className="confirmButtonDesign">Edit</div>}
                             />
                         </div>
                         <div>
                             <OpenModalButton 
                                 modalComponent={<DeleteReview reviewId={review.id} />}
-                                buttonText={<div className="deleteButton">Delete</div>}
+                                buttonText={<div className="deleteButtonDesign">Delete</div>}
                             />
                         </div>
 
