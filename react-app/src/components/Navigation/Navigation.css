@@ -150,3 +150,7 @@ a {
 .buttonLink:hover {
   text-decoration: underline;
 }
+.cartIcon {
+  font-size: 22px;
+  color: #324b4f;
+}

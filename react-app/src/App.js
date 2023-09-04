@@ -11,6 +11,8 @@ import ProductDetail from "./components/Products/ProductDetail/ProductDetail";
 import ManageProducts from "./components/Products/ManageProducts";
 import EditProduct from "./components/Products/ManageProducts/EditProduct";
 import Orders from "./components/Orders";
+import Cart from "./components/Cart";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,7 +22,7 @@ function App() {
   }, [dispatch]);
   const user = useSelector(state=> state.session.user);
   return (
-    <>
+    <CartProvider>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -51,9 +53,12 @@ function App() {
           <Route path="/orders">
             <Orders user={user} />
           </Route>
+          <Route>
+            <Cart path="/cart" />
+          </Route>
         </Switch>
       )}
-    </>
+    </CartProvider>
   );
 }
 
