@@ -13,6 +13,7 @@ import EditProduct from "./components/Products/ManageProducts/EditProduct";
 import Orders from "./components/Orders";
 import Cart from "./components/Cart";
 import NotFound from "./components/NotFound";
+import Profile from "./components/Profile/Profile";
 import { CartProvider } from "./context/CartContext";
 import { getProducts } from "./store/product";
 
@@ -57,8 +58,8 @@ function App() {
           <Route path="/orders">
             <Orders user={user} />
           </Route>
-          <Route>
-            <Cart exact path="/cart" />
+          <Route path="/users/:username">
+            <Profile />
           </Route>
           <Route path="">
             <NotFound />

@@ -17,8 +17,14 @@ const DeleteProduct = ({ productId }) => {
         <div>
             <h1 id="modal-title">Do you want to delete your product listing?</h1>
             <div className="editDeleteDiv">
-                <button onClick={e => closeModal()} className="confirmButtonDesign">Cancel</button>
-                <button onClick={e => DeleteProduct()} className="deleteButtonDesign">Yes, delete my listing</button>
+                <div className="manageButtonContainer">
+                    <button onClick={e => closeModal()} className="confirmButtonDesign">Cancel</button>
+
+                </div>
+                <div className="manageButtonContainer">
+                    <button onClick={e => DeleteProduct()} className="deleteButtonDesign">Yes, delete my listing</button>
+
+                </div>
             </div>
         </div>
     )

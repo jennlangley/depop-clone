@@ -22,7 +22,11 @@ const ProductDetail = ({ isLoaded }) => {
     
     useEffect(() => {
         const alreadyInCart = cartItems.filter(item => item.id === product.id)
-        if (alreadyInCart.length) setInCart(true)
+        if (alreadyInCart.length) {
+            setInCart(true);
+        } else {
+            setInCart(false);
+        }
     }, [cartItems])
 
     return(
@@ -61,7 +65,7 @@ const ProductDetail = ({ isLoaded }) => {
                             </button> 
                             :
                             <button 
-                                className="deleteButtonDesign"
+                                className="buttonDesign"
                                 onClick={() => {
                                     removeFromCart(product.id)
                                     setInCart(false)

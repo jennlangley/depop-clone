@@ -59,9 +59,15 @@
 }
 .editDeleteDiv {
     display: flex;
-    width: inherit;
+    width: 100%;
     justify-content: space-evenly;
 }
+
+.manageButtonContainer {
+    display: flex;
+    width: 25%;
+}
+
 a {
     color: #324b4f;
 }

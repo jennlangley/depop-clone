@@ -16,7 +16,7 @@ function OpenModalButton({
   };
 
   return (
-    <button onClick={onClick}>{buttonText}</button>
+    <div style={{"width": "100%"}} onClick={onClick}>{buttonText}</div>
   );
 }
 

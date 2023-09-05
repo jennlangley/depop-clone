@@ -27,6 +27,7 @@
   height: fit-content;
   padding: 30px 20px;
   position: absolute;
+  width: 50%;
 }
 #modal-title {
   margin: 10px 0px;

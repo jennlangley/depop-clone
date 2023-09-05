@@ -1,8 +1,8 @@
 const NotFound = () => {
     return (
-        <div>
+        <h1 style={{textAlign: "center"}}>
             Page not found
-        </div>
+        </h1>
     )
 }
 

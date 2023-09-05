@@ -27,8 +27,19 @@ const ManageProducts = () => {
                     <div key={idx}>
                         <ProductTile product={product} />
                         <div className="editDeleteDiv">
-                            <div><NavLink to={`/products/${product.id}/edit`}><button className="confirmButtonDesign">Edit</button></NavLink></div>
-                            <div><OpenModalButton modalComponent=<DeleteProduct productId={product.id} /> buttonText={<div className="deleteButtonDesign">Delete</div>} /></div>
+                            <div className="manageButtonContainer">
+                                <div className="confirmButtonDesign">
+                                    <NavLink style={{color: "white"}} to={`/products/${product.id}/edit`}>
+                                        Edit
+                                    </NavLink>
+                                </div>
+                            </div>
+                            
+                            <div className="manageButtonContainer">
+                                <OpenModalButton 
+                                    modalComponent=<DeleteProduct productId={product.id} /> 
+                                    buttonText=<button className="deleteButtonDesign">Delete</button> />
+                            </div>
                         </div>
                         
                     </div>
