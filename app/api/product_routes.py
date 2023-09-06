@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import db, Product, Image, Category, ProductCategory
 from app.forms import ProductForm
 from app.api.auth_routes import validation_errors_to_error_messages
+from datetime import datetime
 
 product_routes = Blueprint('products', __name__)
 
@@ -63,6 +64,7 @@ def edit_product(productId):
         product.condition = form.data['condition']
         product.size = form.data['size']
         product.price = form.data['price']
+        product.updated_at = datetime.now()
         category = Category.query.filter_by(category_id=form.data['category'], subcategory_id=form.data['subcategory']).first()
         product_category = ProductCategory.query.filter_by(product_id=product.id)
         product_category.category_id = category.id

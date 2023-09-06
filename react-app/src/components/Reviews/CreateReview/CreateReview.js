@@ -17,21 +17,20 @@ const CreateReview = ({ orderId, editReview }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setHasSubmitted(true);
-        if (!Object.values(errors).length) {
+        if (Object.values(errors).length < 1) {
             if (!editReview) {
-                const newReview = await dispatch(reviewsActions.createReview(orderId, {stars, review}));
-                reset();
+                dispatch(reviewsActions.createReview(orderId, {stars, review}))
                 setHasSubmitted(false);
+                reset();
                 setErrors({});
                 closeModal();
-            } else {
-                const editedReview = await dispatch(reviewsActions.editReview(editReview.id, {stars, review}));
+            }
+            if (editReview) {
+                dispatch(reviewsActions.editReview(editReview.id, {stars, review}))
                 setHasSubmitted(false);
                 setErrors({});
                 closeModal();
             }
-            
         }
     }
 
@@ -47,6 +46,7 @@ const CreateReview = ({ orderId, editReview }) => {
             if (review.length < 10) errors.review = "Review must be at least 10 characters";
             if (review.length > 300) errors.review = "Review must be less than 300 characters";
             setErrors(errors);
+            return;
         }
     }, [hasSubmitted, stars, review])
 
@@ -79,19 +79,18 @@ const CreateReview = ({ orderId, editReview }) => {
                         {errors.stars && <span className="errors">{errors.stars}</span>}
 
                     </div>
-                    <div>
-                        <label>
-                            Review
+                    <div className="reviewDiv">
+                        <label>Review</label>
                             <textarea 
+                                className="inputBox reviewTextarea"
                                 placeholder="How was your buying experience?"
                                 value={review}
                                 onChange={e => setReview(e.target.value)}
                             />
                             {errors.review && <span className="errors">{errors.review}</span>}
-                        </label>
                         
                     </div>
-                    <button className="confirmButtonDesign formButton" type="submit">Submit</button>
+                    <button className="confirmButtonDesign formButton" onClick={e => setHasSubmitted(true)} type="submit">Submit</button>
                 </form>
             </div>
         </div>

@@ -27,9 +27,9 @@
   height: fit-content;
   padding: 30px 20px;
   position: absolute;
-  width: 50%;
 }
 #modal-title {
   margin: 10px 0px;
+  max-width: 500px;
   text-align: center;
 }

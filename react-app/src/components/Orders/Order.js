@@ -19,7 +19,7 @@ const Order = ({ order, reviews }) => {
             <div className="orderDetails">
                 <h3>{product.name}</h3>
                 <div>Sold by:{" "}
-                    <NavLink to={`/${product.user.username}`}>{product.user.username}</NavLink>
+                    <NavLink to={`users/${product.user.username}`}>{product.user.username}</NavLink>
                 </div>
                 <div>Ordered on: {order.createdAt}</div>
                 {review ?
@@ -44,7 +44,7 @@ const Order = ({ order, reviews }) => {
                 :
                 <OpenModalButton 
                     modalComponent={<CreateReview orderId={order.id} />}
-                    buttonText={<div className="createButton">Leave a review</div>}
+                    buttonText={<div className="confirmButtonDesign thinButton">Leave a review</div>}
                 />
 
                 }

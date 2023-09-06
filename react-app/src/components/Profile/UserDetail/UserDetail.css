@@ -38,7 +38,7 @@
     width: 50%;
 }
 .activeStar {
-    color: gold
+    color: #FFC000;
 }
 .inactiveStar {
     color: grey;

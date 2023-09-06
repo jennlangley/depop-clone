@@ -9,14 +9,13 @@ import './Orders.css'
 const Orders = ({ user }) => {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false)
-
+    const orders = useSelector(state => state.orders)
+    const reviews = useSelector(state => state.reviews)
+    
     useEffect (() => {
         dispatch(getUserReviews(user?.id))
         dispatch(getOrders(user?.id)).then(() => setIsLoaded(true))
     }, [dispatch])
-
-    const orders = useSelector(state => state.orders)
-    const reviews = useSelector(state => state.reviews)
 
     if (!user) return <Redirect to='/products' />
 

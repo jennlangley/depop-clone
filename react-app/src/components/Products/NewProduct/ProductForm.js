@@ -33,31 +33,15 @@ const ProductForm = ({ product }) => {
     const [errors, setErrors] = useState({});
     const [validationErrors, setValidationErrors] = useState([]);
 
-    useEffect(() => {
-        if (hasSubmitted) {
-            const errors = {};
-            if (!name.length) errors.name = "Name is required";
-            if (!desc.length) errors.desc = "Description is required";
-            if (!condition) errors.condition = "Condition is required";
-            if (!size) errors.size = "Size is required";
-            if (!price) errors.price = "Price is required";
-            if (!image.length) errors.images = "Image is required";
-            if (!category) errors.category = "Category is required";
-            if (!subcategory) errors.subcategory = "Subcategory is required";
-            setErrors(errors);
-        }
-    }, [hasSubmitted, name, desc, condition, size, price, image, category, subcategory])
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setHasSubmitted(true);
         if (!Object.values(errors).length) {
             const newProduct = {name, desc, condition, size, price, category, subcategory}
             // Creates a new product if the edit product prop passed in is null
             if (!product) {
                 try {    
                     const product = await dispatch(productsActions.createProduct(newProduct));
-                    const newImage = await dispatch(imagesActions.createImage(product.id, {image}));
+                    await dispatch(imagesActions.createImage(product.id, {image}));
                     if (image2) await dispatch(imagesActions.createImage(product.id, {'image': image2}))
                     if (image3) await dispatch(imagesActions.createImage(product.id, {'image': image3}))
                     if (image4) await dispatch(imagesActions.createImage(product.id, {'image': image4}))
@@ -71,7 +55,7 @@ const ProductForm = ({ product }) => {
                 }
             } else {
                 try {
-                    const editedProduct = await dispatch(productsActions.editProduct(product.id, newProduct));
+                    await dispatch(productsActions.editProduct(product.id, newProduct));
                     // Func to create or edit an image depending on if it exists in the db yet or not
                     newImage(product.images[0], image)
                     newImage(product.images[1], image2)
@@ -93,12 +77,12 @@ const ProductForm = ({ product }) => {
             // if statement to prevents unecessary edit dispatch
         if (image && (image.imageUrl !== newImageUrl)) {
             // sends put request to edit the existing image url in the db
-            await dispatch(imagesActions.editImage(image.id, {'image': newImageUrl}))
+            await dispatch(imagesActions.editImage(image.id, {'image': newImageUrl}));
             return
         } 
         // sends post request to create a new image in the db if there isn't already an image 
         if (!image && newImageUrl) {
-            await dispatch(imagesActions.createImage(product.id, {'image': newImageUrl}))
+            await dispatch(imagesActions.createImage(product.id, {'image': newImageUrl}));
             return
         } 
     }
@@ -113,6 +97,22 @@ const ProductForm = ({ product }) => {
         setImage3('');
         setImage4('');
     };
+    
+    useEffect(() => {
+        if (hasSubmitted) {
+            const errors = {};
+            if (!name.length) errors.name = "Name is required";
+            if (!desc.length) errors.desc = "Description is required";
+            if (!condition) errors.condition = "Condition is required";
+            if (!size) errors.size = "Size is required";
+            if (!price) errors.price = "Price is required";
+            if (!image.length) errors.images = "Image is required";
+            if (!category) errors.category = "Category is required";
+            if (!subcategory) errors.subcategory = "Subcategory is required";
+            setErrors(errors);
+        }
+    }, [hasSubmitted, name, desc, condition, size, price, image, category, subcategory])
+
     return (
         <div className="newProductContainer">
             {!product &&
@@ -236,7 +236,9 @@ const ProductForm = ({ product }) => {
                         />
                     {errors.price && (<span className='errors'>{errors.price}</span>)}
                 </div>
-                <button className="confirmButtonDesign formButton" type="submit">{product ? "Edit item" : "List item"}</button>
+                <button className="confirmButtonDesign formButton" onClick={e => setHasSubmitted(true)} type="submit">
+                    {product ? "Edit item" : "List item"}
+                </button>
             </form>
         </div>
     )

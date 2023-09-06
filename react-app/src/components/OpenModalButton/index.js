@@ -16,7 +16,7 @@ function OpenModalButton({
   };
 
   return (
-    <div style={{"width": "100%"}} onClick={onClick}>{buttonText}</div>
+    <div style={{"width": "fit-content", "margin": "auto", "padding": "auto"}} onClick={onClick}>{buttonText}</div>
   );
 }
 

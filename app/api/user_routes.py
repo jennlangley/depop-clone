@@ -6,7 +6,6 @@ user_routes = Blueprint('users', __name__)
 
 
 @user_routes.route('/')
-@login_required
 def users():
     """
     Query for all users and returns them in a list of user dictionaries
@@ -15,11 +14,11 @@ def users():
     return {'users': [user.to_dict() for user in users]}
 
 
-@user_routes.route('/<int:id>')
+@user_routes.route('/<username>')
 @login_required
-def user(id):
+def user(username):
     """
-    Query for a user by id and returns that user in a dictionary
+    Query for a user by username and returns that user in a dictionary
     """
-    user = User.query.get(id)
+    user = User.query.filter_by(username=username).first()
     return user.to_dict()

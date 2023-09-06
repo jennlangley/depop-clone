@@ -4,7 +4,7 @@
 .profile-dropdown {
   background-color: white;
   border-radius: 4px;
-  box-shadow: 0px 0px 4px grey;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   list-style: none;
   padding: 10px;
   position: absolute;
@@ -27,6 +27,7 @@ button {
   padding: 0;
 }
 a {
+  color: inherit;
   text-decoration: none;
 }
 .searchBarContainer {
@@ -58,6 +59,7 @@ a {
 }
 
 .searchBarInput {
+  background-color: whitesmoke;
   border: 2px solid black;
   border-radius: 4px;
   height: 30px;
@@ -77,6 +79,7 @@ a {
 
 .headerContainer {
   align-items: center;
+  background-color: white;
   border-bottom: 1px solid grey;
   display: flex;
   height: 30px;
@@ -91,31 +94,36 @@ a {
 }
 .confirmButtonDesign, .deleteButtonDesign, .buttonDesign {
   border-radius: 4px;
-  /* box-shadow: 2px 4px 4px  #95b0b5; */
+  box-shadow: 2px 4px 4px  #95b0b5;
   color: white;
   cursor: pointer;
   font-size: 14px;
   font-weight: bold;
   padding: 6px 10px;
   text-align: center;
-  width: 100%;
 }
 
 .confirmButtonDesign {
-  background-color: #4dbecf;
+  background-color: #76d3ff;
 }
-
-.confirmButtonDesign:hover, .deleteButtonDesign:hover, .buttonDesign:hover {
-  opacity: 75%;
+.confirmButtonDesign:hover {
+  background-color: #76d4ffbf;
 }
 
 .deleteButtonDesign {
   background-color: rgb(214, 70, 70);
 }
+.deleteButtonDesign:hover {
+  background-color: rgba(214, 70, 70, 0.75);
+}
+
 .buttonDesign {
   background-color: grey;
   margin: 2px 0px;
   width: 100%;
+}
+.buttonDesign:hover {
+  background-color: rgba(128, 128, 128, 0.75);
 }
 
 .errors {
@@ -127,24 +135,24 @@ a {
   padding-inline-start: 0;
 }
 .dropdownLink {
+  color: #4cc6ff;
   cursor: pointer;
+  font-weight: bold;
+  padding: 1px;
   width: 100%;
-  color: rgb(90, 90, 90);
 }
 .dropdownLink:hover {
-  font-weight: bold;
-  color: #2b9eb0;
+  text-decoration: underline;
 }
 
 .dropdownButton {
   width: 100%;
-  
 }
 .active{
   color: none;
 }
 .buttonLink {
-  color: #4dbecf;
+  color: #4cc6ff;
   font-size: 16px;
   font-weight: bold;
   padding: 2px;

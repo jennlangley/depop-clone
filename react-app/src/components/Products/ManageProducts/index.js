@@ -19,9 +19,10 @@ const ManageProducts = () => {
     if (!user) return <Redirect to='/products' />
     return (
         (isLoaded && user) &&
-        <div className="">
-            <h3 id="modal-title">Manage your {Object.values(products).length} 
-            {Object.values(products).length === 1 ? " product" : " products"}</h3>
+        <div className="ordersContainer">
+            <h1>Manage your {Object.values(products).length} 
+                {Object.values(products).length === 1 ? " product" : " products"}
+            </h1>
             <div className="productsList">
                 {Object.values(products).map((product, idx) => 
                     <div key={idx}>

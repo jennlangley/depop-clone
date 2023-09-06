@@ -1,36 +1,40 @@
 .productItem {
-    list-style: none;
-    display: flex;
-    border: 1px solid whitesmoke;
     background-color: white;
+    border: 1px solid whitesmoke;
     border-radius: 4px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 2px 20px 0px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    display: flex;
+    list-style: none;
+    width: 245px;
 }
 .productPriceSize {
-    padding: 10px;
     background-color: white;
+    padding: 10px;
 }
 .productPriceSize:hover {
     background-color: whitesmoke;
 }
+.productsListContainer {
+    display: grid;
+    place-items: center;
+}
 .productsList {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    max-width: 1036px;
-    margin: auto;
-    padding: auto;
-    flex-shrink: 2;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 100%;
+
+    /*  */
 }
 .productImagesList {
     list-style: none;
-    padding: 0px;
     margin: 0px;
+    padding: 0px;
 }
 .productTileImage {
+    height: 245px;
     object-fit: cover;
     width: 245px;
-    height: 245px;
 }
 .productImagesContainer {
     display: flex;
@@ -39,8 +43,7 @@
     height: 400px;
 }
 .imageTileContainer {
-    height: 245px;
-    width: 245px;
+    max-width: 100%;
 }
 .productDetailContainer {
     display: flex;
@@ -48,19 +51,19 @@
     justify-content: center;
 }
 .productDetailsText {
-    width: 200px;
-    text-align: left;
     margin-left: 30px;
+    text-align: left;
+    width: 200px;
 }
 .manageProductsContainer {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 .editDeleteDiv {
     display: flex;
-    width: 100%;
     justify-content: space-evenly;
+    width: 100%;
 }
 
 .manageButtonContainer {
@@ -68,11 +71,13 @@
     width: 25%;
 }
 
-a {
-    color: #324b4f;
+@media (max-width: 1024px) {
+    .productsList {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
-/* 
-@screen < 1044 {
-
-    max-width: 800px
-} */
+@media (max-width: 764px) {
+    .productsList {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

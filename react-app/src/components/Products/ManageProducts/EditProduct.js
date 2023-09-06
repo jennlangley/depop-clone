@@ -19,8 +19,8 @@ const EditProduct = () => {
 
     return (
         isLoaded && 
-        <div>
-            <h1 id="modal-title">Edit your product details</h1>
+        <div className="ordersContainer">
+            <h1>Edit your product details</h1>
             <ProductForm product={product} />
         </div>
     )

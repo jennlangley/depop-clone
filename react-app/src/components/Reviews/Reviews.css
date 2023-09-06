@@ -3,9 +3,10 @@
     width: 500px;
 }
 .reviewStars {
+    cursor: pointer;
     display: flex;
 }
 .avgRating {
-    color: goldenrod;
+    color: #DAA520;
     font-size: 14px;
 }

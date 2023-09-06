@@ -6,6 +6,25 @@
     outline: none;
 }
 .reviewDiv {
-    display: inline-flex;
+    align-items: center;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
+}
+.reviewTextarea {
+    height: 100px;
+    padding-top: 5px;
+    resize: none;
+    width: 350px;
+}
+.reviewText {
+    padding: 5px 0px;
+    word-wrap: break-word;
+}
+.reviewDate {
+    font-size: 14px;
+    text-align: right;
+}
+#review {
+    margin: 6px 0px;
 }

@@ -3,7 +3,10 @@ import Products from "./Products";
 const ProductsIndex = () => {
 
     return(
-        <Products />
+        <div className="productsListContainer">
+            <Products />
+        </div>
+        
     )
 }
 
