@@ -36,7 +36,7 @@ const ProductDetail = ({ isLoaded }) => {
                 <div className="productImagesContainer">
                     <ul className="productImagesList">
                     {product.images.map((image, idx) => 
-                        <li key={idx} className="productItem">
+                        <li key={idx} className="productDetailItem">
                             <img alt={product.name} className="productImageItem" src={image.imageUrl} />
                         </li>)}
                     </ul>

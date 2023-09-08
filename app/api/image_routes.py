@@ -32,7 +32,7 @@ def edit_image(imageId):
     form = ImageForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     image = Image.query.get(imageId)
-    print(form.data['image'])
+
     if form.data['image']:
         image.image_url = form.data['image']
     else:

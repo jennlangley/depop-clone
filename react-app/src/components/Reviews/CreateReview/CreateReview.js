@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import * as reviewsActions from '../../../store/review';
+import { getOrders } from "../../../store/order";
 import './ReviewModal.css';
 
 const CreateReview = ({ orderId, editReview }) => {
@@ -15,18 +16,21 @@ const CreateReview = ({ orderId, editReview }) => {
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
+    const user = useSelector(state => state.session.user)
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (Object.values(errors).length < 1) {
             if (!editReview) {
-                dispatch(reviewsActions.createReview(orderId, {stars, review}))
+                await dispatch(reviewsActions.createReview(orderId, {stars, review}))
+                await dispatch(getOrders(user.id))
                 setHasSubmitted(false);
                 reset();
                 setErrors({});
                 closeModal();
             }
             if (editReview) {
-                dispatch(reviewsActions.editReview(editReview.id, {stars, review}))
+                await dispatch(reviewsActions.editReview(editReview.id, {stars, review}))
                 setHasSubmitted(false);
                 setErrors({});
                 closeModal();

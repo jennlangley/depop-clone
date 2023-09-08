@@ -109,8 +109,9 @@ export default function reducer(state = initialState, action) {
             action.payload.reviews.forEach(review => reviews[review.id] = review);
             return reviews;
         case CREATE_REVIEW:
-            newState[action.payload.id] = action.payload;
-            return newState;
+            const addReview = { ...state }
+            addReview[action.payload.id] = action.payload;
+            return addReview;
         case DELETE_REVIEW:
             delete newState[action.payload];
             return newState;

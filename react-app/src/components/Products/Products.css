@@ -7,6 +7,16 @@
     list-style: none;
     width: 245px;
 }
+.productDetailItem {
+    background-color: white;
+    border: 1px solid whitesmoke;
+    border-radius: 4px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    display: flex;
+    list-style: none;
+    width: 400px;
+    justify-content: center;
+}
 .productPriceSize {
     background-color: white;
     padding: 10px;
@@ -40,6 +50,7 @@
     display: flex;
 }
 .productImageItem {
+    object-fit: cover;
     height: 400px;
 }
 .imageTileContainer {
