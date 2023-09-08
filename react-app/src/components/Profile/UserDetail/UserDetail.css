@@ -1,18 +1,16 @@
 .userDetails {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
 }
 .profilePicture {
     align-items: center;
     display: flex;
     height: 100px;
     justify-content: center;
-    margin: auto;
-    padding: auto;
     width: 100px;
 }
 .details {
     padding: 2px;
+    margin: 0px;
 }
 .username {
     font-weight: bold;

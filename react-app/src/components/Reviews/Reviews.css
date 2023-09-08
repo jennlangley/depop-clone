@@ -3,10 +3,32 @@
     width: 500px;
 }
 .reviewStars {
-    cursor: pointer;
     display: flex;
 }
 .avgRating {
     color: #DAA520;
     font-size: 14px;
+}
+.reviewImg {
+    width: 100px;
+    height: 100px;
+    border: 1px solid gainsboro;
+    object-fit: cover;
+    max-width: none;
+}
+/* .imgContainer {
+    height: 100px;
+    width: 100px;
+    
+} */
+.review-image {
+    display: flex;
+    margin: 10px;
+}
+.reviews-title {
+    margin: 0px 10px;
+    border-bottom: 1px solid gainsboro;
+}
+#review {
+    width: 300px;
 }

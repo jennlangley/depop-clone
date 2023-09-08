@@ -16,7 +16,7 @@ function OpenModalButton({
   };
 
   return (
-    <div style={{"width": "fit-content", "margin": "auto", "padding": "auto"}} onClick={onClick}>{buttonText}</div>
+    <div style={{"cursor": "pointer","margin": "auto", "padding": "auto"}} onClick={onClick}>{buttonText}</div>
   );
 }
 

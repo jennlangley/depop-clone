@@ -20,7 +20,7 @@ def seed_products():
         size="M", price=25.00, sold=False,
     )
     product_4 = Product(
-        name="Women's Khaki Dress", user_id=1,
+        name="Women's Dress", user_id=1,
         desc="Formal silky womens dress, worn once, great for special occasions", 
         condition="Like new", 
         size="S", price=30.00, sold=False,

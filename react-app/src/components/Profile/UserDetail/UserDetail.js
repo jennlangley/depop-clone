@@ -6,7 +6,7 @@ import ReviewStars from '../ReviewStars';
 import OpenModalButton from '../../OpenModalButton';
 import Reviews from '../../Reviews/Reviews';
 
-const UserDetail = ({ user }) => {
+const UserDetail = ({ user, previewImage }) => {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const userId = user.id;
@@ -40,8 +40,8 @@ const UserDetail = ({ user }) => {
                 <div className='details'>
 
                     <OpenModalButton 
-                    modalComponent={<Reviews user={user} reviews={reviews} />} 
-                    buttonText={<ReviewStars avgRating={avgRating} />}
+                        modalComponent={<Reviews user={user} reviews={reviews} />} 
+                        buttonText={<ReviewStars avgRating={avgRating} />}
                     />
 
                 </div>

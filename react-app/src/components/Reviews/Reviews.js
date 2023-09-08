@@ -1,11 +1,12 @@
 import Review from './Review';
 import './Reviews.css';
 
-const Reviews = ({ reviews }) => {
+const Reviews = ({ reviews, user }) => {
 
     return (
         Object.values(reviews).length ?
         <div id="reviews-container">
+        <h3 className='reviews-title'>Reviews for {user.username}</h3>
         {Object.values(reviews).map((review, idx) =>
             <Review key={idx} review={review} />
         )}

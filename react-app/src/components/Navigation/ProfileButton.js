@@ -52,21 +52,21 @@ function ProfileButton({ user, isLoaded }) {
             <li className="dropdownLink"><NavLink exact to="/products/manage">Your Products</NavLink></li>
             <li className="dropdownLink"><NavLink exact to="/orders">Orders</NavLink></li>
             <li className="dropdownLink">
-              <button className="buttonDesign" onClick={handleLogout}>Log Out</button>
+              <button className="buttonDesign" style={{"width": "100%"}} onClick={handleLogout}>Log Out</button>
             </li>
           </>
         ) : (
           <>
             <li className="dropdownButton">
               <OpenModalButton
-              buttonText=<button className="buttonDesign">Log In</button>
+              buttonText=<button className="buttonDesign" style={{"width": "100%"}}>Log In</button>
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
               />
             </li>
             <li className="dropdownButton">
               <OpenModalButton
-              buttonText=<button className="buttonDesign">Sign Up</button>
+              buttonText=<button className="buttonDesign" style={{"width": "100%"}}>Sign Up</button>
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
               />

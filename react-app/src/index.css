@@ -6,6 +6,7 @@ body {
     margin: 0;
     padding: 0;
     word-wrap: break-word;
+    min-height: 800px;
 }
 header {
     background-color: white;
@@ -36,4 +37,5 @@ nav, .sidebar-header {
 }
 img {
     max-width: 100%;
+    max-height: 100%;
 }

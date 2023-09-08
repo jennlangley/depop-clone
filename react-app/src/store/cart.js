@@ -18,7 +18,7 @@ export const removeFromCart = (productId) => ({
 
 const getLocalCartData = () => {
     let localCartData = localStorage.getItem("cart");
-    if (localCartData === []) {
+    if (localCartData == []) {
         return [];
     } else {
         return JSON.parse(localCartData);

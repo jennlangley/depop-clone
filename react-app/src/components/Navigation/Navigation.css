@@ -120,7 +120,6 @@ a {
 .buttonDesign {
   background-color: grey;
   margin: 2px 0px;
-  width: 100%;
 }
 .buttonDesign:hover {
   background-color: rgba(128, 128, 128, 0.75);
