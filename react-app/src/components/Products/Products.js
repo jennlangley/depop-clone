@@ -14,7 +14,7 @@ const Products = () => {
         dispatch(getProducts()).then(() => setIsLoaded(true));
     }, [dispatch])
 
-    const products = useSelector(state => state.products)
+    const products = useSelector(state => Object.values(state.products).filter(product => product.sold === false))
 
     return (
         isLoaded &&

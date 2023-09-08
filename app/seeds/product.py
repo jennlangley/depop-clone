@@ -12,7 +12,7 @@ def seed_products():
         name="Yellow Sweater", user_id=2,
         desc="Vintage sweater, great condition very comfortable and warm material", 
         condition="Used - Excellent", 
-        size="L", price=32.00, sold=False,
+        size="L", price=32.00, sold=True,
     )
     product_3 = Product(
         name="Men's Blue Jeans", user_id=2,
