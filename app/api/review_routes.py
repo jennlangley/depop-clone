@@ -42,7 +42,8 @@ def create_review(orderId):
         # insert the reviewId into the order
         order.review_id = review.id
         db.session.commit()
-        return review.to_dict()
+        return {'review': review.to_dict(),
+                'order': order.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
@@ -69,7 +70,8 @@ def edit_review(reviewId):
 def delete_review(reviewId):
     review = Review.query.get(reviewId)
     if review:
+        order = Order.query.filter_by(review_id=reviewId).first()
         db.session.delete(review)
         db.session.commit()
-        return {'message': 'Review successfully deleted'}
+        return {'order': order.to_dict()}
     return {'errors': 'Product not found'}

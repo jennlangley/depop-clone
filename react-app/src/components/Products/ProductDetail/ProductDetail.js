@@ -19,6 +19,8 @@ const ProductDetail = ({ isLoaded }) => {
     const userProducts = useSelector(state => Object.values(state.products).filter(prod => (prod.userId === product.userId && prod.id !== product.id)))
     const user = useSelector(state => state.session.user);
     const [inCart, setInCart] = useState(false);
+    const [imageIdx, setImageIdx] = useState(0)
+    const [imageUrl, setImageUrl] = useState(product.images[0].imageUrl)
     
     useEffect(() => {
         const alreadyInCart = cartItems.filter(item => item.id === product.id)
@@ -33,14 +35,18 @@ const ProductDetail = ({ isLoaded }) => {
         isLoaded && 
             (<div>
                 <div className="productDetailContainer">
+                
                 <div className="productImagesContainer">
-                    <ul className="productImagesList">
-                    {product.images.map((image, idx) => 
-                        <li key={idx} className="productDetailItem">
-                            <img alt={product.name} className="productImageItem" src={image.imageUrl} />
-                        </li>)}
-                    </ul>
+                    <div className="imageThumbnails">
+                        {product.images.map((image, idx) => <img key={idx} className="thumbnail" src={image.imageUrl} />)} 
+                    </div>
+
+                   
+                    <div className="productDetailItem">
+                        <img className="productImageItem" src={imageUrl} />
+                    </div>
                 </div>
+
                 <div className="productDetailsText">
                     <div className="productName">
                        {product.name}  

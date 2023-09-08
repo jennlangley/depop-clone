@@ -9,7 +9,7 @@ const Order = ({ order, reviews }) => {
     const product = order.product;
 
 
-    const review = (Object.values(reviews).filter(review => review?.id === order.reviewId))[0]
+    const review = (Object.values(reviews).find(review => review?.id === order.reviewId))
 
     return (
         <div className="orderItem">

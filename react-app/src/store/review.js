@@ -1,3 +1,5 @@
+import { updateOrder } from "./order";
+
 const GET_REVIEWS = 'reviews/GET_REVIEWS';
 const CREATE_REVIEW = 'reviews/CREATE_REVIEW';
 const DELETE_REVIEW = 'reviews/DELETE_REVIEW'; 
@@ -64,6 +66,8 @@ export const createReview = (productId, review) => async (dispatch) => {
     if (response.ok) {
         const data = await response.json();
         dispatch(createReviewAction(data));
+        // Inserts the reviewId into the order which the review was made
+        dispatch(updateOrder(data));
         return;
     } else {
         return response.errors;
@@ -92,7 +96,11 @@ export const deleteReview = (reviewId) => async (dispatch) => {
         method: "DELETE"
     })
     if (response.ok) {
+        const orderId = await response.json();
+        console.log(orderId)
         dispatch(deleteReviewAction(reviewId));
+        // Will set reviewId back to null by sending the updated DB order
+        dispatch(updateOrder(orderId))
         return;
     } else {
         return response.errors;
@@ -109,9 +117,8 @@ export default function reducer(state = initialState, action) {
             action.payload.reviews.forEach(review => reviews[review.id] = review);
             return reviews;
         case CREATE_REVIEW:
-            const addReview = { ...state }
-            addReview[action.payload.id] = action.payload;
-            return addReview;
+            newState[action.payload.review.id] = action.payload.review;
+            return newState;
         case DELETE_REVIEW:
             delete newState[action.payload];
             return newState;

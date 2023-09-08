@@ -1,8 +1,15 @@
 const GET_ORDERS = 'orders/GET_ORDERS';
+const UPDATE_ORDER = 'orders/UPDATE_ORDER';
 
 const getOrdersAction = (orders) => ({
     type: GET_ORDERS,
     payload: orders
+})
+
+// Actions for adding and removing reviewId from the order
+export const updateOrder = (order) => ({
+    type: UPDATE_ORDER,
+    payload: order
 })
 
 export const getOrders = (userId) => async (dispatch) => {
@@ -29,6 +36,9 @@ export default function reducer(state = initialState, action) {
             const orders = {};
             action.payload.orders.forEach(order => orders[order.id] = order);
             return orders;
+        case UPDATE_ORDER:
+            newState[action.payload.order.id] = action.payload.order;
+            return newState;
         default:
             return newState;
     }

@@ -23,7 +23,6 @@ const CreateReview = ({ orderId, editReview }) => {
         if (Object.values(errors).length < 1) {
             if (!editReview) {
                 await dispatch(reviewsActions.createReview(orderId, {stars, review}))
-                await dispatch(getOrders(user.id))
                 setHasSubmitted(false);
                 reset();
                 setErrors({});
