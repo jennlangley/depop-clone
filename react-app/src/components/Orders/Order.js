@@ -14,7 +14,7 @@ const Order = ({ order, reviews }) => {
     return (
         <div className="orderItem">
             <div>
-                <img id="orderImage" className="productTileImage" alt={product.name} src={product.images[0].imageUrl} />
+                <img id="orderImage" className="productTileImage" alt={product.name} src={product.images[0]?.imageUrl} />
             </div>
             <div className="orderDetails">
                 <h3>{product.name}</h3>

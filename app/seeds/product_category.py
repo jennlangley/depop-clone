@@ -8,7 +8,7 @@ def seed_products_categories():
         product_id=1, category_id=7
     )
     product_2 = ProductCategory(
-        product_id=2, category_id=4
+        product_id=2, category_id=5
     )
     product_3 = ProductCategory(
         product_id=3, category_id=6
@@ -28,6 +28,43 @@ def seed_products_categories():
     product_8 = ProductCategory(
         product_id=8, category_id=12
     )
+    product_9 = ProductCategory(
+        product_id=9, category_id=4
+    )
+    product_10 = ProductCategory(
+        product_id=10, category_id=4
+    )
+    product_11 = ProductCategory(
+        product_id=11, category_id=11
+    )
+    product_12 = ProductCategory(
+        product_id=12, category_id=10
+    )
+    product_13 = ProductCategory(
+        product_id=13, category_id=13
+    )
+    product_14 = ProductCategory(
+        product_id=14, category_id=13
+    )
+    product_15 = ProductCategory(
+        product_id=15, category_id=8
+    )
+    product_16 = ProductCategory(
+        product_id=16, category_id=10
+    )
+    product_17 = ProductCategory(
+        product_id=17, category_id=7
+    )
+    product_18 = ProductCategory(
+        product_id=18, category_id=5
+    )
+    product_19 = ProductCategory(
+        product_id=19, category_id=6
+    )
+    product_20 = ProductCategory(
+        product_id=20, category_id=7
+    )
+
 
     db.session.add(product_1)
     db.session.add(product_2)
@@ -37,6 +74,18 @@ def seed_products_categories():
     db.session.add(product_6)
     db.session.add(product_7)
     db.session.add(product_8)
+    db.session.add(product_9)
+    db.session.add(product_10)
+    db.session.add(product_11)
+    db.session.add(product_12)
+    db.session.add(product_13)
+    db.session.add(product_14)
+    db.session.add(product_15)
+    db.session.add(product_16)
+    db.session.add(product_17)
+    db.session.add(product_18)
+    db.session.add(product_19)
+    db.session.add(product_20)
 
     db.session.commit()
 

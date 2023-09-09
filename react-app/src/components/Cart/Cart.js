@@ -4,6 +4,7 @@ import { useCart } from '../../context/CartContext';
 import { useEffect, useState } from 'react';
 import { getProducts } from '../../store/product';
 import './Cart.css';
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Cart = () => {
     const { cartItems } = useCart();
@@ -35,7 +36,9 @@ const Cart = () => {
             <hr />
             <span>Total: ${cartTotal.toFixed(2)}</span>
             <form onSubmit={onSubmit}>
-                <button className='confirmButtonDesign' type="submit">Checkout</button>
+                <button className='confirmButtonDesign' type="submit">
+                    <NavLink to="/checkout">Checkout</NavLink>
+                </button>
             </form>
         </div>
     )

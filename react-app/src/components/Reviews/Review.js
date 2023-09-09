@@ -7,7 +7,7 @@ const Review = ({ review }) => {
     return (
         <div className="review-image">
             <div className="imgContainer">
-                <img className="reviewImg" src={product.images[0].imageUrl} />
+                <img className="reviewImg" src={product.images[0]?.imageUrl} />
             </div>
             <div id="review"> 
                 <div>{review.user.username}</div>
