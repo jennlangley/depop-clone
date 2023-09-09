@@ -16,9 +16,9 @@ const Cart = ({ checkout }) => {
     }
 
     if (!cartItems || !cartItems.length) return (
-        <div className='cart'>
+        <h3 className='cart' style={{textAlign: "center"}}>
             No items in cart
-        </div>
+        </h3>
     )
 
     // TODO calculate the total amount for the cart
@@ -30,12 +30,12 @@ const Cart = ({ checkout }) => {
 
     return (
         <div className='cart'>
-            <ul>
+            <ul className='cartList'>
                 {cartItems.map(item => <CartItem key={item.id} productId={item.id} />)}
             </ul>
             <hr />
-            <span>Total: ${cartTotal.toFixed(2)}</span>
-            <form onSubmit={onSubmit}>
+            <span className='productPrice'>Total: ${cartTotal.toFixed(2)}</span>
+            <form className='checkoutButton' onSubmit={onSubmit}>
                 <button className='confirmButtonDesign' type="submit">
                     {checkout ? 
                         <span onClick={(e) => alert("Feature coming soon!")}>Checkout</span>

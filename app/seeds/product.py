@@ -4,23 +4,23 @@ from sqlalchemy.sql import text
 
 def seed_products():
     product_1 = Product(
-        name="Women's Blue Jeans", user_id=1,
+        name="Basic Blue Jeans", user_id=1,
         desc="High quality blue jeans, perfect for all seasons!", condition="Used - Good", 
         size="S", price=15.00, sold=False,
     )
     product_2 = Product(
-        name="Yellow Sweater", user_id=2,
+        name="Knitted Sweater", user_id=2,
         desc="Vintage sweater, great condition very comfortable and warm material", 
         condition="Used - Excellent", 
         size="L", price=32.00, sold=True,
     )
     product_3 = Product(
-        name="Men's Blue Jeans", user_id=2,
+        name="Everyday Blue Jeans", user_id=2,
         desc="Vintage jeans, there were my dad's from the 80s-90s, one of a kind!", condition="Used - Excellent", 
         size="M", price=25.00, sold=True,
     )
     product_4 = Product(
-        name="Women's Dress", user_id=1,
+        name="Blue Dress", user_id=1,
         desc="Formal silky womens dress, worn once, great for special occasions", 
         condition="Like new", 
         size="S", price=30.00, sold=False,

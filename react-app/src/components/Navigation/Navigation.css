@@ -8,8 +8,8 @@
   list-style: none;
   padding: 10px;
   position: absolute;
-  right: 15px;
-  top: 48px;
+  right: 30px;
+  top: 55px;
   width: 120px;
   z-index: 3;
 }
@@ -50,7 +50,7 @@ a {
 }
 
 .searchBarForm {
-  background-color: white;
+  background-color: #fffefa;
   display: flex;
   margin: auto;
   max-width: 704px;
@@ -79,10 +79,10 @@ a {
 
 .headerContainer {
   align-items: center;
-  background-color: white;
+  background-color: #f3efe5;
   border-bottom: 1px solid grey;
   display: flex;
-  height: 30px;
+  height: 50px;
   justify-content: space-between;
   margin: 0px auto 30px;
   padding: 12px 32px;

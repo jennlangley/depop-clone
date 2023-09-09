@@ -15,7 +15,7 @@ const ManageProducts = () => {
     }, [dispatch])
 
     const user = useSelector(state => state.session.user)
-    const products = useSelector(state => Object.values(state.products).filter(product => product.userId === user?.id))
+    const products = useSelector(state => Object.values(state.products).filter(product => (product.userId === user?.id) && (product.sold === false)))
     if (!user) return <Redirect to='/products' />
     return (
         (isLoaded && user) &&

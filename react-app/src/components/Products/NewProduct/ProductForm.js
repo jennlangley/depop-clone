@@ -107,11 +107,15 @@ const ProductForm = ({ product }) => {
             if (!size) errors.size = "Size is required";
             if (!price) errors.price = "Price is required";
             if (!image.length) errors.images = "Image is required";
+            if (!(image.endsWith('.png') || image.endsWith('.jpg') || image.endsWith('.jpeg'))) errors.image = "Image URL must end in .png, .jpg, or .jpeg";
+            if (!(image2.endsWith('.png') || image2.endsWith('.jpg') || image2.endsWith('.jpeg'))) errors.image2 = "Image URL must end in .png, .jpg, or .jpeg";
+            if (!(image3.endsWith('.png') || image3.endsWith('.jpg') || image3.endsWith('.jpeg'))) errors.image3 = "Image URL must end in .png, .jpg, or .jpeg";
+            if (!(image4.endsWith('.png') || image4.endsWith('.jpg') || image4.endsWith('.jpeg'))) errors.image4 = "Image URL must end in .png, .jpg, or .jpeg";
             if (!category) errors.category = "Category is required";
             if (!subcategory) errors.subcategory = "Subcategory is required";
             setErrors(errors);
         }
-    }, [hasSubmitted, name, desc, condition, size, price, image, category, subcategory])
+    }, [hasSubmitted, name, desc, condition, size, price, image, category, subcategory, image2, image3, image4])
 
     return (
         <div className="newProductContainer">
@@ -136,25 +140,32 @@ const ProductForm = ({ product }) => {
                     placeholder="Image URL"
                     onChange={e => setImage(e.target.value)}
                     />
+                    {errors.images && (<span className='errors'>{errors.images}
+                    
+                    {errors.image && (<span className='errors'>{", "}{errors.image}</span>)}
+                    </span>)}
+                    
                     <input 
                     value={image2}
                     className="inputBox" 
                     placeholder="Image URL"
                     onChange={e => setImage2(e.target.value)}
                     />
+                    {errors.image2 && (<span className='errors'>{errors.image2}</span>)}
                     <input 
                     value={image3}
                     className="inputBox" 
                     placeholder="Image URL"
                     onChange={e => setImage3(e.target.value)}
                     />
+                    {errors.image3 && (<span className='errors'>{errors.image3}</span>)}
                     <input 
                     value={image4}
                     className="inputBox" 
                     placeholder="Image URL"
                     onChange={e => setImage4(e.target.value)}
                     />
-                    {errors.images && (<span className='errors'>{errors.images}</span>)}
+                    {errors.image4 && (<span className='errors'>{errors.image4}</span>)}
                 </div>
                 <div className="formItemContainer">
                     <label className="formLabel">Name</label>

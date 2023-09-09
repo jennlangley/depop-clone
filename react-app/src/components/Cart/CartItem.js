@@ -11,21 +11,23 @@ const CartItem = ({ productId }) => {
     return (
         <li className="cartItem">
             <div className="cartItemContainer">
+            <img className="cartImage" alt={product.name} src={product.images[0].imageUrl} />
                 <div className="productInfo">
-                    <img className="cartImage" alt={product.name} src={product.images[0].imageUrl} />
+                    
                     <div>{product.name}</div>
-                </div>
-                <div className="productPrice">
+                    <div className="productPrice">
                     $ {product.price}
+                    </div>
+                </div>
+                <div>
+                    <button className="deleteButtonDesign"
+                        onClick={() => removeFromCart(productId)}
+                    >
+                        Remove
+                    </button>
                 </div>
             </div>
-            <div className="cartItemMenu">
-                <button className="deleteButtonDesign"
-                    onClick={() => removeFromCart(productId)}
-                >
-                    Remove
-                </button>
-            </div>
+            
         </li>
     )
 }

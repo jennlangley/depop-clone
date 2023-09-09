@@ -7,7 +7,8 @@ const Checkout = () => {
 
     if (!user) return <Redirect to="/login" />
     return (
-        <div>Checkout
+        <div>
+            <h1 style={{"textAlign": "center"}}>Checkout</h1>
             <div>
                 <Cart checkout={true} />
             </div>

@@ -9,7 +9,7 @@
 }
 
 .productPriceSize {
-    background-color: white;
+    background-color: #fffefa;
     padding: 10px;
 }
 .productPriceSize:hover {
@@ -62,6 +62,7 @@
 .manageButtonContainer {
     display: flex;
     width: 25%;
+    min-width: fit-content;
 }
 
 @media (max-width: 1024px) {

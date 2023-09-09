@@ -7,27 +7,15 @@
 }
 .orderItem {
     display: flex;
-    padding: 10px 0px;
+    padding: 10px 10px;
     margin: 5px;
     border: 1px solid whitesmoke;
-    background-color: white;
+    background-color: #fffefa;
     border-radius: 4px;
     justify-content: space-between;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     width: 500px;
 
-}
-#orderImage {
-    height: 150px;
-    width: 150px;
-}
-.orderDetails {
-    width: 350px;
-}
-.editButton, .deleteButton, .createButton {
-    border: 2px solid grey;
-    padding: 2px 6px;
-    border-radius: 6px;
 }
 .orderReview {
     margin: 10px;
@@ -35,12 +23,28 @@
     background-color: rgb(243, 243, 243);
     border-radius: 4px;
 }
+.orderReview img {
+    display: none;
+}
+#orderImage {
+    height: 150px;
+    width: 150px;
+    border: 1px solid gainsboro;
+}
+.orderDetails {
+    width: 350px;
+    margin-left: 5px;
+}
+.editButton, .deleteButton, .createButton {
+    border: 2px solid grey;
+    padding: 2px 6px;
+    border-radius: 6px;
+}
 #review {
     margin-left: 10px;
+    margin-right: 5px;
+    width: 100%;
 }
 .thinButton {
-
     width: fit-content;
-
-
 }

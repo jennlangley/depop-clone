@@ -1,18 +1,17 @@
 /* TODO Add site wide styles */
 html {
-    background-color: white;
+    background-color: #fefaef;
 }
 body {
     margin: 0;
     padding: 0;
-    word-wrap: break-word;
     min-height: 800px;
 }
 header {
-    background-color: white;
+    background-color: #fffefa;
 }
 .sidebar {
-    background-color: white;
+    background-color: #fffefa;
     bottom: 0;
     box-shadow: 0px 0 8px 1px lightgray;
     position: fixed;
@@ -38,4 +37,10 @@ nav, .sidebar-header {
 img {
     max-width: 100%;
     max-height: 100%;
+}
+#site-logo {
+    position: relative;
+    left: -20px;
+    top: 2px;
+    width: 250px;
 }
