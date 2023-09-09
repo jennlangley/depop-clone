@@ -5,6 +5,7 @@ import { getReviews } from '../../../store/review';
 import ReviewStars from '../ReviewStars';
 import OpenModalButton from '../../OpenModalButton';
 import Reviews from '../../Reviews/Reviews';
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
 const UserDetail = ({ user, previewImage }) => {
     const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const UserDetail = ({ user, previewImage }) => {
             </div>
             <div className='userReviews'>
                 <div className='username details'>
-                    {user.username}
+                    <NavLink to={`/users/${user.username}`}>{user.username}</NavLink>
                 </div>
                 <div className='details'>
 

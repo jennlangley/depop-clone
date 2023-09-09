@@ -2,38 +2,42 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getProducts } from "../../../store/product";
+import { getProductDetails, getProducts } from "../../../store/product";
 import UserDetail from "../../Profile/UserDetail/UserDetail";
 import './ProductDetail.css';
 import ProductTile from "../ProductTile";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { useCart } from "../../../context/CartContext";
+import NotFound from "../../NotFound";
 
-const ProductDetail = ({ isLoaded }) => {
+const ProductDetail = () => {
     const { productId } = useParams();
-    const dispatch = useDispatch();
-
     const { addToCart, removeFromCart, cartItems } = useCart();
-    
+    const dispatch = useDispatch();
+    const [isLoaded, setIsLoaded] = useState(false)
     const product = useSelector(state => state.products[+productId]);
     const userProducts = useSelector(state => Object.values(state.products).filter(prod => (prod.userId === product.userId && prod.id !== product.id)))
     const user = useSelector(state => state.session.user);
     const [inCart, setInCart] = useState(false);
     const [imageIdx, setImageIdx] = useState(0);
     const [hover, setHover] = useState(0);
-    const images = product.images;
 
     useEffect(() => {
+
+        dispatch(getProductDetails(productId)).then(() => setIsLoaded(true));
+
         const alreadyInCart = cartItems.filter(item => item.id === product.id)
         if (alreadyInCart.length) {
             setInCart(true);
         } else {
             setInCart(false);
         }
-    }, [cartItems])
+
+    }, [dispatch, cartItems])
 
     return(
-        isLoaded && 
+        isLoaded &&
+            (product ?
             (<div className="productDetail">
                 <div className="productDetailContainer">
                 
@@ -48,7 +52,7 @@ const ProductDetail = ({ isLoaded }) => {
                         )} 
                     </div>
                     <div className="productDetailItem">
-                        <img className="displayImage" src={images[hover].imageUrl} />
+                        <img className="displayImage" src={product.images[hover].imageUrl} />
                     </div>
                 </div>
 
@@ -108,6 +112,9 @@ const ProductDetail = ({ isLoaded }) => {
             </div>
                 
             </div>)
+            :
+            <><NotFound /></>
+        )
     )
 }
 

@@ -120,6 +120,11 @@ const ProductForm = ({ product }) => {
                <h1>List an item</h1> 
             </div>
             }
+            {(!errors && validationErrors) &&
+                <ul>
+                    {validationErrors.map(err => <li>{err}</li>)}
+                </ul>
+            }
             <form className="productForm" onSubmit={handleSubmit}>
                 <h2>Photos</h2>
                 <div>Add up to 4 photos</div>
