@@ -6,7 +6,7 @@ import { getProducts } from '../../store/product';
 import './Cart.css';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
-const Cart = () => {
+const Cart = ({ checkout }) => {
     const { cartItems } = useCart();
     const products = useSelector(state => state.products)
     const onSubmit = (e) => {
@@ -37,7 +37,12 @@ const Cart = () => {
             <span>Total: ${cartTotal.toFixed(2)}</span>
             <form onSubmit={onSubmit}>
                 <button className='confirmButtonDesign' type="submit">
-                    <NavLink to="/checkout">Checkout</NavLink>
+                    {checkout ? 
+                        <span onClick={(e) => alert("Feature coming soon!")}>Checkout</span>
+                        :
+                        <NavLink to="/checkout">Checkout</NavLink>
+                    }
+                    
                 </button>
             </form>
         </div>

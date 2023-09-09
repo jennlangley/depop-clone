@@ -9,7 +9,7 @@ const Checkout = () => {
     return (
         <div>Checkout
             <div>
-                <Cart />
+                <Cart checkout={true} />
             </div>
         </div>
 
