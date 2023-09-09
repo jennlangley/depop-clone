@@ -11,6 +11,7 @@ import ProductDetail from "./components/Products/ProductDetail/ProductDetail";
 import ManageProducts from "./components/Products/ManageProducts";
 import EditProduct from "./components/Products/ManageProducts/EditProduct";
 import Orders from "./components/Orders";
+import Checkout from "./components/Cart/Checkout";
 import Cart from "./components/Cart";
 import NotFound from "./components/NotFound";
 import Profile from "./components/Profile/Profile";
@@ -60,6 +61,9 @@ function App() {
           </Route>
           <Route path="/users/:username">
             <Profile />
+          </Route>
+          <Route path="/checkout">
+            <Checkout />
           </Route>
           <Route path="">
             <NotFound />

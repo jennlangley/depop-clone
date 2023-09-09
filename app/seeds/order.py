@@ -16,6 +16,9 @@ def seed_orders():
     order_4 = Order(
         product_id=2, user_id=1,
     )
+    order_5 = Order(
+        product_id=3, user_id=1
+    )
     # order_4 = Order(
     #     product_id=,user_id=
     # )
@@ -27,6 +30,7 @@ def seed_orders():
     db.session.add(order_2)
     db.session.add(order_3)
     db.session.add(order_4)
+    db.session.add(order_5)
     # db.session.add(order_4)
     # db.session.add(order_5)
 

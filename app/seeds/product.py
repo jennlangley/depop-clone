@@ -17,7 +17,7 @@ def seed_products():
     product_3 = Product(
         name="Men's Blue Jeans", user_id=2,
         desc="Vintage jeans, there were my dad's from the 80s-90s, one of a kind!", condition="Used - Excellent", 
-        size="M", price=25.00, sold=False,
+        size="M", price=25.00, sold=True,
     )
     product_4 = Product(
         name="Women's Dress", user_id=1,
