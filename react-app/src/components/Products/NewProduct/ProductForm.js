@@ -137,6 +137,7 @@ const ProductForm = ({ product }) => {
                 <div className="formItemContainer">
                     <label className="formLabel">Images</label>
                     <input 
+                    maxLength={500}
                     value={image}
                     className="inputBox" 
                     placeholder="Image URL"
@@ -145,6 +146,7 @@ const ProductForm = ({ product }) => {
                     {errors.images && (<span className='errors'>{errors.images}</span>)}
                     {errors.image && (<span style={{marginTop: "0"}} className='errors'>{errors.image}</span>)}
                     <input 
+                    maxLength={500}
                     value={image2}
                     className="inputBox" 
                     placeholder="Image URL"
@@ -152,6 +154,7 @@ const ProductForm = ({ product }) => {
                     />
                     {errors.image2 && (<span className='errors'>{errors.image2}</span>)}
                     <input 
+                    maxLength={500}
                     value={image3}
                     className="inputBox" 
                     placeholder="Image URL"
@@ -159,6 +162,7 @@ const ProductForm = ({ product }) => {
                     />
                     {errors.image3 && (<span className='errors'>{errors.image3}</span>)}
                     <input 
+                    maxLength={500}
                     value={image4}
                     className="inputBox" 
                     placeholder="Image URL"
@@ -169,6 +173,7 @@ const ProductForm = ({ product }) => {
                 <div className="formItemContainer">
                     <label className="formLabel">Name</label>
                     <input
+                        maxLength={100}
                         value={name}
                         onChange={e => setName(e.target.value)}
                         className="inputBox" 
@@ -178,6 +183,7 @@ const ProductForm = ({ product }) => {
                 <div className="formItemContainer">
                     <label>Description</label>
                     <textarea
+                        maxLength={500}
                         value={desc}
                         placeholder="eg. small grey t-shirt, worn once"
                         onChange={e => setDesc(e.target.value)}

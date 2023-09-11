@@ -85,6 +85,7 @@ const CreateReview = ({ orderId, editReview }) => {
                     <div className="reviewDiv">
                         <label>Review</label>
                             <textarea 
+                                maxLength={255}
                                 className="inputBox reviewTextarea"
                                 placeholder="How was your buying experience?"
                                 value={review}
