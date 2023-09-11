@@ -1,6 +1,6 @@
 # Style Swap
 
-An e-commerce site to sell and buy from other people across the globe.
+E-commerce website to sell and buy from other people across the globe.
 
 ## Getting started
 1. Clone this repository (only this branch)
