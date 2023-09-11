@@ -97,7 +97,6 @@ export const deleteReview = (reviewId) => async (dispatch) => {
     })
     if (response.ok) {
         const orderId = await response.json();
-        console.log(orderId)
         dispatch(deleteReviewAction(reviewId));
         // Will set reviewId back to null by sending the updated DB order
         dispatch(updateOrder(orderId))
