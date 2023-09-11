@@ -11,7 +11,8 @@
 }
 .cart .productInfo {
     margin: 0px 0px 0px 5px;
-
+    width: 100px;
+    word-wrap: break-word;
 }
 .cartItem {
     display: flex;
@@ -69,6 +70,7 @@
     width: fit-content;
     float: right;
 }
+
 .cartList {
     list-style: none;
     padding-inline-start: 0px;
