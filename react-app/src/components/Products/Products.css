@@ -35,14 +35,15 @@
 .productTileImage {
     height: 245px;
     object-fit: cover;
+    object-position: top;
     width: 245px;
 }
 .productImagesContainer {
     display: flex;
 }
 .productImageItem {
-    object-fit: cover;
     height: 400px;
+    object-fit: cover;
 }
 .imageTileContainer {
     max-width: 100%;
@@ -61,8 +62,8 @@
 
 .manageButtonContainer {
     display: flex;
-    width: 25%;
     min-width: fit-content;
+    width: 25%;
 }
 
 @media (max-width: 1024px) {

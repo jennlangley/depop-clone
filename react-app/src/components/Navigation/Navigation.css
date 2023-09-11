@@ -163,3 +163,14 @@ a {
   color: rgb(98, 98, 98);
   font-size: 22px;
 }
+#cartCount {
+  border-radius: 50%;
+  top: 25%;
+  right: 7.5%;
+  padding: .5px 4px;
+  font-weight: bold;
+  background-color: red;
+  color: white;
+  position: absolute;
+  font-size: 13px;
+}

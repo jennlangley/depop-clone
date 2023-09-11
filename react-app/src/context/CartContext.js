@@ -12,8 +12,9 @@ export function CartProvider({ children }) {
     const [isOpen, setIsOpen] = useState(false);
     const [cartItems, setCartItems] = useLocalStorage("shopping-cart", []);
 
-    const openCart = () => setIsOpen(true)
+    const openCart = () => setIsOpen(true);
     const closeCart = () => setIsOpen(false);
+    const toggleCart = () => setIsOpen(!isOpen);
 
     function addToCart(id) {
         setCartItems(currItems => {
@@ -28,7 +29,7 @@ export function CartProvider({ children }) {
 
     return (
         <CartContext.Provider 
-            value={{ addToCart, removeFromCart, cartItems, openCart, closeCart}}>
+            value={{ addToCart, removeFromCart, cartItems, openCart, closeCart, toggleCart}}>
             {children}
             <ShoppingCart isOpen={isOpen} />
         </CartContext.Provider>

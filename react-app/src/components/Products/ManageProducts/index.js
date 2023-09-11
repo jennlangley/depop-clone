@@ -29,11 +29,11 @@ const ManageProducts = () => {
                         <ProductTile product={product} />
                         <div className="editDeleteDiv">
                             <div className="manageButtonContainer">
-                                <div className="confirmButtonDesign">
-                                    <NavLink style={{color: "white"}} to={`/products/${product.id}/edit`}>
-                                        Edit
-                                    </NavLink>
-                                </div>
+                                <NavLink style={{color: "white"}} to={`/products/${product.id}/edit`}>
+                                    <div className="confirmButtonDesign">
+                                            Edit
+                                    </div>
+                                </NavLink>
                             </div>
                             
                             <div className="manageButtonContainer">

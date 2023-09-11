@@ -8,6 +8,7 @@
     display: inline-flex;
     flex-direction: column;
     width: 500px;
+    margin-bottom: 50px;
 }
 .formItemContainer {
     display: flex;

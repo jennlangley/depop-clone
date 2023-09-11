@@ -69,7 +69,9 @@ const ProductForm = ({ product }) => {
                     return;
                 }
             }
-        }
+        } else {
+            window.scrollTo(0, 0);
+        } 
     } 
     // Edits or creates an image if the image exists in the database already (so it can replace the url in that case)
     const newImage = async (image, newImageUrl) => {
@@ -108,9 +110,9 @@ const ProductForm = ({ product }) => {
             if (!price) errors.price = "Price is required";
             if (!image.length) errors.images = "Image is required";
             if (!(image.endsWith('.png') || image.endsWith('.jpg') || image.endsWith('.jpeg'))) errors.image = "Image URL must end in .png, .jpg, or .jpeg";
-            if (!(image2.endsWith('.png') || image2.endsWith('.jpg') || image2.endsWith('.jpeg'))) errors.image2 = "Image URL must end in .png, .jpg, or .jpeg";
-            if (!(image3.endsWith('.png') || image3.endsWith('.jpg') || image3.endsWith('.jpeg'))) errors.image3 = "Image URL must end in .png, .jpg, or .jpeg";
-            if (!(image4.endsWith('.png') || image4.endsWith('.jpg') || image4.endsWith('.jpeg'))) errors.image4 = "Image URL must end in .png, .jpg, or .jpeg";
+            if (image2 && !(image2.endsWith('.png') || image2.endsWith('.jpg') || image2.endsWith('.jpeg'))) errors.image2 = "Image URL must end in .png, .jpg, or .jpeg";
+            if (image3 && !(image3.endsWith('.png') || image3.endsWith('.jpg') || image3.endsWith('.jpeg'))) errors.image3 = "Image URL must end in .png, .jpg, or .jpeg";
+            if (image4 && !(image4.endsWith('.png') || image4.endsWith('.jpg') || image4.endsWith('.jpeg'))) errors.image4 = "Image URL must end in .png, .jpg, or .jpeg";
             if (!category) errors.category = "Category is required";
             if (!subcategory) errors.subcategory = "Subcategory is required";
             setErrors(errors);
@@ -140,11 +142,8 @@ const ProductForm = ({ product }) => {
                     placeholder="Image URL"
                     onChange={e => setImage(e.target.value)}
                     />
-                    {errors.images && (<span className='errors'>{errors.images}
-                    
-                    {errors.image && (<span className='errors'>{", "}{errors.image}</span>)}
-                    </span>)}
-                    
+                    {errors.images && (<span className='errors'>{errors.images}</span>)}
+                    {errors.image && (<span style={{marginTop: "0"}} className='errors'>{errors.image}</span>)}
                     <input 
                     value={image2}
                     className="inputBox" 

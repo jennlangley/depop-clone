@@ -7,7 +7,7 @@ import './Cart.css';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Cart = ({ checkout }) => {
-    const { cartItems } = useCart();
+    const { cartItems, closeCart } = useCart();
     const products = useSelector(state => state.products)
     const onSubmit = (e) => {
         e.preventDefault();
@@ -40,7 +40,7 @@ const Cart = ({ checkout }) => {
                     {checkout ? 
                         <span onClick={(e) => alert("Feature coming soon!")}>Checkout</span>
                         :
-                        <NavLink to="/checkout">Checkout</NavLink>
+                        <NavLink onClick={(e) => closeCart()} to="/checkout">Checkout</NavLink>
                     }
                     
                 </button>

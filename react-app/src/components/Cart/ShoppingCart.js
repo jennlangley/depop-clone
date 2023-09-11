@@ -6,8 +6,8 @@ export function ShoppingCart({ isOpen }) {
     const { closeCart } = useCart();
     return (
         isOpen &&
-        // onMouseLeave={e => setTimeout(() => closeCart(), 500)}
-        (<div  className="cartPreview">
+        
+        (<div onMouseLeave={e => setTimeout(() => closeCart(), 500)} className="cartPreview">
            <Cart /> 
         </div>
         )

@@ -5,11 +5,13 @@ import { NavLink } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { useCart } from "../../context/CartContext";
 
 function ProfileButton({ user, isLoaded }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+  const { closeCart } = useCart();
 
   const openMenu = () => {
     if (showMenu) return;
@@ -18,7 +20,7 @@ function ProfileButton({ user, isLoaded }) {
 
   useEffect(() => {
     if (!showMenu) return;
-
+    closeCart();
     const closeMenu = (e) => {
       if (!ulRef.current.contains(e.target)) {
         setShowMenu(false);

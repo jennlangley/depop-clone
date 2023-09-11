@@ -17,7 +17,7 @@ const ReviewStars = ({ avgRating }) => {
                 </span>      
                 );
             })}
-            <span className="avgRating">({avgRating || 0})</span>
+            <span className="avgRating">({avgRating?.toFixed(1) || 0})</span>
         </div>
     )
 }

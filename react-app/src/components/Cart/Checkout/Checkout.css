@@ -1,0 +1,11 @@
+.checkoutItemsContainer {
+    width: 600px;
+    background-color: white;
+}
+.checkoutItemsContainer .cartImage {
+    height: 100px;
+    width: 100px;
+}
+.checkoutItemsContainer .productInfo {
+    width: 200px;
+}

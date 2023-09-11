@@ -9,7 +9,7 @@ import './Navigation.css';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
-	const { openCart, closeCart } = useCart();
+	const { toggleCart, cartItems } = useCart();
 	return (
 		isLoaded &&
 		<header>
@@ -36,7 +36,13 @@ function Navigation({ isLoaded }){
 					{(
 						<>
 						<li className='navItem'>
-							<button className='cartButton' onClick={e => openCart()} >
+							<button className='cartButton' onClick={e => toggleCart()} >
+									{cartItems?.length > 0 ?
+										<div id="cartCount">{cartItems.length}</div>
+										:
+										<></>
+									}
+									
 									<i className="fa-solid fa-cart-shopping cartIcon" />
 							</button>
 							

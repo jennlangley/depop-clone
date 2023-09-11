@@ -87,9 +87,11 @@ const ProductDetail = () => {
                         </button>
                         )
                         :
-                        <button className="buttonDesign">
-                            <NavLink to={`/products/${product.id}/edit`}>Edit product</NavLink>
-                        </button>
+                        <NavLink to={`/products/${product.id}/edit`}>
+                            <button className="buttonDesign">
+                            Edit product
+                            </button>
+                        </NavLink>
                         }
                         <div className="productInfo">
                             {product.desc}

@@ -21,11 +21,16 @@ function LoginFormPage() {
     }
   };
 
+  const demoLogin = async (e) => {
+    e.preventDefault()
+    await dispatch(login('demo@aa.io','password'))
+  };
+
   return (
-    <>
-      <h1>Log In</h1>
+    <div className="loginContainer loginFormPage">
+      <h1 id="modal-title">Log In</h1>
       <form onSubmit={handleSubmit}>
-        <ul>
+        <ul className="errors">
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
@@ -33,6 +38,7 @@ function LoginFormPage() {
         <label>
           Email
           <input
+            className="inputBox loginInput"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -42,15 +48,17 @@ function LoginFormPage() {
         <label>
           Password
           <input
+            className="inputBox loginInput"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </label>
-        <button type="submit">Log In</button>
+        <button className="confirmButtonDesign formButton" type="submit">Log In</button>
       </form>
-    </>
+      <button className="confirmButtonDesign formButton" onClick={demoLogin}>Demo Log In</button>
+    </div>
   );
 }
 
