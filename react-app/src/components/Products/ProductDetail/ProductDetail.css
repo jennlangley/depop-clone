@@ -36,7 +36,6 @@
 }
 .thumbnail:hover{
     cursor: pointer;
-    opacity: 50%;
 }
 
 .productDetailItem {

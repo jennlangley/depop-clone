@@ -9,8 +9,8 @@ class Product(db.Model):
     
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
-    name = db.Column(db.String(40), nullable=False)
-    desc = db.Column(db.String(255), nullable=False)
+    name = db.Column(db.String(100), nullable=False)
+    desc = db.Column(db.String(500), nullable=False)
     condition = db.Column(db.String(40), nullable=False)
     size = db.Column(db.String(40), nullable=False)
     price = db.Column(db.Numeric(precision=2), nullable=False)
