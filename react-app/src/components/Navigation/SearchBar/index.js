@@ -1,16 +1,22 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import SearchResults from './SearchResults';
 
 const SearchBar = () => {
-    const [search, setSearch] = useState("")
+    const [query, setQuery] = useState("");
+    const [data, setData] = useState([]);
 
-    const products = useSelector(state => state.products);
-    let filteredProducts;
     useEffect(() => {
-        filteredProducts = Object.values(products).filter(product => product.name.includes(search))
-        console.log(search)
-    }, [search])
+        const fetchProducts = async () => {
+            const res = await fetch(`/api/products/search?q=${query}`);
+            const parsedRes = await res.json()
 
+            if (parsedRes) setData(parsedRes)
+        }
+        if (query.length) fetchProducts();
+        if (!query.length) setData([])
+    }, [query])
+;
     return (
         <div className="searchBarContainer">
             <form className="searchBarForm">
@@ -19,14 +25,11 @@ const SearchBar = () => {
                     type="text"
                     className="searchBarInput"
                     placeholder="Search for items"
-                    value={search}
-                    onChange={(e) => setSearch(search)}
-                >
-                {filteredProducts && <ul>
-                    {filteredProducts.map(product => product.name)}
-                </ul>}
-                </input>
+                    value={query}
+                    onChange={(e) => setQuery(e.target.value)}
+                />
             </form>
+            <SearchResults data={data} />
         </div>
     )
 }

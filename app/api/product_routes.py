@@ -14,6 +14,12 @@ def get_products():
     return {'products': [product.to_dict() for product in products]}
 
 
+@product_routes.route('/search')
+def search_products():
+    query = request.args['q']
+    products = Product.query.filter(Product.name.ilike("%"+query+"%")).all()
+    return [product.to_dict() for product in products]
+
 # Get product by id
 @product_routes.route('/<int:productId>')
 def get_product(productId):

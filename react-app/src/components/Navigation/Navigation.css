@@ -33,7 +33,7 @@ a {
 .searchBarContainer {
   display: flex;
   flex-direction: column;
-  z-index: 0;
+  height: 36px;
 }
 
 .hidden {
