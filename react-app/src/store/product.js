@@ -4,7 +4,7 @@ const EDIT_PRODUCT = 'products/EDIT_PRODUCT';
 const GET_PRODUCT_DETAILS = '/products/GET_PRODUCT_DETAILS';
 const DELETE_PRODUCT = 'products/DELETE_PRODUCT';
 
-const getProductsAction = (products) => ({
+export const getProductsAction = (products) => ({
     type: GET_PRODUCTS,
     payload: products
 })
@@ -36,6 +36,21 @@ export const getProducts = () => async (dispatch) => {
         }
     })
 
+    if (response.ok) {
+        const data = await response.json();
+        dispatch(getProductsAction(data));
+        return data;
+    } else {
+        return response.errors;
+    }
+}
+
+export const getUserProducts = (userId) => async (dispatch) => {
+    const response = await fetch(`/api/products/user/${userId}`, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
     if (response.ok) {
         const data = await response.json();
         dispatch(getProductsAction(data));
@@ -111,10 +126,11 @@ export default function reducer(state = initialState, action) {
     const newState = { ...state };
     switch (action.type) {
         case GET_PRODUCTS:
+            const newProducts = {};
             action.payload.products.forEach(product => {
-                newState[product.id] = product;
+                newProducts[product.id] = product;
             });
-            return newState;
+            return newProducts;
         case CREATE_PRODUCT:
             newState[action.payload.id] = action.payload;
             return newState;

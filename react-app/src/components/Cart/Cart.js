@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Cart = ({ checkout }) => {
     const { cartItems, closeCart } = useCart();
-    const products = useSelector(state => state.products)
+    
     const onSubmit = (e) => {
         e.preventDefault();
         // TODO Insert into the orders table, and set the product as sold
@@ -21,29 +21,31 @@ const Cart = ({ checkout }) => {
         </h3>
     )
 
-    // TODO calculate the total amount for the cart
     let cartTotal = 0.00;
     for (let item of cartItems) {
-        cartTotal += +products[item.id].price;
+        cartTotal += +item.price;
     };
 
 
     return (
         <div className='cart'>
             <ul className='cartList'>
-                {cartItems.map(item => <CartItem key={item.id} productId={item.id} />)}
+                {cartItems.map(item => <CartItem key={item.id} product={item} />)}
             </ul>
             <hr />
             <span className='productPrice'>Total: ${cartTotal.toFixed(2)}</span>
             <form className='checkoutButton' onSubmit={onSubmit}>
-                <button className='confirmButtonDesign' type="submit">
-                    {checkout ? 
-                        <span onClick={(e) => alert("Feature coming soon!")}>Checkout</span>
-                        :
-                        <NavLink onClick={(e) => closeCart()} to="/checkout">Checkout</NavLink>
-                    }
-                    
-                </button>
+                {checkout ? 
+                    <button onClick={(e) => alert("Feature coming soon!")} className='confirmButtonDesign' type="submit">
+                        Checkout
+                    </button>
+                    :
+                    <NavLink onClick={(e) => closeCart()} to="/checkout">
+                        <button className='confirmButtonDesign' type="submit">
+                            Checkout
+                        </button>
+                    </NavLink>
+                }
             </form>
         </div>
     )

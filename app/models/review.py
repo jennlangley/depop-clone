@@ -25,6 +25,7 @@ class Review(db.Model):
             'id': self.id,
             'user': self.user.to_dict(),
             'productId': self.product_id,
+            'product': self.product.to_dict(),
             'stars': self.stars,
             'review': self.review,
             'createdAt': self.created_at.strftime("%m/%d/%Y"),

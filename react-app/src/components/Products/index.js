@@ -1,7 +1,7 @@
 import Products from "./Products";
 
 const ProductsIndex = () => {
-
+    
     return(
         <div className="productsListContainer">
             <Products />

@@ -3,10 +3,9 @@ import { useCart } from "../../context/CartContext";
 import './Cart.css'
 import { useEffect } from "react";
 
-const CartItem = ({ productId }) => {
+const CartItem = ({ product }) => {
     const dispatch = useDispatch();
     const { removeFromCart } = useCart();
-    const product = useSelector(state => state.products[productId])
     if (product == null) return null
     return (
         <li className="cartItem">
@@ -21,7 +20,7 @@ const CartItem = ({ productId }) => {
                 </div>
                 <div>
                     <button className="deleteButtonDesign"
-                        onClick={() => removeFromCart(productId)}
+                        onClick={() => removeFromCart(product.id)}
                     >
                         Remove
                     </button>

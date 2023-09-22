@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import SearchResults from './SearchResults';
+import { getProductsAction } from '../../../store/product';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const SearchBar = () => {
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -14,12 +18,22 @@ const SearchBar = () => {
             if (parsedRes) setData(parsedRes)
         }
         if (query.length) fetchProducts();
-        if (!query.length) setData([])
+        if (query.length === 0) setData([]) 
     }, [query])
-;
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (data.length >= 1)
+        dispatch(getProductsAction({'products': data}))
+        setData([])
+        setQuery("")
+        history.push(`/products/search?q=${query}`)
+        // TODO: create the route to display the products list but with the products only from the query.
+        // so fetchProducts as above, but in the diff component for the /search route, so it doesnt load all products default.
+    }
+
     return (
         <div className="searchBarContainer">
-            <form className="searchBarForm">
+            <form onSubmit={e => handleSubmit(e)} className="searchBarForm">
                 <i className="fa-solid fa-magnifying-glass"></i>
                 <input
                     type="text"

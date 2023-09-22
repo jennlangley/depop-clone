@@ -10,15 +10,18 @@ product_routes = Blueprint('products', __name__)
 # Returns all products
 @product_routes.route('')
 def get_products():
-    products = Product.query.all()
+    page = request.args.get('page', 1, type=int)
+    products = Product.query.paginate(page=page, per_page=20)
     return {'products': [product.to_dict() for product in products]}
 
 
+# Returns products which match the query
 @product_routes.route('/search')
 def search_products():
     query = request.args['q']
-    products = Product.query.filter(Product.name.ilike("%"+query+"%")).all()
+    products = Product.query.filter(Product.name.ilike("%"+query+"%")).filter_by(sold=False).limit(5)
     return [product.to_dict() for product in products]
+
 
 # Get product by id
 @product_routes.route('/<int:productId>')
@@ -28,6 +31,13 @@ def get_product(productId):
         return product.to_dict()
     return {'errors': 'Product not found'}
     
+
+# Get products by user id
+@product_routes.route('/user/<int:userId>')
+def get_user_products(userId):
+    products = Product.query.filter_by(user_id=userId).all()
+    return {'products': [product.to_dict() for product in products]}
+
 
 # Creates a new product
 @product_routes.route('/new', methods=['POST'])

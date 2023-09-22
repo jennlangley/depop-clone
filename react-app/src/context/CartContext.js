@@ -16,9 +16,9 @@ export function CartProvider({ children }) {
     const closeCart = () => setIsOpen(false);
     const toggleCart = () => setIsOpen(!isOpen);
 
-    function addToCart(id) {
+    function addToCart(item) {
         setCartItems(currItems => {
-            return [...currItems, { id }]  
+            return [...currItems, item]  
         }) 
     } 
     function removeFromCart(id) {
