@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useModal } from "../../../context/Modal";
 import * as reviewsActions from '../../../store/review';
-import { getOrders } from "../../../store/order";
 import './ReviewModal.css';
 
 const CreateReview = ({ orderId, editReview }) => {
@@ -13,10 +12,7 @@ const CreateReview = ({ orderId, editReview }) => {
     const [hover, setHover] = useState(0);
     const [review, setReview] = useState(editReview?.review || '');
     const [errors, setErrors] = useState({});
-    const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
-
-    const user = useSelector(state => state.session.user)
 
     const handleSubmit = async (e) => {
         e.preventDefault();

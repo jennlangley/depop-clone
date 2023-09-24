@@ -13,9 +13,12 @@ const Orders = ({ user }) => {
     const reviews = useSelector(state => state.reviews)
     
     useEffect (() => {
-        dispatch(getUserReviews(user?.id))
-        dispatch(getOrders(user?.id)).then(() => setIsLoaded(true))
-    }, [dispatch])
+        if (user) {
+            dispatch(getUserReviews(user.id))
+            dispatch(getOrders(user.id)).then(() => setIsLoaded(true))
+        }
+        
+    }, [dispatch, user])
 
     if (!user) return <Redirect to='/products' />
 

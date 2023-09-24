@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import SearchResults from './SearchResults';
 import { getProductsAction } from '../../../store/product';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const SearchBar = () => {
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
     const dispatch = useDispatch();
     const history = useHistory();
+    const location = useLocation();
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -26,6 +28,7 @@ const SearchBar = () => {
         dispatch(getProductsAction({'products': data}))
         setData([])
         setQuery("")
+        console.log(location.pathname);
         history.push(`/products/search?q=${query}`)
         // TODO: create the route to display the products list but with the products only from the query.
         // so fetchProducts as above, but in the diff component for the /search route, so it doesnt load all products default.

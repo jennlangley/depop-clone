@@ -26,11 +26,9 @@ function ProfileButton({ user, isLoaded }) {
         setShowMenu(false);
       }
     };
-
     document.addEventListener("click", closeMenu);
-
     return () => document.removeEventListener("click", closeMenu);
-  }, [showMenu]);
+  }, [showMenu, closeCart]);
 
   const handleLogout = (e) => {
     e.preventDefault();

@@ -127,6 +127,9 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_PRODUCTS:
             const newProducts = {};
+            // TODO: for some reason, after creating a product, it is in the database and the product 
+            // detail page works fine. but when redirecting to /products, the product doesnt show up. somehow
+            // the db is not returning these to the store to be rendered. same goes for manage products.
             action.payload.products.forEach(product => {
                 newProducts[product.id] = product;
             });

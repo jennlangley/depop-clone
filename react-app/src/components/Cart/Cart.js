@@ -1,8 +1,5 @@
 import CartItem from './CartItem';
-import { useDispatch, useSelector } from 'react-redux';
 import { useCart } from '../../context/CartContext';
-import { useEffect, useState } from 'react';
-import { getProducts } from '../../store/product';
 import './Cart.css';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 

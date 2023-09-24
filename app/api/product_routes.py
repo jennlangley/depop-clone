@@ -10,8 +10,10 @@ product_routes = Blueprint('products', __name__)
 # Returns all products
 @product_routes.route('')
 def get_products():
-    page = request.args.get('page', 1, type=int)
-    products = Product.query.paginate(page=page, per_page=20)
+    # page = request.args.get('page', 1, type=int)
+    products = Product.query.order_by(Product.created_at.desc())
+    print(products, "~~~~~~~~~~~~~~~~~~~~`")
+    # .paginate(page=page, per_page=50) 
     return {'products': [product.to_dict() for product in products]}
 
 

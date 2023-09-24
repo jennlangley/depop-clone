@@ -1,4 +1,4 @@
-import { useEffect, useDispatch, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ProfileDetails from './ProfileDetails';
 const Profile = () => {
@@ -8,7 +8,7 @@ const Profile = () => {
 
     useEffect(() => {
         getUser(username).then(() =>  setIsLoaded(true));
-    }, [])
+    }, [username])
 
     const getUser = async (username) => {
         const res = await fetch(`/api/users/${username}`);

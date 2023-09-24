@@ -1,10 +1,8 @@
-import { useDispatch, useSelector } from "react-redux"
 import { useCart } from "../../context/CartContext";
 import './Cart.css'
-import { useEffect } from "react";
 
 const CartItem = ({ product }) => {
-    const dispatch = useDispatch();
+
     const { removeFromCart } = useCart();
     if (product == null) return null
     return (
