@@ -16,8 +16,11 @@ const UserDetail = ({ user, previewImage }) => {
         dispatch(getReviews(userId)).then(() => setIsLoaded(true));
     }, [dispatch, userId])
 
-    const soldProducts = useSelector(state => Object.values(state.products).filter(product => (product.userId === user.id) && (product.sold === true)))
+    
     const reviews = useSelector(state => state.reviews)
+    // TODO: make a backend request for all products owned by the user which are sold?
+    // bc they can have a product which is sold w/o a review.
+    const soldProducts = Object.values(reviews).length;
     
     let stars = [];
     let avgRating;
@@ -48,8 +51,8 @@ const UserDetail = ({ user, previewImage }) => {
                 </div>
                 <div className='productsSold details'>
 
-                    {soldProducts.length !== 1 ? soldProducts.length + " products sold"
-                    : soldProducts.length + " product sold"
+                    {soldProducts !== 1 ? soldProducts + " products sold"
+                    : soldProducts + " product sold"
                     } 
                 </div>
             </div>

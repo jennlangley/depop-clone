@@ -7,6 +7,32 @@
     list-style: none;
     width: 245px;
 }
+.loading {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1.5s linear infinite;
+}
+.loadingContainer {
+    width: 100px;
+    margin: auto;
+    padding: auto;
+    top: 100px;
+    position: relative;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* run will move left to right */
+/* @keyframes run {
+    0% { left: 0;}
+    50% { left : 100%;}
+    100% { left: 0;}
+} */
 
 .productPriceSize {
     background-color: #fffefa;
@@ -24,8 +50,6 @@
     gap: 20px;
     grid-template-columns: repeat(4, 1fr);
     max-width: 100%;
-
-    /*  */
 }
 .productImagesList {
     list-style: none;

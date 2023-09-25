@@ -79,12 +79,12 @@ a {
 
 .headerContainer {
   align-items: center;
-  background-color: #fffdf8;
-  border-bottom: 1px solid grey;
+  background-color: #ffffff;
+  border-bottom: 1px solid lightgray;
   display: flex;
-  height: 50px;
+  height: 40px;
   justify-content: space-between;
-  margin: 0px auto 30px;
+  margin: 0px auto;
   padding: 12px 32px;
   position: sticky;
 }

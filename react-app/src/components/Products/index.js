@@ -1,12 +1,32 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from 'react-router-dom';
+import { getProducts } from "../../store/product";
+import { getCategories } from "../../store/category";
 import Products from "./Products";
 
 const ProductsIndex = () => {
-    
-    return(
-        <div className="productsListContainer">
-            <Products />
-        </div>
-        
+    const dispatch = useDispatch();
+    const [isLoaded, setIsLoaded] = useState(false)
+    // const location = useLocation();
+
+    useEffect(() => {
+        dispatch(getCategories());
+        dispatch(getProducts()).then(() => setIsLoaded(true));
+    }, [dispatch])
+    const products = useSelector(state => state.products);
+    return( 
+        <>
+            {!isLoaded &&
+                <div className="loadingContainer">
+                    <div className="loading"></div>
+                </div>
+            }
+            {isLoaded &&
+            <div className="productsListContainer">
+                <Products products={products} />
+            </div>}
+        </>
     )
 }
 

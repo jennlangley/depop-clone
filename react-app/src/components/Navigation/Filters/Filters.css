@@ -1,0 +1,18 @@
+.filtersContainer {
+    height: 30px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+}
+.filterOptions {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: inherit;
+    margin: auto;
+    width: 50%;
+}
+.filterOption {
+    font-size: 16px;
+    margin: 0;
+}

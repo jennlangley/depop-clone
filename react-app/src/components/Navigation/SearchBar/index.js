@@ -1,18 +1,24 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import SearchResults from './SearchResults';
 import { getProductsAction } from '../../../store/product';
 import { useHistory } from 'react-router-dom';
-import { useLocation } from 'react-router-dom';
+
 
 const SearchBar = () => {
     const [query, setQuery] = useState("");
     const [data, setData] = useState([]);
     const dispatch = useDispatch();
     const history = useHistory();
-    const location = useLocation();
+    const searchRef = useRef();
+    // const [hidden, setHidden] = useState(true)
+    let resultsClass = "name"
 
-    useEffect(() => {
+    useEffect((e) => {
+        // if (searchRef.current && !searchRef.current.contains(event.target)) {
+            
+        // }
+
         const fetchProducts = async () => {
             const res = await fetch(`/api/products/search?q=${query}`);
             const parsedRes = await res.json()
@@ -28,14 +34,14 @@ const SearchBar = () => {
         dispatch(getProductsAction({'products': data}))
         setData([])
         setQuery("")
-        console.log(location.pathname);
         history.push(`/products/search?q=${query}`)
         // TODO: create the route to display the products list but with the products only from the query.
         // so fetchProducts as above, but in the diff component for the /search route, so it doesnt load all products default.
     }
-
+    // TODO: If you click outside the search bar, the dropdown will close. 
+    // So it's only open when the user is clicked in there, but doesn't clear the results. useRef
     return (
-        <div className="searchBarContainer">
+        <div ref={searchRef} className="searchBarContainer">
             <form onSubmit={e => handleSubmit(e)} className="searchBarForm">
                 <i className="fa-solid fa-magnifying-glass"></i>
                 <input
@@ -46,7 +52,7 @@ const SearchBar = () => {
                     onChange={(e) => setQuery(e.target.value)}
                 />
             </form>
-            <SearchResults data={data} />
+            <SearchResults className={resultsClass} data={data} />
         </div>
     )
 }
