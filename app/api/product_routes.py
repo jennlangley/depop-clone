@@ -12,7 +12,6 @@ product_routes = Blueprint('products', __name__)
 def get_products():
     # page = request.args.get('page', 1, type=int)
     products = Product.query.filter_by(sold=False).all()
-    print(products, "~~~~~~~~~~~~~~~~~~~~`")
     # .paginate(page=page, per_page=50) 
     return {'products': [product.to_dict() for product in products]}
 
@@ -23,7 +22,7 @@ def search_products():
     query = request.args['q']
     print(query)
     products = Product.query.filter(Product.name.ilike("%"+query+"%")).filter_by(sold=False).limit(5)
-    return [product.to_dict() for product in products]
+    return {'products': [product.to_dict() for product in products]}
 
 
 # Get product by id

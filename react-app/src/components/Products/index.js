@@ -1,36 +1,24 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom';
-import { getProducts, getProductsAction } from "../../store/product";
+import { getProducts } from "../../store/product";
 import { getCategories } from "../../store/category";
 import Products from "./Products";
 
 const ProductsIndex = () => {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false)
-    const [data, setData] = useState([])
     const location = useLocation();
 
-    let query = location.search;
-    query = query?.split('=')[1];
-  
     useEffect(() => {
         dispatch(getCategories());
-        const fetchProducts = async () => {
-            const res = await fetch(`/api/products/search?q=${query}`);
-            const parsedRes = await res.json();
-            if (parsedRes) setData(parsedRes);
-        }
-        if (query) {
-            fetchProducts()
-                .then(() => dispatch(getProductsAction({'products': data})))
-                .then(() => setIsLoaded(true));
+        if (location.pathname.includes('/search')) {
+            const query = location.search.split("=")[1]
+            dispatch(getProducts(query)).then(() => setIsLoaded(true));
         } else {
-            dispatch(getProducts());
-            setIsLoaded(true);
+            dispatch(getProducts()).then(() => setIsLoaded(true));
         }
-    }, [dispatch, query])
-
+    }, [dispatch, location.pathname])
     const products = useSelector(state => state.products);
     return( 
         <>

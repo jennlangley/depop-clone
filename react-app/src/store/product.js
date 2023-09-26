@@ -29,13 +29,27 @@ const deleteProductAction = (productId) => ({
     payload: productId
 })
 
-export const getProducts = () => async (dispatch) => {
+export const getProducts = (query) => async (dispatch) => {
+    if (query) {
+        const res = await fetch(`/api/products/search?q=${query}`, {
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        if (res.ok) {
+            const data = await res.json();
+            dispatch(getProductsAction(data));
+            return data;
+        } else {
+            return res.errors;
+        }
+    }
+    
     const response = await fetch('/api/products', {
         headers: {
             "Content-Type": "application/json"
         }
     })
-
     if (response.ok) {
         const data = await response.json();
         dispatch(getProductsAction(data));
@@ -127,9 +141,6 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_PRODUCTS:
             const newProducts = {};
-            // TODO: for some reason, after creating a product, it is in the database and the product 
-            // detail page works fine. but when redirecting to /products, the product doesnt show up. somehow
-            // the db is not returning these to the store to be rendered. same goes for manage products.
             action.payload.products.forEach(product => {
                 newProducts[product.id] = product;
             });
