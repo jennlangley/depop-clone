@@ -1,7 +1,4 @@
-#reviews-container {
-    height: 400px;
-    width: 500px;
-}
+
 .reviewStars {
     display: flex;
 }

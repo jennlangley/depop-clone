@@ -13,9 +13,9 @@
   width: 120px;
   z-index: 3;
 }
-.fa-user-circle {
+.fa-bars {
   color: gray;
-  font-size: 30px;
+  font-size: 20px;
 }
 button {
   background: none;
@@ -29,6 +29,9 @@ button {
 a {
   color: inherit;
   text-decoration: none;
+}
+a {
+  padding: 0px;
 }
 .searchBarContainer {
   display: flex;
@@ -80,7 +83,7 @@ a {
 .headerContainer {
   align-items: center;
   background-color: #ffffff;
-  border-bottom: 1px solid lightgray;
+  /* border-bottom: 1px solid lightgray; */
   display: flex;
   height: 40px;
   justify-content: space-between;
@@ -160,7 +163,7 @@ a {
   text-decoration: underline;
 }
 .cartIcon {
-  color: rgb(98, 98, 98);
+  color: grey;
   font-size: 22px;
 }
 .cartButton {
@@ -183,4 +186,15 @@ a {
   font-size: 13px;
   z-index: 3;
   margin: 0px;
+}
+@media (max-width: 600px) {
+  .headerContainer {
+    padding-bottom:  10px;
+  }
+  #site-logo {
+    width: 200px;
+  }
+  .searchBarForm {
+    width: 95px;
+  }
 }

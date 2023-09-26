@@ -5,7 +5,7 @@ import ProfileButton from './ProfileButton';
 import SearchBar from './SearchBar';
 import Filters from './Filters/Filters';
 import { useCart } from '../../context/CartContext';
-import Logo from '../../images/style_swap_logo.png'
+import Logo from '../../images/style_swap_logo.png';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -15,11 +15,11 @@ function Navigation({ isLoaded }){
 		isLoaded &&
 		<header>
 			<div className='headerContainer'>
-				<div>
-					<a href="/products">
+
+					<NavLink to="/">
 						<img id='site-logo' alt="Style Swap Logo" src={Logo} />
-					</a>
-				</div>
+					</NavLink>
+
 				<div className='searchBar'>
 					<SearchBar />
 				</div>

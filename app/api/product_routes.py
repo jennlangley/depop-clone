@@ -21,6 +21,7 @@ def get_products():
 @product_routes.route('/search')
 def search_products():
     query = request.args['q']
+    print(query)
     products = Product.query.filter(Product.name.ilike("%"+query+"%")).filter_by(sold=False).limit(5)
     return [product.to_dict() for product in products]
 
