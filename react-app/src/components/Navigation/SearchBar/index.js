@@ -13,7 +13,9 @@ const SearchBar = () => {
     const searchRef = useRef();
     const [hidden, setHidden] = useState(false)
     let resultsClass = hidden ? "searchResults hidden" : " searchResults";
-
+    // TODO: rework so the results dropdown doesn't need to fetch here? 
+    // or only return names and id
+    // or fetch every few seconds rather than every key press?
     useEffect(() => {
         const fetchProducts = async () => {
             const res = await fetch(`/api/products/search?q=${query}`);
@@ -49,7 +51,7 @@ const SearchBar = () => {
             </form>
             {!hidden && 
             <div className={resultsClass}>
-                {data.map(product => <NavLink to={`/products/${product.id}`} onClick={e => setHidden(true)} key={product.id}><div>{product.name}</div></NavLink>)}
+                {data.map(product => <NavLink to={`/products/${product.id}`} onClick={e => setHidden(true)} key={product.id}><div className='searchItem'>{product.name}</div></NavLink>)}
             </div>}
         </div>
     )
