@@ -2,3 +2,56 @@
     display: grid;
     place-items: center;
 }
+.discoverBox {
+    width: 80%;
+    background-color: rgb(80, 164, 136);
+    text-align: center;
+    height: 150px;
+    color: white;
+}
+.categoryImage {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+}
+.name {
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    background-color: rgba(0, 0, 0, 0.73);
+    /* font-style: italic; */
+}
+.nameDiv {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.imageLinkContainer {
+    margin-top: 20px;
+    object-fit: cover;
+    position: relative;
+    text-align: center;
+    transition: transform .4s;
+}
+.imageLinkContainer:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.categoryImageLinks {
+    display: flex;
+    gap: 20px;
+}
+@media (max-width: 800px) {
+    .categoryImageLinks {
+        flex-direction: column;
+    }
+    .categoryImage {
+
+        height: 100px;
+        gap: 2px;
+    }
+    .name {
+        font-size: 20px;
+    }
+}
