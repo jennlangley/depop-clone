@@ -41,7 +41,7 @@ def seed_products_categories():
         product_id=12, category_id=10
     )
     product_13 = ProductCategory(
-        product_id=13, category_id=13
+        product_id=13, category_id=12
     )
     product_14 = ProductCategory(
         product_id=14, category_id=13

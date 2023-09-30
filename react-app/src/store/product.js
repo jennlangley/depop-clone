@@ -29,22 +29,53 @@ const deleteProductAction = (productId) => ({
     payload: productId
 })
 
-export const getProducts = (query) => async (dispatch) => {
-    if (query) {
-        const res = await fetch(`/api/products/search?q=${query}`, {
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-        if (res.ok) {
-            const data = await res.json();
-            dispatch(getProductsAction(data));
-            return data;
-        } else {
-            return res.errors;
+export const getProductCategory = (categoryId) => async (dispatch) => {
+    const res = await fetch(`/api/category/${categoryId}`, {
+        headers: {
+            "Content-Type": "application/json"
         }
+    })
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(getProductsAction(data));
+        return data;
+    } else {
+        return res.errors;
     }
-    
+}
+
+export const getProductSubcategory = (categoryId, subcategoryId) => async (dispatch) => {
+    const res = await fetch(`/api/category/${categoryId}/${subcategoryId}`, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(getProductsAction(data));
+        return data;
+    } else {
+        return res.errors;
+    }
+}
+
+
+export const searchProducts = (query) => async (dispatch) => {
+    const res = await fetch(`/api/search?q=${query}`, {
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(getProductsAction(data));
+        return data;
+    } else {
+        return res.errors;
+    }
+}
+
+export const getProducts = () => async (dispatch) => {
     const response = await fetch('/api/products', {
         headers: {
             "Content-Type": "application/json"
@@ -60,7 +91,7 @@ export const getProducts = (query) => async (dispatch) => {
 }
 
 export const getUserProducts = (userId) => async (dispatch) => {
-    const response = await fetch(`/api/products/user/${userId}`, {
+    const response = await fetch(`/api/users/${userId}/products`, {
         headers: {
             "Content-Type": "application/json"
         }

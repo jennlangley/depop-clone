@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+
 import ProductTile from "./ProductTile";
 
 const Products = ({ products }) => {

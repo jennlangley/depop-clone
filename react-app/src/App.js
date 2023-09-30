@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
+import LandingPage from "./components/LandingPage";
 import ProductsIndex from './components/Products/index';
 import Navigation from "./components/Navigation";
 import ProductForm from "./components/Products/NewProduct/ProductForm";
@@ -15,6 +16,9 @@ import Checkout from "./components/Cart/Checkout";
 import NotFound from "./components/NotFound";
 import Profile from "./components/Profile/Profile";
 import { CartProvider } from "./context/CartContext";
+import SearchResults from "./components/SearchResults";
+import ProductCategory from "./components/ProductCategory";
+import ProductSubcategory from "./components/ProductCategory/ProductSubcategory";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,20 +33,26 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login" >
+          <Route exact path="/login" >
             <LoginFormPage />
           </Route>
-          <Route path="/signup">
+          <Route exact path="/signup">
             <SignupFormPage />
           </Route>
           <Route exact path="/products">
             <ProductsIndex />
           </Route>
-          <Route path="/products/search">
-            <ProductsIndex />
+          <Route path="/search">
+            <SearchResults />
+          </Route>
+          <Route exact path="/category/:categoryId">
+            <ProductCategory />
+          </Route>
+          <Route exact path="/category/:categoryId/:subcategoryId">
+            <ProductSubcategory />
           </Route>
           <Route exact path="/">
-            <ProductsIndex />
+            <LandingPage />
           </Route>
           <Route exact path="/products/new">
             <ProductForm />
@@ -56,13 +66,13 @@ function App() {
           <Route exact path="/products/:productId">
             <ProductDetail isLoaded={isLoaded} />
           </Route>
-          <Route path="/orders">
+          <Route exact path="/orders">
             <Orders user={user} />
           </Route>
-          <Route path="/users/:username">
+          <Route exact path="/users/:username">
             <Profile />
           </Route>
-          <Route path="/checkout">
+          <Route exact path="/checkout">
             <Checkout />
           </Route>
           <Route path="">

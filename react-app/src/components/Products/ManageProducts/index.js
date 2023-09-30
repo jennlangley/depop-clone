@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../../store/product";
+import { getUserProducts } from "../../../store/product";
 import ProductTile from "../ProductTile";
 import OpenModalButton from "../../OpenModalButton";
 import DeleteProduct from "./DeleteProductModal";
@@ -11,12 +11,14 @@ const ManageProducts = () => {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     
+    
+    const user = useSelector(state => state.session.user)
+    const products = useSelector(state => state.products)
+    
     useEffect(() => {
-        dispatch(getProducts()).then(() => setIsLoaded(true))
+        dispatch(getUserProducts(user.id)).then(() => setIsLoaded(true))
     }, [dispatch])
 
-    const user = useSelector(state => state.session.user)
-    const products = useSelector(state => Object.values(state.products).filter(product => (product.userId === user?.id) && (product.sold === false)))
     if (!user) return <Redirect to='/products' />
     return (
         (isLoaded && user) &&
@@ -26,8 +28,10 @@ const ManageProducts = () => {
             </h1>
             <div className="productsList">
                 {Object.values(products).map((product, idx) => 
-                    <div key={idx}>
+                    <div className="manageContainer" key={idx}>
                         <ProductTile product={product} />
+
+                        {!product.sold ?
                         <div className="editDeleteDiv">
                             <div className="manageButtonContainer">
                                 <NavLink style={{color: "white"}} to={`/products/${product.id}/edit`}>
@@ -43,7 +47,8 @@ const ManageProducts = () => {
                                     buttonText=<button className="deleteButtonDesign">Delete</button> />
                             </div>
                         </div>
-                        
+                        :
+                        <div className="productItem soldBox"><span className="sold">Sold</span></div>}
                     </div>
                     )}
             </div>

@@ -1,6 +1,6 @@
-from flask import Blueprint, jsonify, request, session
+from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db, Product, Image, Category, ProductCategory
+from app.models import db, Product, Category, ProductCategory
 from app.forms import ProductForm
 from app.api.auth_routes import validation_errors_to_error_messages
 from datetime import datetime
@@ -16,20 +16,6 @@ def get_products():
     return {'products': [product.to_dict() for product in products]}
 
 
-# Returns products which match the query
-@product_routes.route('/search')
-def search_products():
-    query = request.args['q']
-    products = Product.query.filter(Product.name.ilike("%"+query+"%")).filter_by(sold=False).limit(5)
-    return {'products': [product.to_dict() for product in products]}
-
-
-# Returns products by specified category
-def get_product_category():
-    category = request.args['category']
-    # products = Product.query.filter(Product)
-
-
 # Get product by id
 @product_routes.route('/<int:productId>')
 def get_product(productId):
@@ -38,13 +24,6 @@ def get_product(productId):
         return product.to_dict()
     return {'errors': 'Product not found'}
     
-
-# Get products by user id
-@product_routes.route('/user/<int:userId>')
-def get_user_products(userId):
-    products = Product.query.filter_by(user_id=userId).all()
-    return {'products': [product.to_dict() for product in products]}
-
 
 # Creates a new product
 @product_routes.route('/new', methods=['POST'])

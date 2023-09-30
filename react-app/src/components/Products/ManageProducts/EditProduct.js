@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import ProductForm from "../NewProduct/ProductForm";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getProducts } from "../../../store/product";
+import { getProductDetails, getProducts } from "../../../store/product";
 import { getCategories } from "../../../store/category";
 
 const EditProduct = () => {
@@ -11,7 +11,7 @@ const EditProduct = () => {
     const [isLoaded, setIsLoaded] = useState(false)
     useEffect(() => {
         dispatch(getCategories())
-        dispatch(getProducts()).then(() => setIsLoaded(true))
+        dispatch(getProductDetails(productId)).then(() => setIsLoaded(true))
     }, [dispatch])
 
     const product = useSelector(state => state.products[+productId]);

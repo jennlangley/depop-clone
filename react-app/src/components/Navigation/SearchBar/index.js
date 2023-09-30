@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { getProducts, getProductsAction } from '../../../store/product';
+import { searchProducts } from '../../../store/product';
 import { useHistory } from 'react-router-dom';
 import './Search.css';
 
@@ -18,7 +18,7 @@ const SearchBar = () => {
     // or fetch every few seconds rather than every key press?
     useEffect(() => {
         const fetchProducts = async () => {
-            const res = await fetch(`/api/products/search?q=${query}`);
+            const res = await fetch(`/api/search?q=${query}`);
             const parsedRes = await res.json();
             if (parsedRes) setData(parsedRes.products);
         }
@@ -28,12 +28,10 @@ const SearchBar = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (data.length >= 1)
-        dispatch(getProducts(query));
+        dispatch(searchProducts(query));
         setData([]);
         setQuery("");
-        history.push(`/products/search?q=${query}`);
-        // TODO: create the route to display the products list but with the products only from the query.
-        // so fetchProducts as above, but in the diff component for the /search route, so it doesnt load all products default.
+        history.push(`/search?q=${query}`);
     }
     return (
         <div className="searchBarContainer">

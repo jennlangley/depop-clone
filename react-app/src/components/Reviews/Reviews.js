@@ -15,7 +15,7 @@ const Reviews = ({ reviews, user }) => {
             </div> 
             :
             <div id="reviews-container">
-                <h3>No reviews yet!</h3>
+                <h3>No reviews yet</h3>
             </div>}
             <div onClick={e => closeModal()} className='confirmButtonDesign'>Close Reviews</div>
         </div>

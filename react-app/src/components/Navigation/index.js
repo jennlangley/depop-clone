@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import SearchBar from './SearchBar';
-import Filters from './Filters/Filters';
+import Categories from './Categories/Categories';
 import { useCart } from '../../context/CartContext';
 import Logo from '../../images/style_swap_logo.png';
 import './Navigation.css';
@@ -52,7 +52,7 @@ function Navigation({ isLoaded }){
 					</ul>
 				</nav>
 			</div>
-			<Filters />
+			<Categories />
 		</header>
 		
 	);

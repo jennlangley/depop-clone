@@ -6,7 +6,7 @@ const getCategoriesAction = (categories) => ({
 })
 
 export const getCategories = () => async (dispatch) => {
-    const response = await fetch('/api/categories', {
+    const response = await fetch('/api/category', {
         headers: {
             "Content-Type": "application/json"
         }

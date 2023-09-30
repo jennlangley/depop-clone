@@ -16,11 +16,11 @@ const ProductDetail = () => {
     const [isLoaded, setIsLoaded] = useState(false)
     const { productId } = useParams();
     const { addToCart, removeFromCart, cartItems } = useCart();
-
+    
     useEffect(() => {
-        dispatch(getProductDetails(productId)).then(() => setIsLoaded(true));
-    }, [dispatch])
-    const product = useSelector(state => state.products[productId])
+        dispatch(getProductDetails(+productId)).then(() => setIsLoaded(true));
+    }, [dispatch, productId])
+    const product = useSelector(state => state.products[+productId])
     const user = useSelector(state => state.session.user);
     // TODO: display the category and subcategory names 
     // const userProducts = useSelector(state => Object.values(state.products).filter(prod => (prod.userId === product.userId && prod.id !== product.id)))
