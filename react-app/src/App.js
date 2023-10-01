@@ -15,6 +15,7 @@ import Orders from "./components/Orders";
 import Checkout from "./components/Cart/Checkout";
 import NotFound from "./components/NotFound";
 import Profile from "./components/Profile/Profile";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import { CartProvider } from "./context/CartContext";
 import SearchResults from "./components/SearchResults";
 import ProductCategory from "./components/ProductCategory";
@@ -32,6 +33,7 @@ function App() {
     <CartProvider>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
+      <ScrollToTop>
         <Switch>
           <Route exact path="/login" >
             <LoginFormPage />
@@ -79,6 +81,7 @@ function App() {
             <NotFound />
           </Route>
         </Switch>
+      </ScrollToTop>
       )}
     </CartProvider>
   );

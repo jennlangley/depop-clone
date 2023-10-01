@@ -1,4 +1,4 @@
-
+import { NavLink } from 'react-router-dom';
 import './LandingPage.css';
 import womens from '../../images/womens.jpg';
 import mens from '../../images/mens.jpg';
@@ -9,22 +9,25 @@ const LandingPage = () => {
     return (
         <div className='landingPage'>
             <div className="discoverBox">
-                Discover new fashion
+                <span className='coverName'>New styles start here</span>
             </div>
+            <h1>Shop by Category</h1>
             <div className="categoryImageLinks">
-                <div className="imageLinkContainer">
-                    <div className="nameDiv"><span className="name">Shop Men's</span></div>
+                <NavLink to="/category/1" className="imageLinkContainer">
+                    <div className="nameDiv"><span className="name">Men's</span></div>
                     <img className='categoryImage' alt="accessories" src={mens} />
-                </div>
-                <div className="imageLinkContainer">
-                    <div className="nameDiv"><span className="name">Shop Women's</span></div>
+                </NavLink>
+                <NavLink to="/category/2" className="imageLinkContainer">
+                    <div className="nameDiv"><span className="name">Women's</span></div>
                     <img className='categoryImage' alt="accessories" src={womens} />
-                </div>
-                <div className="imageLinkContainer">
-                    <div className="nameDiv"><span className="name">Shop Accessories</span></div>
+                </NavLink>
+                <NavLink to="/category/3" className="imageLinkContainer">
+                    <div className="nameDiv"><span className="name">Accessories</span></div>
                     <img className='categoryImage' alt="accessories" src={accessories} />
-                </div>
+                </NavLink>
             </div>
+            <h1>Shop by Price</h1>
+
         </div>
     )
 }

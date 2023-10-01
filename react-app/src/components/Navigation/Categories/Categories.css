@@ -1,7 +1,7 @@
 .filtersContainer {
     height: 30px;
     margin-bottom: 10px;
-    box-shadow: 0 3px 4px -4px rgba(0,0,0,.5);
+    box-shadow: 0 4px 4px -4px rgba(0,0,0,.5);
 }
 .filterOptions {
     display: flex;
@@ -20,7 +20,7 @@
 }
 .filterOption {
     display: inherit;
-    font-size: 16px;
+    font-size: 18px;
     margin: 0px;
     height: inherit;
     align-items: center;
@@ -39,7 +39,7 @@
     color: rgb(231, 231, 231);
     background-color: #657fd6;
     position: absolute;
-    top: 92px;
+    top: 93.75px;
     left: 25%;
     width: 50%;
     height: fit-content;
@@ -48,17 +48,20 @@
     align-items: left;
     border-radius: 0px 0px 4px 4px;
     z-index: 2;
+    box-shadow: 0px 4px 6px rgba(0,0,0,.5);
+
 }
 .subcategory {
     display: block;
-    padding: 10px 20px;
+    padding: 5px 10px;
 }
 .subcategory:hover {
     background-color: #7391f6;
 }
 .header {
     font-weight: bold;
-    padding: 10px;
+    font-size: 19px;
+    padding: 5px;
     cursor: default;
 }
 @media (max-width: 500px) {
@@ -68,5 +71,8 @@
     }
     .filterOptions {
         width: 100%;
+    }
+    .subcategories {
+        top: 92px;
     }
 }

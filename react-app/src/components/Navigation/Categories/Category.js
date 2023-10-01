@@ -15,8 +15,8 @@ const Category = ({ category, subcategories }) => {
                     
                     <span className='header'>Shop by category</span>
                     
-                    {subcategories.map(subcategory => <NavLink to={`/category/${category.categoryId}/${subcategory.subcategoryId}`} key={subcategory.id} className='subcategory'>{subcategory.name}</NavLink>)}
-                    <NavLink className="subcategory" to={`/category/${category.categoryId}`}>Shop all {category.name}</NavLink>
+                    {subcategories.map(subcategory => <NavLink onClick={e => setHover(false)} to={`/category/${category.categoryId}/${subcategory.subcategoryId}`} key={subcategory.id} className='subcategory'>{subcategory.name}</NavLink>)}
+                    <NavLink onClick={e => setHover(false)} className="subcategory" to={`/category/${category.categoryId}`}>Shop all {category.name}</NavLink>
                 
                 </div>
                 }

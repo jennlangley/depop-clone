@@ -3,7 +3,7 @@
     place-items: center;
 }
 .discoverBox {
-    width: 80%;
+    width: 90%;
     background-color: rgb(80, 164, 136);
     text-align: center;
     height: 150px;
@@ -14,10 +14,13 @@
     height: 250px;
     object-fit: cover;
 }
+.coverName {
+    font-size: 45px;
+}
 .name {
     color: white;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 35px;
     background-color: rgba(0, 0, 0, 0.73);
     /* font-style: italic; */
 }
@@ -28,6 +31,7 @@
     transform: translate(-50%, -50%);
 }
 .imageLinkContainer {
+    display: block;
     margin-top: 20px;
     object-fit: cover;
     position: relative;
