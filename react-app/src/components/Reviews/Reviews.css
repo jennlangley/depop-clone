@@ -1,6 +1,7 @@
 
 .reviewStars {
     display: flex;
+    align-items: center;
 }
 .avgRating {
     color: #DAA520;

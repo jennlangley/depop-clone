@@ -21,8 +21,8 @@ const ProductTile = ({ product }) => {
                 </div>
                 <div className='productPriceSize'>
                     <div>{product.name}</div>
+                    <div>Size {product.size}</div>
                     <div>${product.price}</div>
-                    <div>{product.size}</div>
                 </div>
             </div>
             </a>

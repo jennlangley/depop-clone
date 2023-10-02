@@ -38,7 +38,7 @@ def seed_products_categories():
         product_id=11, category_id=11
     )
     product_12 = ProductCategory(
-        product_id=12, category_id=10
+        product_id=12, category_id=9
     )
     product_13 = ProductCategory(
         product_id=13, category_id=12

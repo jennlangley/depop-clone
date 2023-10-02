@@ -36,8 +36,8 @@
 
 .productPriceSize {
     font-size: 17px;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
+    display: flex;
+    justify-content: space-around;
     background-color: #fffefa;
     padding: 10px;
 }
