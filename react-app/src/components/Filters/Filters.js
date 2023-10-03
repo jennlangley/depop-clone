@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 
-
 const Filters = () => {
     const [condition, setCondition] = useState([]);
     const [price, setPrice] = useState([]);
