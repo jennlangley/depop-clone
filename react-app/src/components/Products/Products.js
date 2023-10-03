@@ -1,6 +1,6 @@
 
 import { useState, useEffect, useMemo } from "react";
-import Filters from "../Filters/Filters";
+// import Filters from "../Filters/Filters";
 import ProductTile from "./ProductTile";
 import Breadcrumb from "../ProductCategory/Breadcrumb";
 
