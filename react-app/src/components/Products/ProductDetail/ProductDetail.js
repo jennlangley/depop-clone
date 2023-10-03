@@ -6,6 +6,7 @@ import { getProductDetails } from "../../../store/product";
 import UserDetail from "../../Profile/UserDetail/UserDetail";
 import './ProductDetail.css';
 // import ProductTile from "../ProductTile";
+import Breadcrumb from "../../ProductCategory/Breadcrumb";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { useCart } from "../../../context/CartContext";
 
@@ -29,6 +30,7 @@ const ProductDetail = () => {
         <>
         {isLoaded &&
             (product && <div className="productDetail">
+                
                 <div className="productDetailContainer">
                     <div className="productImagesContainer">
                         <div className="imageThumbnails">

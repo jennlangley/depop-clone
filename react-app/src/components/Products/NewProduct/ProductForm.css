@@ -25,6 +25,9 @@
     padding-left: 10px;
     width: inherit;
 }
+select.inputBox {
+    padding-top: 0px;
+}
 .dollarSign {
     padding: 0px 8px;
     padding-top: 27px;

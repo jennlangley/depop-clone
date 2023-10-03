@@ -19,7 +19,9 @@
 }
 
 #modal-content {
+  min-width: 300px;
   align-items: center;
+  justify-content: center;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0px 0px 6px 1px black;
@@ -27,6 +29,7 @@
   height: fit-content;
   padding: 30px 20px;
   position: absolute;
+  z-index: 3;
 }
 #modal-title {
   margin: 10px 0px;

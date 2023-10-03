@@ -18,10 +18,10 @@ const Profile = () => {
 
     return (
         isLoaded &&
-        user ? 
+        (user ? 
         <ProfileDetails user={user} />
         :
-        <h1>User not found</h1>
+        <h1>User not found</h1>)
     )
 }
 export default Profile;

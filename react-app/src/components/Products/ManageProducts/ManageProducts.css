@@ -3,10 +3,10 @@
     background-color: rgba(214, 70, 70, 0.503);
     border: none;
     color: white;
-    height: 245px;
     position: relative;
-    top: -325px;
-    z-index: 2;
+    bottom: 297px;
+    height: 245px;
+    left: 1px;
 }
 .sold {
     font-size: 50px;
@@ -15,8 +15,8 @@
     top: 35%;
     transform: rotate(35deg);
     height: fit-content;
-    left: 25%;
+    left: 30%;
 }
 .manageContainer {
-    height: fit-content;
+    height: 350px;
 }

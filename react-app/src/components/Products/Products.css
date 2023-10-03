@@ -92,6 +92,18 @@
     min-width: fit-content;
     width: 25%;
 }
+.productsFilterContainer {
+    display: flex;
+    
+}
+.filters {
+    display: block;
+    margin: 20px;
+    position: relative;
+}
+.productFilter {
+    margin: 20px;
+}
 
 @media (max-width: 1024px) {
     .productsList {
