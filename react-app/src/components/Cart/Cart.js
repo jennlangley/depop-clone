@@ -33,13 +33,16 @@ const Cart = ({ checkout }) => {
             <span className='productPrice'>Total: ${cartTotal.toFixed(2)}</span>
             <form className='checkoutButton' onSubmit={onSubmit}>
                 {checkout ? 
-                    <button onClick={(e) => alert("Feature coming soon!")} className='confirmButtonDesign' type="submit">
-                        Checkout
-                    </button>
-                    :
-                    <NavLink onClick={(e) => closeCart()} to="/checkout">
+                    <NavLink to='/checkout'>
                         <button className='confirmButtonDesign' type="submit">
                             Checkout
+                        </button>
+                    </NavLink>
+                    
+                    :
+                    <NavLink onClick={(e) => closeCart()} to="/cart">
+                        <button className='confirmButtonDesign' type="submit">
+                            View Cart
                         </button>
                     </NavLink>
                 }

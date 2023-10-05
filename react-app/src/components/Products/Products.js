@@ -11,7 +11,7 @@ const Products = ({ products }) => {
             <Breadcrumb />
             <div className="productsFilterContainer">
 
-                <Filters />
+                {/* <Filters /> */}
 
                 <div className="productsList">
                 {Object.values(products).map((product, idx) => 

@@ -14,10 +14,10 @@ const Orders = ({ user }) => {
     
     useEffect (() => {
         if (user) {
-            dispatch(getUserReviews(user.id))
-            dispatch(getOrders(user.id)).then(() => setIsLoaded(true))
+            dispatch(getOrders(user.id))
+            .then(() => dispatch(getUserReviews(user.id)))
+            .then(() => setIsLoaded(true))
         }
-        
     }, [dispatch, user])
 
     if (!user) return <Redirect to='/products' />

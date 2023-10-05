@@ -13,16 +13,26 @@ const Order = ({ order, reviews }) => {
 
     return (
         <div className="orderItem">
-            <div>
-                <img id="orderImage" className="productTileImage" alt={product.name} src={product.images[0]?.imageUrl} />
-            </div>
-            <div className="orderDetails">
-                <h3>{product.name}</h3>
-                <div>Sold by:{" "}
-                    <NavLink to={`users/${product.user.username}`}>{product.user.username}</NavLink>
+            <div className="orderImageDetails">
+                <div>
+                    <img id="orderImage" className="productTileImage" alt={product.name} src={product.images[0]?.imageUrl} />
                 </div>
-                <div>Ordered on: {order.createdAt}</div>
-                {review ?
+                <div>
+               
+            
+                <div className="orderDetails">
+                    <h3 className="orderTitle">$ {product.price}</h3>
+                    <h3 className="orderTitle">{product.name}</h3>
+                    <div>Sold by:{" "}
+                        <NavLink to={`users/${product.user.username}`}>{product.user.username}</NavLink>
+                    </div>
+                    <div>Ordered on: {order.createdAt}</div>
+                    
+                </div>
+                </div>
+                
+            </div>
+            {review ?
                 <div className="orderReview">Your review:
                     <Review review={review} />
                     <div className="editDeleteDiv">
@@ -48,7 +58,6 @@ const Order = ({ order, reviews }) => {
                 />
 
                 }
-            </div>
         </div>
     )
 }

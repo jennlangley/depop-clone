@@ -3,10 +3,16 @@ const CREATE_PRODUCT = 'products/CREATE_PRODUCT';
 const EDIT_PRODUCT = 'products/EDIT_PRODUCT';
 const GET_PRODUCT_DETAILS = '/products/GET_PRODUCT_DETAILS';
 const DELETE_PRODUCT = 'products/DELETE_PRODUCT';
+const PRICE_SORT = 'products/PRICE_SORT';
 
 export const getProductsAction = (products) => ({
     type: GET_PRODUCTS,
     payload: products
+})
+
+export const sortByPrice = (dir) => ({
+    type: PRICE_SORT,
+    payload: dir
 })
 
 const createProductAction = (product) => ({
@@ -187,6 +193,10 @@ export default function reducer(state = initialState, action) {
             return newState;
         case DELETE_PRODUCT:
             delete newState[action.payload];
+            return newState;
+        case PRICE_SORT:
+            const sortedProducts = Object.values(newState);
+            console.log(sortedProducts);
             return newState;
         default:
             return newState;
