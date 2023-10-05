@@ -9,7 +9,7 @@ const Checkout = () => {
     if (!user) return <Redirect to="/login" />
     return (
         <div className="ordersContainer">
-            <h1>Checkout</h1>
+            <h1>Cart</h1>
             <div className="checkoutItemsContainer">
                 <Cart checkout={true} />
             </div>

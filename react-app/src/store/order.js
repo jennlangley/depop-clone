@@ -1,10 +1,17 @@
 const GET_ORDERS = 'orders/GET_ORDERS';
 const UPDATE_ORDER = 'orders/UPDATE_ORDER';
+const CREATE_ORDER = 'orders/CREATE_ORDER';
 
 const getOrdersAction = (orders) => ({
     type: GET_ORDERS,
     payload: orders
 })
+
+const createOrderAction = (order) => ({
+    type: CREATE_ORDER,
+    payload: order
+})
+
 
 // Actions for adding and removing reviewId from the order
 export const updateOrder = (order) => ({
@@ -27,6 +34,23 @@ export const getOrders = (userId) => async (dispatch) => {
     }
 }
 
+export const createOrder = (productId) => async (dispatch) => {
+    const res = await fetch(`/api/orders`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(productId)
+    })
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(createOrderAction(data));
+        return data;
+    } else {
+        return res.errors;
+    }
+}
+
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
@@ -38,6 +62,10 @@ export default function reducer(state = initialState, action) {
             return orders;
         case UPDATE_ORDER:
             newState[action.payload.order.id] = action.payload.order;
+            return newState;
+        case CREATE_ORDER:
+            console.log(action.payload);
+            newState[action.payload.id] = action.payload;
             return newState;
         default:
             return newState;

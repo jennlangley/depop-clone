@@ -20,6 +20,7 @@ import { CartProvider } from "./context/CartContext";
 import SearchResults from "./components/SearchResults";
 import ProductCategory from "./components/ProductCategory";
 import ProductSubcategory from "./components/ProductCategory/ProductSubcategory";
+import CheckoutCart from "./components/Cart/Checkout/CheckoutCart";
 
 function App() {
   const dispatch = useDispatch();
@@ -74,8 +75,11 @@ function App() {
           <Route exact path="/users/:username">
             <Profile />
           </Route>
-          <Route exact path="/checkout">
+          <Route exact path="/cart">
             <Checkout />
+          </Route>
+          <Route exact path="/checkout">
+            <CheckoutCart />
           </Route>
           <Route path="">
             <NotFound />

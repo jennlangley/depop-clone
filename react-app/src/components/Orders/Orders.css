@@ -5,17 +5,20 @@
     padding: auto;
     align-items: center;
 }
+.orderImageDetails {
+    display: flex;
+    
+}
 .orderItem {
     display: flex;
+    flex-direction: column;
     padding: 10px 10px;
     margin: 5px;
     border: 1px solid whitesmoke;
     background-color: white;
     border-radius: 4px;
-    justify-content: space-between;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     width: 500px;
-
 }
 .orderReview {
     margin: 10px;
@@ -26,9 +29,12 @@
 .orderReview img {
     display: none;
 }
+.orderReview .review-image {
+    margin: 0px;
+}
 #orderImage {
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     border: 1px solid gainsboro;
 }
 .orderDetails {
@@ -47,4 +53,7 @@
 }
 .thinButton {
     width: fit-content;
+}
+.orderTitle {
+    margin: 0px;
 }

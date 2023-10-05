@@ -27,9 +27,13 @@ export function CartProvider({ children }) {
         })
     }
 
+    function emptyCart() {
+        return setCartItems([])
+    }
+
     return (
         <CartContext.Provider 
-            value={{ addToCart, removeFromCart, cartItems, openCart, closeCart, toggleCart}}>
+            value={{ addToCart, removeFromCart, cartItems, emptyCart, openCart, closeCart, toggleCart}}>
             {children}
             <ShoppingCart isOpen={isOpen} />
         </CartContext.Provider>

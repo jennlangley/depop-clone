@@ -11,3 +11,7 @@
 .checkoutItemsContainer .productInfo {
     width: 200px;
 }
+.addressInputs {
+    display: flex;
+    justify-content: space-between;
+}
