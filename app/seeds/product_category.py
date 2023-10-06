@@ -64,6 +64,54 @@ def seed_products_categories():
     product_20 = ProductCategory(
         product_id=20, category_id=7
     )
+    product_21 = ProductCategory(
+        product_id=21, category_id=5
+    )
+    product_22 = ProductCategory(
+        product_id=22, category_id=5
+    )
+    product_23 = ProductCategory(
+        product_id=23, category_id=8
+    )
+    product_24 = ProductCategory(
+        product_id=24, category_id=9
+    )
+    product_25 = ProductCategory(
+        product_id=25, category_id=7
+    )
+    product_26 = ProductCategory(
+        product_id=26, category_id=13
+    )
+    product_27 = ProductCategory(
+        product_id=27, category_id=13
+    )
+    product_28 = ProductCategory(
+        product_id=28, category_id=13
+    )
+    product_29 = ProductCategory(
+        product_id=29, category_id=12
+    )
+    product_30 = ProductCategory(
+        product_id=30, category_id=12
+    )
+    product_31 = ProductCategory(
+        product_id=31, category_id=12
+    )
+    product_32 = ProductCategory(
+        product_id=32, category_id=11
+    )
+    product_33 = ProductCategory(
+        product_id=33, category_id=11
+    )
+    product_34 = ProductCategory(
+        product_id=34, category_id=6
+    )
+    product_35 = ProductCategory(
+        product_id=35, category_id=6
+    )
+    product_36 = ProductCategory(
+        product_id=36, category_id=6
+    )
 
 
     db.session.add(product_1)
@@ -86,6 +134,23 @@ def seed_products_categories():
     db.session.add(product_18)
     db.session.add(product_19)
     db.session.add(product_20)
+    db.session.add(product_21)
+    db.session.add(product_22)
+    db.session.add(product_23)
+    db.session.add(product_24)
+    db.session.add(product_25)
+    db.session.add(product_26)
+    db.session.add(product_27)
+    db.session.add(product_28)
+    db.session.add(product_29)
+    db.session.add(product_30)
+    db.session.add(product_31)
+    db.session.add(product_32)
+    db.session.add(product_33)
+    db.session.add(product_34)
+    db.session.add(product_35)
+    db.session.add(product_36)
+
 
     db.session.commit()
 

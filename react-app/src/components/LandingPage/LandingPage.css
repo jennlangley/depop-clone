@@ -2,12 +2,21 @@
     display: grid;
     place-items: center;
 }
+.landingImage {
+    object-fit: cover;
+    width: 100%;
+}
 .discoverBox {
-    width: 90%;
-    background-color: rgb(80, 164, 136);
+    width: 100%;
+    height: 200px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(76,100,172,1) 25%, rgba(243,235,227,1) 78%);
     text-align: center;
-    height: 150px;
     color: white;
+}
+.landingTitle {
+    text-align: left;
+    margin-bottom: 0px;
 }
 .categoryImage {
     width: 250px;
@@ -16,6 +25,11 @@
 }
 .coverName {
     font-size: 45px;
+    /* position: absolute;
+    transform: translate(50%, 50%); */
+} 
+.discoverSubbox {
+    display: flex;
 }
 .name {
     color: white;
@@ -45,8 +59,12 @@
 .categoryImageLinks {
     display: flex;
     gap: 20px;
+    margin-bottom: 15px;
 }
-@media (max-width: 800px) {
+.landingImage {
+    width: 500;
+}
+@media (max-width: 600px) {
     .categoryImageLinks {
         flex-direction: column;
     }

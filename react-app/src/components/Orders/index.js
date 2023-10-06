@@ -20,7 +20,7 @@ const Orders = ({ user }) => {
         }
     }, [dispatch, user])
 
-    if (!user) return <Redirect to='/products' />
+    if (!user) return <Redirect to='/' />
 
     return (
         isLoaded &&
