@@ -19,7 +19,7 @@ const ManageProducts = () => {
         dispatch(getUserProducts(user.id)).then(() => setIsLoaded(true))
     }, [dispatch])
 
-    if (!user) return <Redirect to='/products' />
+    if (!user) return <Redirect to='/' />
     return (
         (isLoaded && user) &&
         <div className="ordersContainer">

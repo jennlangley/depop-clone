@@ -7,7 +7,7 @@ const ProductTile = ({ product }) => {
     const numImages = images.length;
     return (
         <div className="productItem">
-            <a className='productTileLink' href={`/products/${product.id}`}>
+            <a className='productTileLink' href={product.sold ? null : `/products/${product.id}`}>
             <div className='productContainer'>
             
                 <div className='imageTileContainer'>
