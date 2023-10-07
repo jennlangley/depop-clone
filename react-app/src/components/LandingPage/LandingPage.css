@@ -1,6 +1,8 @@
 .landingPage {
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .landingImage {
     object-fit: cover;
@@ -8,10 +10,12 @@
 }
 .discoverBox {
     width: 100%;
-    height: 200px;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(76,100,172,1) 25%, rgba(243,235,227,1) 78%);
-    text-align: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #506cc0b6;
+    flex-direction: column;
     color: white;
 }
 .landingTitle {
@@ -20,11 +24,15 @@
 }
 .categoryImage {
     width: 250px;
-    height: 250px;
+    height: 300px;
     object-fit: cover;
+    border-radius: 10% 10%;
+    
 }
 .coverName {
-    font-size: 45px;
+    /* font-size: 45px; */
+    text-align: left;
+    font-weight: bold;
     /* position: absolute;
     transform: translate(50%, 50%); */
 } 
@@ -35,7 +43,11 @@
     color: white;
     font-weight: bold;
     font-size: 35px;
-    background-color: rgba(0, 0, 0, 0.73);
+    background-color: white;
+    border-radius: 10px;
+    padding: 0px 2px;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.60);
     /* font-style: italic; */
 }
 .nameDiv {
@@ -59,21 +71,84 @@
 .categoryImageLinks {
     display: flex;
     gap: 20px;
-    margin-bottom: 15px;
+    align-items: center;
+    height: 400px;
+    /* margin-bottom: 15px; */
+    margin: 10px 0px;
+}
+.infotextImg {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    margin: 10px;
+    align-items: center;
+}
+.categories {
+    background-color: #efe8e28c;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.imageDiv {
+    border-radius: 20% 10%;
+    max-width: 500px;
+    margin: 10px;
+}
+.imageForDesc {
+    max-width: 500px;
+    border-radius: 10% 20%;
+}
+.textInfoDesc {
+    margin: 10px;
+    padding: 5px;
+    max-width: 400px;
+}
+.buttonDiv {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+}
+.buttonDiv button {
+    font-size: 20px;
+    box-shadow: none;
+}
+.textInfoDescP {
+    max-width: 400px;
+    word-wrap: break-word;
+    font-size: 20px;
+    font-weight: lighter;
+
 }
 .landingImage {
     width: 500;
 }
-@media (max-width: 600px) {
+
+@media (max-width: 800px) {
     .categoryImageLinks {
         flex-direction: column;
+        height: fit-content;
     }
     .categoryImage {
-
-        height: 100px;
         gap: 2px;
+        width: 350px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 20px;
     }
     .name {
         font-size: 20px;
+    }
+    .infotextImg {
+        flex-direction: column;
+    }
+    .imageDiv {
+        max-width: 300px;
+    }
+    .imageForDesc {
+        width: 300px;
+
+    }
+    .discoverBox {
+        height: fit-content;
     }
 }

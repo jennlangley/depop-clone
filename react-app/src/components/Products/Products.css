@@ -95,7 +95,6 @@
 }
 .productsFilterContainer {
     display: flex;
-    
 }
 .filters {
     display: block;
@@ -119,5 +118,8 @@
 @media (max-width: 500px) {
     .productsList {
         grid-template-columns: repeat(1, 1fr);
+    }
+    .productsFilterContainer {
+        justify-content: center;
     }
 }
