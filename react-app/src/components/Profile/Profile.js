@@ -36,7 +36,7 @@ const Profile = () => {
                     <div className='userHeaderInfo'>
                         <ProfileDetails user={user} profile={true} />
                     </div>
-                    <div className='userBio'><div>About {user.firstName}:</div>{user.bio}</div>
+                    <div className='userBio'><div>Bio:</div>{user.bio}</div>
                 </div>
                 <div className='productsListContainer'>
                     <div className='productsList'>
