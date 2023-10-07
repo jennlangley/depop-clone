@@ -57,19 +57,19 @@ def seed_products():
         size="M", price=10.00, sold=False,
     )
     product_11 = Product(
-        name="Baseball Hats", user_id=3,
+        name="Baseball Hats", user_id=2,
         desc="Two wonderful hats from my collection, super unique pieces, pick them up here", 
         condition="Used - Fair", 
         size="M", price=10.00, sold=False,
     )
     product_12 = Product(
-        name="Casual Shoes", user_id=4,
+        name="Casual Shoes", user_id=2,
         desc="Relatively new shoes to wear to casual functions, pre-worn in", 
         condition="Used - Excellent", 
         size="L", price=15.00, sold=False,
     )
     product_13 = Product(
-        name="Gold Necklace", user_id=4,
+        name="Gold Necklace", user_id=2,
         desc="Very pretty gold necklace to give as a lovely gift or wear everyday! Also great for special occasions", 
         condition="Used - Good", 
         size="S", price=30.00, sold=False,
@@ -80,35 +80,35 @@ def seed_products():
         size="M", price=20.00, sold=False,
     )
     product_15 = Product(
-        name="Floral Dress", user_id=5,
+        name="Floral Dress", user_id=2,
         desc="Short floral dress for going out, worn only once! You will feel and look amazing in this dress", 
         condition="Like new", 
         size="S", price=50.00, sold=False,
     )
     product_16 = Product(
-        name="Black Heeled Boots", user_id=5,
+        name="Black Heeled Boots", user_id=2,
         desc="Stylish black heels to go out in. My favorite shoes", condition="Used - Fair", 
         size="S", price=15.00, sold=False,
     )
     product_17 = Product(
-        name="Patchy Ripped Jeans", user_id=5,
+        name="Patchy Ripped Jeans", user_id=2,
         desc="Personalized jeans, with neat patches down the legs. Ripped too, for that awesome look", 
         condition="Used - Good", 
         size="S", price=20.00, sold=False,
     )
     product_18 = Product(
-        name="White Blouse", user_id=5,
+        name="White Blouse", user_id=2,
         desc="A fashionable white blouse, for work or going out. I bought it in the wrong size and can't return it. A must buy!", 
         condition="Brand new", 
         size="M", price=30.00, sold=False,
     )
     product_19 = Product(
-        name="Khaki Pants", user_id=5,
+        name="Khaki Pants", user_id=3,
         desc="Men's khaki pants. Made from recycled materials", condition="Used - Excellent", 
         size="L", price=10.00, sold=False,
     )
     product_20 = Product(
-        name="Embroidered Pants", user_id=5,
+        name="Embroidered Pants", user_id=2,
         desc="Special one of a kind bright yellow pants. Embroidered with a cute dog.", condition="Used - Good", 
         size="L", price=40.00, sold=False,
     )
@@ -150,7 +150,7 @@ def seed_products():
     )
     product_25 = Product(
         name="Yellow Joggers",
-        user_id=3,
+        user_id=2,
         desc="",
         condition="Used - Good",
         size="M",
@@ -199,7 +199,7 @@ def seed_products():
     )
     product_34 = Product(
         name="Egg Pants", 
-        user_id=3,
+        user_id=5,
         desc="Not sure what these really are, but they look sick!",
         condition="Used - Good",
         size="M",
@@ -208,7 +208,7 @@ def seed_products():
     )
     product_35 = Product(
         name="Fitted Jeans", 
-        user_id=3,
+        user_id=4,
         desc="Men's fitted jeans, these are just folded at the bottom. Very soft and comfortable jeans",
         condition="Used - Good",
         size="L",
@@ -217,7 +217,7 @@ def seed_products():
     )
     product_36 = Product(
         name="Cuffed Pants", 
-        user_id=3,
+        user_id=2,
         desc="These pants are not quite jeans, not quite slacks. Exquisitely cuffed with precision",
         condition="Brand new",
         size="L",

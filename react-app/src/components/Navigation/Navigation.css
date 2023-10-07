@@ -95,7 +95,7 @@ a {
   margin: 10px;
   position: absolute;
 }
-.confirmButtonDesign, .deleteButtonDesign, .buttonDesign {
+.confirmButtonDesign, .deleteButtonDesign, .buttonDesign, .soldButton {
   border-radius: 4px;
   box-shadow: 2px 4px 4px  #95b0b5;
   color: white;
@@ -105,7 +105,18 @@ a {
   padding: 6px 10px;
   text-align: center;
 }
-
+.soldButton {
+  border-radius: 4px;
+  box-shadow: 2px 4px 4px  #95b0b5;
+  color: white;
+  background-color: rgba(214, 70, 70, 0.503);;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 6px 10px;
+  text-align: center;
+  cursor: default;
+}
 .confirmButtonDesign {
   background-color: #76d3ff;
 }

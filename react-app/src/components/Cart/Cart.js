@@ -5,12 +5,6 @@ import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
 const Cart = ({ checkout }) => {
     const { cartItems, closeCart } = useCart();
-    
-    const onSubmit = (e) => {
-        e.preventDefault();
-        // TODO Insert into the orders table, and set the product as sold
-        // Redirect to checkout page eg enter user info and such, also add/remove items
-    }
 
     if (!cartItems || !cartItems.length) return (
         <h3 className='cart' style={{textAlign: "center"}}>
@@ -31,7 +25,7 @@ const Cart = ({ checkout }) => {
             </ul>
             <hr />
             <span className='productPrice'>Total: ${cartTotal.toFixed(2)}</span>
-            <form className='checkoutButton' onSubmit={onSubmit}>
+            <form className='checkoutButton'>
                 {checkout ? 
                     <NavLink to='/checkout'>
                         <button className='confirmButtonDesign' type="submit">

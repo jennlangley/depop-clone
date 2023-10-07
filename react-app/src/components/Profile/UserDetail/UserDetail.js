@@ -7,7 +7,7 @@ import OpenModalButton from '../../OpenModalButton';
 import Reviews from '../../Reviews/Reviews';
 import { NavLink } from 'react-router-dom/cjs/react-router-dom.min';
 
-const UserDetail = ({ user, previewImage }) => {
+const UserDetail = ({ user, previewImage, profile }) => {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false);
     const userId = user.id;
@@ -38,8 +38,9 @@ const UserDetail = ({ user, previewImage }) => {
                 </div>
             </div>
             <div className='userReviews'>
+                {profile && <div className='username details fullName'>{user.firstName} {user.lastName}</div>}
                 <div className='username details'>
-                    <NavLink to={`/users/${user.username}`}>{user.username}</NavLink>
+                    <NavLink to={`/users/${user.username}`}>@{user.username}</NavLink>
                 </div>
                 <div className='details'>
 

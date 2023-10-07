@@ -8,16 +8,16 @@ def seed_users():
         username='demouser', email='demo@aa.io', password='password', 
         first_name='Demo', last_name='User', bio='Looking to sell my cool stuff!')
     amelia = User(
-        username='amelia411', email='amelia411@aa.io', password='password',
+        username='ameliaroberts', email='ameliaroberts@aa.io', password='password',
         first_name='Amelia', last_name='Roberts', bio='Fashion is my passion')
     sam = User(
-        username='samIam', email='samIam123@aa.io', password='password',
+        username='samsmith', email='samsmith@aa.io', password='password',
         first_name='Sam', last_name='Smith', bio='Checkout my shop for great deals')
     kris = User(
-        username='krisSellsStuff', email='kris123@aa.io', password='password',
+        username='krisSellsStuff', email='kristoby@aa.io', password='password',
         first_name='Kris', last_name='Toby', bio='Selling and buying cool items is my hobby')
     jessica = User(
-        username='jessicapop', email='jessica101@aa.io', password='password',
+        username='jessicabing', email='jessicabing@aa.io', password='password',
         first_name='Jessica', last_name='Bing', bio='Shopaholic here, watchout :P')
 
     db.session.add(demo)

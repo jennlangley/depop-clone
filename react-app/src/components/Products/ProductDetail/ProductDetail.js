@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { getProductDetails } from "../../../store/product";
 import UserDetail from "../../Profile/UserDetail/UserDetail";
 import './ProductDetail.css';
-// import ProductTile from "../ProductTile";
+import ProductTile from "../ProductTile";
 import Breadcrumb from "../../ProductCategory/Breadcrumb";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { useCart } from "../../../context/CartContext";
@@ -15,16 +15,28 @@ const ProductDetail = () => {
     const [imageIdx, setImageIdx] = useState(0);
     const [hover, setHover] = useState(0);
     const [isLoaded, setIsLoaded] = useState(false)
+    const [userProducts, setUserProducts] = useState([])
     const { productId } = useParams();
     const { addToCart, removeFromCart, cartItems } = useCart();
     
+    
+
     useEffect(() => {
-        dispatch(getProductDetails(+productId)).then(() => setIsLoaded(true));
+        const getRelatedProducts = async () => {
+            const product = await dispatch(getProductDetails(+productId))
+            const res = await fetch(`/api/users/${product.userId}/${productId}`);
+            const parsedRes = await res.json();
+            if (!parsedRes.errors) setUserProducts(parsedRes.products); 
+        }
+        getRelatedProducts().then(() => setIsLoaded(true))
+        
     }, [dispatch, productId])
+
+    
     const product = useSelector(state => state.products[+productId])
     const user = useSelector(state => state.session.user);
-    // TODO: display the category and subcategory names 
-    // const userProducts = useSelector(state => Object.values(state.products).filter(prod => (prod.userId === product.userId && prod.id !== product.id)))
+
+    // TODO: display the category and subcategory names, breadcrumb?
 
     return(
         <>
@@ -55,7 +67,10 @@ const ProductDetail = () => {
                         <div className="price">
                             <span className="dollar">$</span>{product.price}
                         </div>
-                        {product.userId !== user?.id ?
+                        {(product.sold ? 
+                            <button className="soldButton">Sold</button>
+                        :
+                        (product.userId !== user?.id) ?
                             (!cartItems.find(item => item.id === product.id) ?
                             <button
                                 className="confirmButtonDesign"
@@ -81,7 +96,7 @@ const ProductDetail = () => {
                                 Edit product
                                 </button>
                             </NavLink>
-                            }
+            )}
                             <div className="productInfo">
                                 {product.desc}
                             </div>
@@ -96,10 +111,12 @@ const ProductDetail = () => {
                 </div>
                 
                 <div>
-                {/* <div className="productDetailContainer"><h3>Other items by this seller:</h3></div>
-                    <div className="relatedProductsContainer">
-                    {Object.values(userProducts).map((product, idx) => <ProductTile key={idx} product={product} />)}
-                    </div> */}
+                <div className="productDetailContainer"><h3>Other items by this seller:</h3></div>
+                    {userProducts &&
+                        <div className="relatedProductsContainer">
+                        {userProducts.map((product, idx) => <ProductTile key={idx} product={product} />)}
+                        </div>
+                    }
                 </div>
                 
             </div>

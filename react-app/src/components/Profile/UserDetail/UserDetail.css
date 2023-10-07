@@ -1,6 +1,9 @@
 .userDetails {
     display: flex;
 }
+.fullName {
+    font-size: 20px;
+}
 .profilePicture {
     align-items: center;
     display: flex;

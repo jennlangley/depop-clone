@@ -1,8 +1,8 @@
 .checkoutItemsContainer {
-    width: 600px;
     background-color: white;
-    padding: 10px;
     border-radius: 4px;
+    padding: 10px;
+    width: 600px;
 }
 .checkoutItemsContainer .cartImage {
     height: 100px;
@@ -14,4 +14,57 @@
 .addressInputs {
     display: flex;
     justify-content: space-between;
+}
+.street {
+    flex-direction: column;
+}
+.newProductContainer .cartItemContainer {
+    gap: 10px;
+    width: 400px;
+}
+.newProductContainer .cartItem {
+    margin: 0px;
+}
+.checkoutHeader {
+    margin: 10px 0px 8px;
+}
+.totalCalculation {
+    display: grid;
+    gap: 0px 20px;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: right;
+    width: 200px;
+}
+.itemizedList {
+    margin: auto;
+    margin-bottom: 10px;
+    padding: auto;
+}
+.itemText {
+    font-size: 18px;
+}
+.costText {
+    text-align: left;
+}
+@media (max-width: 500px) {
+    .newProductContainer .cartItemContainer {
+        gap: 10px;
+        width: 300px;
+    }
+    .newProductContainer {
+        display: flex;
+        justify-content: center;
+    }
+    .newProductContainer .addressInputs {
+        flex-direction: column;
+    }
+    .inputSection, .inputBox {
+        width: 100%;
+    }
+    .addressInputs {
+        width: 100%;
+    }
+    .checkoutItemsContainer {
+        width: fit-content;
+    }
 }

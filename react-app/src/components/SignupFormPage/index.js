@@ -31,6 +31,7 @@ function SignupFormPage() {
   };
 
   return (
+	<div className="loginPage">
     <div className="loginContainer loginFormPage">
 			<h1 id="modal-title">Sign Up</h1>
 			<div>
@@ -127,6 +128,7 @@ function SignupFormPage() {
 				</form>
 			</div>
 		</div>
+	</div>
   );
 }
 

@@ -1,0 +1,28 @@
+.profileContainer {
+    display: flex;
+
+    margin: auto;
+    padding: 0px 200px;
+    align-items: flex-end;
+    gap: 50px;
+
+    border-bottom: .5px solid gray;
+}
+.userBio {
+    font-size: 20px;
+    padding: 20px 0px;
+}
+.userHeaderInfo {
+    margin: 0px 20px;
+    display: flex;
+}
+.profileContainer .profilePicture {
+    width: 145px;
+    height: 145px;
+}
+.profileContainer .userInitials {
+    font-size: 35px;
+}
+.profileProductContainer {
+    margin-top: 20px;
+}

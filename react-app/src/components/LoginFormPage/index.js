@@ -27,6 +27,7 @@ function LoginFormPage() {
   };
 
   return (
+    <div className="loginPage">
     <div className="loginContainer loginFormPage">
       <h1 id="modal-title">Log In</h1>
       <form onSubmit={handleSubmit}>
@@ -59,6 +60,7 @@ function LoginFormPage() {
       </form>
       <button className="confirmButtonDesign formButton" onClick={demoLogin}>Demo Log In</button>
     </div>
+  </div>
   );
 }
 

@@ -27,7 +27,7 @@ const Orders = ({ user }) => {
         (<div className="ordersContainer">
             <h1>Your Orders</h1>
             
-            {orders ? (Object.values(orders).map((order, idx) => 
+            {orders ? (Object.values(orders).reverse().map((order, idx) => 
                 <Order key={idx} order={order} reviews={reviews} />
             )) : <div>You have no orders!</div>
             
