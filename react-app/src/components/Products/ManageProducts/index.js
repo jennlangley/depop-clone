@@ -27,7 +27,7 @@ const ManageProducts = () => {
                 {Object.values(products).length === 1 ? " product" : " products"}
             </h1>
             <div className="productsList">
-                {Object.values(products).map((product, idx) => 
+                {Object.values(products).reverse().map((product, idx) => 
                     <div className="manageContainer" key={idx}>
                         <ProductTile product={product} />
 
