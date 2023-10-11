@@ -72,7 +72,7 @@ function App() {
           <Route exact path="/orders">
             <Orders user={user} />
           </Route>
-          <Route exact path="/users/:username">
+          <Route exact path="/users/:userId">
             <Profile />
           </Route>
           <Route exact path="/cart">

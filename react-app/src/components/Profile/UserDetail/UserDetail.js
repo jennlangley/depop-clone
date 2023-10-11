@@ -40,7 +40,7 @@ const UserDetail = ({ user, previewImage, profile }) => {
             <div className='userReviews'>
                 {profile && <div className='username details fullName'>{user.firstName} {user.lastName}</div>}
                 <div className='username details'>
-                    <NavLink to={`/users/${user.username}`}>@{user.username}</NavLink>
+                    <NavLink to={`/users/${user.id}`}>@{user.username}</NavLink>
                 </div>
                 <div className='details'>
 

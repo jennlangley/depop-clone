@@ -4,29 +4,31 @@ import ProfileDetails from './ProfileDetails';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserProducts } from '../../store/product';
 import ProductTile from '../Products/ProductTile';
+import { getFollows } from '../../store/follow';
+import Follow from '../Follows/Follow';
 const Profile = () => {
-    const { username } = useParams();
+    const { userId } = useParams();
     const [user, setUser] = useState(null);
     // const [viewSold, setViewSold] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        getUser(username).then(() => setIsLoaded(true))
-    }, [username])
+        getUser(+userId);
+        dispatch(getFollows(+userId));
+        setIsLoaded(true);
+    }, [dispatch, userId])
 
-    const getUser = async (username) => {
-        const res = await fetch(`/api/users/${username}`);
-        
+    const getUser = async (userId) => {
+        const res = await fetch(`/api/users/${userId}`);
         const data = await res.json();
         if (!data.errors) {
             setUser(data);
-            dispatch(getUserProducts(data.id))
+            dispatch(getUserProducts(data.id));
         }
-        
-        
     }
     const products = useSelector(state => state.products)
+    const sessionUser = useSelector(state => state.session.user);
 
     return (
         isLoaded &&
@@ -36,7 +38,11 @@ const Profile = () => {
                     <div className='userHeaderInfo'>
                         <ProfileDetails user={user} profile={true} />
                     </div>
-                    <div className='userBio'><div>Bio:</div>{user.bio}</div>
+                    <div>
+                        <Follow sessionUser={sessionUser}/>
+                        <div className='userBio'><div>Bio:</div>{user.bio}</div> 
+                    </div>
+                   
                 </div>
                 <div className='productsListContainer'>
                     <div className='productsList'>

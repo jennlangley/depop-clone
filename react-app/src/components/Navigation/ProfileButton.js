@@ -47,7 +47,7 @@ function ProfileButton({ user, isLoaded }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li className="dropdownLink"><NavLink exact to={`/users/${user.username}`}>Profile</NavLink></li>
+            <li className="dropdownLink"><NavLink exact to={`/users/${user.id}`}>Profile</NavLink></li>
             
             <li className="dropdownLink"><NavLink exact to="/products/manage">Your Products</NavLink></li>
             <li className="dropdownLink"><NavLink exact to="/orders">Orders</NavLink></li>
