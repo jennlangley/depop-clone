@@ -24,7 +24,7 @@ const Order = ({ order, reviews }) => {
                     <h3 className="orderTitle">$ {product.price}</h3>
                     <h3 className="orderTitle">{product.name}</h3>
                     <div>Sold by:{" "}
-                        <NavLink to={`users/${product.user.username}`}>{product.user.username}</NavLink>
+                        <NavLink to={`users/${product.user.id}`}>{product.user.username}</NavLink>
                     </div>
                     <div>Ordered on: {order.createdAt}</div>
                     

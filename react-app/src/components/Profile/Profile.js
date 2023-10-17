@@ -6,6 +6,7 @@ import { getUserProducts } from '../../store/product';
 import ProductTile from '../Products/ProductTile';
 import { getFollows } from '../../store/follow';
 import Follow from '../Follows/Follow';
+import Footer from '../Footer/Footer';
 const Profile = () => {
     const { userId } = useParams();
     const [user, setUser] = useState(null);
@@ -33,6 +34,7 @@ const Profile = () => {
     return (
         isLoaded &&
         (user ? 
+            <>
             <section>
                 <div className='profileContainer'>
                     <div className='userHeaderInfo'>
@@ -56,6 +58,8 @@ const Profile = () => {
                     </div>
                 </div>
             </section>
+            <Footer />
+            </>
         
         :
         <h1 style={{textAlign: "center"}}>User not found</h1>)

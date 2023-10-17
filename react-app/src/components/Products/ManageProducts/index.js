@@ -6,6 +6,7 @@ import OpenModalButton from "../../OpenModalButton";
 import DeleteProduct from "./DeleteProductModal";
 import { NavLink, Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import './ManageProducts.css';
+import Footer from "../../Footer/Footer";
 
 const ManageProducts = () => {
     const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const ManageProducts = () => {
     if (!user) return <Redirect to='/' />
     return (
         (isLoaded && user) &&
+        <>
         <div className="ordersContainer">
             <h1>Manage your {Object.values(products).length} 
                 {Object.values(products).length === 1 ? " product" : " products"}
@@ -53,6 +55,8 @@ const ManageProducts = () => {
                     )}
             </div>
         </div>
+        <Footer />
+        </>
     )
 }
 export default ManageProducts;

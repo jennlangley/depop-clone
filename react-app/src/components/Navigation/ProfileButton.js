@@ -47,10 +47,10 @@ function ProfileButton({ user, isLoaded }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li className="dropdownLink"><NavLink exact to={`/users/${user.id}`}>Profile</NavLink></li>
+            <NavLink exact to={`/users/${user.id}`}><li className="dropdownLink">Profile</li></NavLink>
             
-            <li className="dropdownLink"><NavLink exact to="/products/manage">Your Products</NavLink></li>
-            <li className="dropdownLink"><NavLink exact to="/orders">Orders</NavLink></li>
+            <NavLink exact to="/products/manage"><li className="dropdownLink">Your Products</li></NavLink>
+            <NavLink exact to="/orders"><li className="dropdownLink">Orders</li></NavLink>
             <li className="dropdownLink">
               <button className="buttonDesign" style={{"width": "100%"}} onClick={handleLogout}>Log Out</button>
             </li>

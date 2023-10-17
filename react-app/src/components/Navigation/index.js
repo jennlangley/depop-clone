@@ -7,6 +7,7 @@ import Categories from './Categories/Categories';
 import { useCart } from '../../context/CartContext';
 import Logo from '../../images/style_swap_logo.png';
 import './Navigation.css';
+import Footer from '../Footer/Footer';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);

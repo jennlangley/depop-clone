@@ -5,6 +5,7 @@ import { getUserReviews } from "../../store/review";
 import { Redirect } from "react-router-dom";
 import Order from "./Order";
 import './Orders.css'
+import Footer from "../Footer/Footer";
 
 const Orders = ({ user }) => {
     const dispatch = useDispatch();
@@ -24,7 +25,9 @@ const Orders = ({ user }) => {
 
     return (
         isLoaded &&
-        (<div className="ordersContainer">
+        (
+        <>
+        <div className="ordersContainer">
             <h1>Your Orders</h1>
             
             {orders ? (Object.values(orders).reverse().map((order, idx) => 
@@ -32,7 +35,10 @@ const Orders = ({ user }) => {
             )) : <div>You have no orders!</div>
             
             }
-        </div>)
+        </div>
+        <Footer />
+        </>
+        )
     )
 
 }

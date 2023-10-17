@@ -21,6 +21,7 @@ import SearchResults from "./components/SearchResults";
 import ProductCategory from "./components/ProductCategory";
 import ProductSubcategory from "./components/ProductCategory/ProductSubcategory";
 import CheckoutCart from "./components/Cart/Checkout/CheckoutCart";
+import './index.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -34,6 +35,7 @@ function App() {
     <CartProvider>
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
+        <>
       <ScrollToTop>
         <Switch>
           <Route exact path="/login" >
@@ -86,6 +88,7 @@ function App() {
           </Route>
         </Switch>
       </ScrollToTop>
+      </>
       )}
     </CartProvider>
   );

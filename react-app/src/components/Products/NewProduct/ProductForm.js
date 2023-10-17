@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import * as productsActions from '../../../store/product';
 import * as imagesActions from "../../../store/image";
 import './ProductForm.css'
+import Footer from "../../Footer/Footer";
 
 const ProductForm = ({ product }) => {
     const dispatch = useDispatch();
@@ -120,6 +121,7 @@ const ProductForm = ({ product }) => {
     }, [hasSubmitted, name, desc, condition, size, price, image, category, subcategory, image2, image3, image4])
 
     return (
+        <>
         <div className="newProductContainer">
             {!product &&
             <div>
@@ -262,6 +264,8 @@ const ProductForm = ({ product }) => {
                 </button>
             </form>
         </div>
+        <Footer />
+        </>
     )
 }
 

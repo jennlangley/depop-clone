@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { createOrder } from "../../../store/order";
 import CartItem from "../CartItem";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import Footer from "../../Footer/Footer";
 
 const CheckoutCart = () => {
     const history = useHistory();
@@ -53,6 +54,7 @@ const CheckoutCart = () => {
     };
 
     return (
+        <>
         <div className="newProductContainer">
             <h1>Checkout ({cartItems.length} {cartItems.length === 1 ? "item" : "items"})</h1>
             {cartItems.map((item, idx) => <CartItem key={idx} product={item} />)}
@@ -151,6 +153,8 @@ const CheckoutCart = () => {
                 </div>
             </form>
         </div>
+        <Footer />
+        </>
     )
 }
 

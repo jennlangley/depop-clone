@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from 'react-router-dom';
 import { searchProducts } from "../../store/product";
 import Products from "../Products/Products";
+import Footer from "../Footer/Footer";
 const SearchResults = () => {
     const dispatch = useDispatch();
     const [isLoaded, setIsLoaded] = useState(false)
@@ -18,9 +19,13 @@ const SearchResults = () => {
     return (
         isLoaded &&
         (Object.values(products).length ?
+        <>
         <div className="productsListContainer">
                 <Products products={products} />
-        </div> :
+        </div>
+        <Footer />
+        </> 
+        :
         <h1 style={{textAlign: "center"}}>No products found</h1>
         )
     )

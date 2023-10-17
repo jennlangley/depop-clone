@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../store/product";
 import Products from "./Products";
+import Footer from "../Footer/Footer";
+
 
 const ProductsIndex = () => {
     const dispatch = useDispatch();
@@ -22,9 +24,12 @@ const ProductsIndex = () => {
             }
             {isLoaded && (
             Object.values(products).length ?
-            <div className="productsListContainer">
-                <Products products={products} />
-            </div>
+            <>
+                <div className="productsListContainer">
+                    <Products products={products} />
+                </div>
+                <Footer />
+            </>
             :
             <h1 style={{textAlign: "center"}}>No products found</h1>)
             }

@@ -47,8 +47,8 @@
 .productsListContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
     margin-top: 20px;
+    min-height: 100vh;
 }
 .productsList {
     display: grid;

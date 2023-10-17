@@ -3,10 +3,12 @@ import './LandingPage.css';
 import womens from '../../images/womens.jpg';
 import mens from '../../images/mens.jpg';
 import accessories from '../../images/accessories.jpg';
+import Footer from '../Footer/Footer';
 const LandingPage = () => {
     
     
     return (
+        <>
         <div className='landingPage'>
       
             <div className="discoverBox">
@@ -70,6 +72,8 @@ const LandingPage = () => {
             {/* <h1>Shop by Price</h1> */}
 
         </div>
+        <Footer />
+        </>
     )
 }
 

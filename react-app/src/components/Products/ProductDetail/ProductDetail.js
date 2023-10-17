@@ -9,6 +9,7 @@ import ProductTile from "../ProductTile";
 import Breadcrumb from "../../ProductCategory/Breadcrumb";
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 import { useCart } from "../../../context/CartContext";
+import Footer from "../../Footer/Footer";
 
 const ProductDetail = () => {
     const dispatch = useDispatch();
@@ -41,8 +42,9 @@ const ProductDetail = () => {
     return(
         <>
         {isLoaded &&
-            (product && <div className="productDetail">
-                
+            (product && 
+            <>
+            <div className="productDetail">
                 <div className="productDetailContainer">
                     <div className="productImagesContainer">
                         <div className="imageThumbnails">
@@ -117,9 +119,11 @@ const ProductDetail = () => {
                         {userProducts.map((product, idx) => <ProductTile key={idx} product={product} />)}
                         </div>
                     }
+                    <Footer />
                 </div>
                 
             </div>
+            </>
          )}
         </>
     )

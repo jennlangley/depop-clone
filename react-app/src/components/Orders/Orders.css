@@ -4,6 +4,7 @@
     margin: auto;
     padding: auto;
     align-items: center;
+    min-height: 100vh;
 }
 .orderImageDetails {
     display: flex;
