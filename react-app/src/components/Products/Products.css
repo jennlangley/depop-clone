@@ -45,15 +45,17 @@
     background-color: whitesmoke;
 }
 .productsListContainer {
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 20px;
 }
 .productsList {
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(4, 1fr);
-    max-width: 100%;
+    /* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) */
+        
 }
 .productImagesList {
     list-style: none;
@@ -105,7 +107,7 @@
     margin: 20px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1044px) {
     .productsList {
         grid-template-columns: repeat(3, 1fr);
     }

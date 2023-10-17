@@ -14,9 +14,9 @@ const Profile = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        getUser(+userId);
-        dispatch(getFollows(+userId));
-        setIsLoaded(true);
+        getUser(+userId)
+        .then(() => dispatch(getFollows(+userId)))
+        .then(() => setIsLoaded(true))
     }, [dispatch, userId])
 
     const getUser = async (userId) => {
