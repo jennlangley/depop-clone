@@ -85,6 +85,6 @@
    
 9. From the `react-app` directory run `npm start`.
 
-## Author
+## Authors
 - [Jennifer Langley](https://github.com/jennlangley)
 
